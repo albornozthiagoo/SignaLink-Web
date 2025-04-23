@@ -19,10 +19,10 @@ Este repositorio aloja exclusivamente el frontend de la página web oficial de S
 ## 🔗 Acceso al sitio web:
  https://signalink2025.com
 
-## 🛠️ Tecnologías utilizadas
-	• HTML
-	• CSS
-	• JavaScript 
+## 👾 Lenguajes utilizados
+	• HTML5
+	• CSS3
+	• JavaScript (Vanilla)
 
 ## 👉🏼 Acceso al repositorio principal
 https://github.com/impatrq/SignaLink
