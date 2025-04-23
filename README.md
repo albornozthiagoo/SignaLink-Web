@@ -17,7 +17,7 @@ Este repositorio aloja exclusivamente el frontend estático de la página web of
 ## 🔗 Acceso al sitio web:
  https://signalink2025.com
 
-## 🔗 Acceso al repositorio principal
+## 👉🏼 Acceso al repositorio principal
 https://github.com/impatrq/SignaLink
 
 ## 📱 Contactanos: 
