@@ -17,6 +17,11 @@ Este repositorio aloja exclusivamente el frontend estático de la página web of
 ## 🔗 Acceso al sitio web:
  https://signalink2025.com
 
+## 🛠️ Tecnologías utilizadas
+	•	HTML5
+	•	CSS3
+	•	JavaScript (vanilla)
+
 ## 👉🏼 Acceso al repositorio principal
 https://github.com/impatrq/SignaLink
 
