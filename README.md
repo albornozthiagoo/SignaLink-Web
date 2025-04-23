@@ -10,13 +10,15 @@
 
 </div>
 
-## 🌐 Sitio Web Oficial de SignaLink
+## 🌐 Sitio Web Oficial
 
-Este repositorio aloja exclusivamente el frontend estático de la página web oficial de SignaLink, una plataforma dedicada a la traducción de lenguaje de señas para fomentar la accesibilidad e inclusión.
+Este repositorio aloja exclusivamente el frontend estático de la página web oficial de SignaLink, una plataforma dedicada a la traducción de lengua de señas para fomentar la accesibilidad e inclusión.
 
 ## 🔗 Acceso al sitio web:
-👉 https://signalink2025.com
+ https://signalink2025.com
 
+## 🔗 Acceso al repositorio principal
+https://github.com/impatrq/SignaLink
 
 ## 📱 Contactanos: 
 
