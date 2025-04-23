@@ -36,9 +36,7 @@ https://github.com/impatrq/SignaLink
     <img alt="Instagram" width="123px" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
 </a>
 
-## 📱 Contactos personales
-
-
+## 📱 Contacto personal
 
 ### 1. Albornoz Thiago
 <a href="https://mail.google.com/mail/?view=cm&to=albornozthiagoagustin@gmail.com" target="_blank">
