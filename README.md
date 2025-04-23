@@ -10,13 +10,11 @@
 
 </div>
 
-🌐 Sitio Web Oficial de SignaLink
-
-“Tus gestos hablan, SignaLink traduce.”
+## 🌐 Sitio Web Oficial de SignaLink
 
 Este repositorio aloja exclusivamente el frontend estático de la página web oficial de SignaLink, una plataforma dedicada a la traducción de lenguaje de señas para fomentar la accesibilidad e inclusión.
 
-🔗 Acceso al sitio web:
+## 🔗 Acceso al sitio web:
 👉 https://signalink2025.com
 
 
