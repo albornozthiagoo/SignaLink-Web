@@ -10,7 +10,7 @@
 
 </div>
 
-## 🌐 Sitio Web Oficial
+## 🌐 Sitio Web Oficial ![Website](https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fsignalink2025.com)
 
 Este repositorio aloja exclusivamente el frontend de la página web oficial de SignaLink, una plataforma dedicada a nuestro proyecto ideado para la traducción de lengua de señas para fomentar la accesibilidad e inclusión.
 
@@ -46,7 +46,7 @@ https://github.com/impatrq/SignaLink
 
 
 
-![Website](https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fsignalink2025.com)
+
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Repo size](https://img.shields.io/github/repo-size/impatrq/SignaLink)
 ![Last commit](https://img.shields.io/github/last-commit/impatrq/SignaLink)
