@@ -21,6 +21,7 @@ Este repositorio aloja exclusivamente el frontend de la página web oficial de S
 <img alt="Sitio Web" src="https://img.shields.io/badge/Sitio%20web-SignaLink-0a0a0a?style=for-the-badge&logo=vercel&logoColor=white" />
 </a>
 
+
  ![Website](https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fsignalink2025.com)
 
 ## 👾 Lenguajes utilizados
@@ -29,7 +30,8 @@ Este repositorio aloja exclusivamente el frontend de la página web oficial de S
 	• JavaScript (Vanilla)
 
 ## 👉🏼 Acceso al repositorio principal
-https://github.com/impatrq/SignaLink
+<a href="https://github.com/impatrq/SignaLink" target="_blank">
+  <img alt="GitHub" src="https://img.shields.io/badge/GitHub-000?style=for-the-badge&logo=github&logoColor=white" />
 
 ## 📱 Contactanos: 
 
