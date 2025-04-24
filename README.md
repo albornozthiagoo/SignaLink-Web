@@ -49,7 +49,10 @@ https://github.com/impatrq/SignaLink
 
 
 
+
+
+
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Repo size](https://img.shields.io/github/repo-size/impatrq/SignaLink)
 ![Last commit](https://img.shields.io/github/last-commit/impatrq/SignaLink)
-![Status](https://img.shields.io/badge/status-en%20desarrollo-yellow)
+
