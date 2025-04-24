@@ -17,7 +17,9 @@ Este repositorio aloja exclusivamente el frontend de la página web oficial de S
 🗂️ Todo el contenido del sitio se encuentra en la carpeta /docs
 
 ## 🔗 Acceso al sitio web:
- https://signalink2025.com  
+<a href="https://signalink2025.com" target="_blank">
+<img alt="Sitio Web" src="https://img.shields.io/badge/Sitio%20web-SignaLink-0a0a0a?style=for-the-badge&logo=vercel&logoColor=white" />
+</a>
 
  ![Website](https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fsignalink2025.com)
 
@@ -50,7 +52,5 @@ https://github.com/impatrq/SignaLink
 <a href="https://www.linkedin.com/in/thiago-albornoz" target="_blank">
   <img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
 </a>
-<a href="https://signalink2025.com" target="_blank">
-  <img alt="Sitio Web" src="https://img.shields.io/badge/Sitio%20web-SignaLink-0a0a0a?style=for-the-badge&logo=vercel&logoColor=white" />
-</a>
+  
 	
