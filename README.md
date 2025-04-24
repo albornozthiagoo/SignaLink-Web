@@ -45,7 +45,7 @@ https://github.com/impatrq/SignaLink
 ### 1. Albornoz Thiago
 <a href="https://mail.google.com/mail/?view=cm&to=albornozthiagoagustin@gmail.com" target="_blank">
     <img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
-<a href="https://www.instagram.com/signalink_">
+<a href="https://www.instagram.com/thia.albornoz/">
     <img alt="Instagram" width="123px" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
 </a>
 
