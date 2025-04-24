@@ -44,3 +44,10 @@ https://github.com/impatrq/SignaLink
 <a href="https://mail.google.com/mail/?view=cm&to=albornozthiagoagustin@gmail.com" target="_blank">
     <img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
 
+
+
+![Website](https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fsignalink2025.com)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Repo size](https://img.shields.io/github/repo-size/impatrq/SignaLink)
+![Last commit](https://img.shields.io/github/last-commit/impatrq/SignaLink)
+![Status](https://img.shields.io/badge/status-en%20desarrollo-yellow)
