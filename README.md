@@ -12,20 +12,26 @@
 
 ## 🌐 Sitio Web Oficial
 
-Este repositorio aloja exclusivamente el frontend de la página web oficial de SignaLink, una plataforma dedicada a la traducción de lengua de señas para fomentar la accesibilidad e inclusión.
+Este repositorio aloja exclusivamente el frontend de la página web oficial de SignaLink, una plataforma dedicada a nuestro proyecto ideado para la traducción de lengua de señas para fomentar la accesibilidad e inclusión.
 
 🗂️ Todo el contenido del sitio se encuentra en la carpeta /docs
 
 ## 🔗 Acceso al sitio web:
- https://signalink2025.com
+https://signalink2025.com
 
-## 🛠️ Tecnologías utilizadas
-	• HTML
-	• CSS
-	• JavaScript 
+ ![Website](https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fsignalink2025.com)
+
+## 👾 Lenguajes utilizados
+	• HTML5
+	• CSS3
+	• JavaScript (Vanilla)
 
 ## 👉🏼 Acceso al repositorio principal
-https://github.com/impatrq/SignaLink
+
+<a href="https://github.com/impatrq/SignaLink" target="_blank">
+  <img alt="GitHub" src="https://img.shields.io/badge/GitHub-SignaLink-000?style=for-the-badge&logo=github&logoColor=white" />
+</a>
+
 
 ## 📱 Contactanos: 
 
@@ -43,4 +49,8 @@ https://github.com/impatrq/SignaLink
 ### 1. Albornoz Thiago
 <a href="https://mail.google.com/mail/?view=cm&to=albornozthiagoagustin@gmail.com" target="_blank">
     <img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
-
+<a href="https://www.instagram.com/thia.albornoz/">
+    <img alt="Instagram" width="123px" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
+<a href="https://www.linkedin.com/in/thiago-agustin-albornoz-6956b135b">
+    <img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
+</a>
