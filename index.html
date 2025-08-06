@@ -2,70 +2,34 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Premium Responsive Navbar</title>
+  <title>SignaLink</title>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap'><link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <div class="bg-black text-white font-['Space_Grotesk'] overflow-x-hidden">
-    <!-- Background elements -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div class="absolute top-20 left-10 w-96 h-96 bg-indigo-900/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-10 right-10 w-80 h-80 bg-purple-900/10 rounded-full blur-3xl"></div>
-        <div class="absolute top-40 right-20 w-64 h-64 bg-cyan-900/10 rounded-full blur-3xl"></div>
-        
-        <!-- Decorative grid lines -->
-        <div class="absolute inset-0 grid grid-cols-12 opacity-5 pointer-events-none">
-            <div class="border-r border-cyan-500"></div>
-            <div class="border-r border-cyan-500"></div>
-            <div class="border-r border-cyan-500"></div>
-            <div class="border-r border-cyan-500"></div>
-            <div class="border-r border-cyan-500"></div>
-            <div class="border-r border-cyan-500"></div>
-            <div class="border-r border-cyan-500"></div>
-            <div class="border-r border-cyan-500"></div>
-            <div class="border-r border-cyan-500"></div>
-            <div class="border-r border-cyan-500"></div>
-            <div class="border-r border-cyan-500"></div>
-            <div class="border-r border-cyan-500"></div>
-        </div>
-        <div class="absolute inset-0 grid grid-rows-12 opacity-5 pointer-events-none">
-            <div class="border-b border-cyan-500"></div>
-            <div class="border-b border-cyan-500"></div>
-            <div class="border-b border-cyan-500"></div>
-            <div class="border-b border-cyan-500"></div>
-            <div class="border-b border-cyan-500"></div>
-            <div class="border-b border-cyan-500"></div>
-            <div class="border-b border-cyan-500"></div>
-            <div class="border-b border-cyan-500"></div>
-            <div class="border-b border-cyan-500"></div>
-            <div class="border-b border-cyan-500"></div>
-            <div class="border-b border-cyan-500"></div>
-            <div class="border-b border-cyan-500"></div>
-        </div>
-    </div>
+    
+<!-- Fondo -->
+<body>
+  <div>
+     <div class="wave"></div>
+     <div class="wave"></div>
+     <div class="wave"></div>
+  </div>
+</body>
 
     <!-- Navigation Bar -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 bg-gray-900/70 backdrop-blur-lg border-b border-cyan-500/30 z-50 transition-all duration-300">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <div class="relative mr-2">
-                        <div class="absolute inset-0 bg-cyan-400/30 rounded-md blur-sm"></div>
-                        <div class="w-10 h-10 rounded-md bg-gradient-to-br from-indigo-600 to-purple-600 border border-indigo-400/30 flex items-center justify-center relative shadow-lg shadow-indigo-800/20">
-                            <div class="absolute inset-[3px] bg-gray-900 rounded-[4px] flex items-center justify-center overflow-hidden">
-                                <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/20 to-purple-900/20"></div>
-                                <div class="font-bold text-lg bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">FN</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-xl font-medium bg-gradient-to-r from-indigo-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent flex items-center">
-                        FutureNav
-                    </div>
-                </div>
-
+  <div class="container mx-auto px-6 py-3">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <img src="img/logo/signalink_recortadopng.png" alt="Logo SignaLink" class="w-10 h-10 object-contain" />
+        <div class="ml-2 text-xl font-medium bg-gradient-to-r from-indigo-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
+          SignaLink
+        </div>
+    </div>
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-1">
                     <a href="#home" class="nav-link text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-md transition-colors duration-200">Home</a>
@@ -80,7 +44,7 @@
                         </button>
                     </div>
                 </div>
-
+            </nav>
                 <!-- Mobile Navigation Button -->
                 <div class="flex md:hidden">
                     <button id="mobile-menu-button" class="relative w-10 h-10 focus:outline-none group" aria-label="Toggle menu">
@@ -120,11 +84,11 @@
                     <div class="relative mb-4">
                         <div class="absolute inset-0 bg-cyan-500/20 rounded-full blur-3xl"></div>
                         <div class="text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-indigo-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent pb-2 relative">
-                            Future of Navigation
+                            SignaLink
                         </div>
                     </div>
                     <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mb-8">
-                        Cutting-edge UI components designed for the next generation web interfaces
+                        Tus gestos hablan, SignaLink traduce.
                     </p>
                     <div class="flex gap-4 flex-wrap justify-center">
                         <div class="relative group">
@@ -138,12 +102,6 @@
                         </button>
                     </div>
                 </div>
-            </div>
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
-            </div>
         </section>
 
         <!-- About Section -->
@@ -152,8 +110,8 @@
                 <div class="max-w-5xl mx-auto">
                     <div class="text-center mb-12">
                         <div class="inline-block mb-3">
-                            <div class="text-xs text-cyan-400 tracking-widest uppercase mb-1">About Our Technology</div>
-                            <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Next Generation UI</div>
+                            <div class="text-xs text-cyan-400 tracking-widest uppercase mb-1">Nuestros Propósitos</div>
+                            <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">¿Qué Proponemos?</div>
                         </div>
                         <div class="w-20 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 mx-auto"></div>
                     </div>
@@ -162,8 +120,8 @@
                             <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-xl blur-sm group-hover:bg-indigo-500/30 transition-all duration-500"></div>
                             <div class="relative bg-gray-900/70 backdrop-blur-lg border border-indigo-500/20 p-6 rounded-xl shadow-xl group-hover:border-indigo-500/40 transition-all duration-300">
                                 <div class="flex flex-col">
-                                    <div class="font-medium text-xl text-white mb-3">Futuristic Design Approach</div>
-                                    <p class="text-gray-400">Our design system uses cutting-edge techniques like glassmorphism, subtle gradients, and neon accents to create interfaces that feel like they're from the future.</p>
+                                    <div class="font-medium text-xl text-white mb-3">Un prototípo innovador</div>
+                                    <p class="text-gray-400">Pensamos en desarrollar un traductor de lengua de señas portátil, para que las personas sordo-mudas puedan comunicarse con quienes no conocen dicha lengua.</p>
                                 </div>
                             </div>
                         </div>
@@ -171,15 +129,30 @@
                             <div class="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-xl blur-sm group-hover:bg-purple-500/30 transition-all duration-500"></div>
                             <div class="relative bg-gray-900/70 backdrop-blur-lg border border-purple-500/20 p-6 rounded-xl shadow-xl group-hover:border-purple-500/40 transition-all duration-300">
                                 <div class="flex flex-col">
-                                    <div class="font-medium text-xl text-white mb-3">Advanced User Experience</div>
-                                    <p class="text-gray-400">Every interaction is carefully crafted to provide fluid transitions, intuitive feedback, and a seamless browsing experience across all devices.</p>
+                                    <div class="font-medium text-xl text-white mb-3">Impulsar la inclusión</div>
+                                    <p class="text-gray-400">La inclusión social es un desafio en la sociedad. SignaLink busca reducir las obstaculos comunicativos y acercar a las personas a traves de la tecnología.</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                        <div class="relative group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-xl blur-sm group-hover:bg-purple-500/30 transition-all duration-500"></div>
+                            <div class="relative bg-gray-900/70 backdrop-blur-lg border border-purple-500/20 p-6 rounded-xl shadow-xl group-hover:border-purple-500/40 transition-all duration-300">
+                                <div class="flex flex-col">
+                                    <div class="font-medium text-xl text-white mb-3">Tecnología con futuro</div>
+                                    <p class="text-gray-400">Queremos sentar una base para que se continúe desarrollando y optimizando su funcionamiento, ya sea por empresas o centros de investigación que compartan el mismo compromiso con la inclusión.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-xl blur-sm group-hover:bg-purple-500/30 transition-all duration-500"></div>
+                            <div class="relative bg-gray-900/70 backdrop-blur-lg border border-purple-500/20 p-6 rounded-xl shadow-xl group-hover:border-purple-500/40 transition-all duration-300">
+                                <div class="flex flex-col">
+                                    <div class="font-medium text-xl text-white mb-3">Desarrollar nuestras habilidades</div>
+                                    <p class="text-gray-400">Con este proyecto buscamos potenciar nuestras habilidades técnicas y capacidad de trabajo en equipo. Enfrentar desafíos reales representa una instancia clave en nuestra formación como futuros técnicos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
         <!-- Services Section -->
         <section id="services" class="min-h-screen flex items-center relative py-20">

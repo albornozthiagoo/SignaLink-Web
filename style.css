@@ -6,22 +6,22 @@
 
 /* Base styles & Custom properties */
 :root {
-  --primary: #6366f1; /* Indigo */
-  --primary-dark: #4f46e5;
-  --secondary: #06b6d4; /* Cyan */
-  --accent: #a855f7; /* Purple */
+  --primary: #66591a; /* Indigo */
+  --primary-dark: #72601d;
+  --secondary: #755402; /* Cyan */
+  --accent: #684814; /* Purple */
   --dark-bg: #111827;
-  --darker-bg: #030712;
+  --darker-bg: #121103;
   --text-primary: #f3f4f6;
   --text-secondary: #9ca3af;
-  --navbar-bg: rgba(17, 24, 39, 0.7); /* Semi-transparent navbar background */
+  --navbar-bg: rgba(39, 33, 17, 0.7); /* Semi-transparent navbar background */
   --glass-effect: blur(12px);
   --transition-normal: all 0.3s ease;
-  --border-glow: rgba(99, 102, 241, 0.3);
-  --neon-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
-  --glow-cyan: 0 0 15px rgba(6, 182, 212, 0.5);
-  --glow-indigo: 0 0 15px rgba(99, 102, 241, 0.5);
-  --glow-purple: 0 0 15px rgba(168, 85, 247, 0.5);
+  --border-glow: rgba(131, 113, 12, 0.3);
+  --neon-shadow: 0 0 15px rgba(212, 164, 6, 0.5);
+  --glow-cyan: 0 0 15px rgba(212, 178, 6, 0.5);
+  --glow-indigo: 0 0 15px rgba(113, 82, 10, 0.5);
+  --glow-purple: 0 0 15px rgba(199, 162, 12, 0.5);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -528,4 +528,76 @@ a:focus, button:focus {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #06b6d4, #6366f1);
+}
+body {
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: linear-gradient(to bottom,
+      rgb(0, 0, 0) 0%,
+      rgb(15, 10, 5) 30%,
+      rgb(50, 40, 20) 60%,
+      rgb(90, 70, 30) 85%,
+      rgb(130, 100, 40) 100%);
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    animation: gradient 15s ease infinite;
+    color: white; /* asegura que el texto sea legible */
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+/* olas decorativas */
+.wave {
+    background: rgba(255, 215, 0, 0.05); /* dorado muy sutil */
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.1;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.08;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.1;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+    25% {
+        transform: translateX(-25%);
+    }
+    50% {
+        transform: translateX(-50%);
+    }
+    75% {
+        transform: translateX(-25%);
+    }
+    100% {
+        transform: translateX(1);
+    }
 }
