@@ -244,12 +244,12 @@ section:first-of-type {
   transform: translateY(-3px);
 }
 
-.contact-btn {
+.Contacto-btn {
   position: relative;
   overflow: hidden;
 }
 
-.contact-btn::before {
+.Contacto-btn::before {
   content: '';
   position: absolute;
   top: -50%;
@@ -268,7 +268,7 @@ section:first-of-type {
   transform: translateX(-100%) translateY(-100%) rotate(45deg);
 }
 
-.contact-btn:hover::before {
+.Contacto-btn:hover::before {
   transform: translateX(100%) translateY(100%) rotate(45deg);
 }
 
