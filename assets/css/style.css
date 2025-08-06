@@ -1,20 +1,20 @@
-/**
- * FutureNav - Cutting Edge Navigation
- * styles.css - Core styles for the futuristic navigation experience
- * March 24, 2025
- */
+/*-------------------------- 
+# CSS
+----------------------------*/
 
-/* Base styles & Custom properties */
+/*-------------------------- 
+# Variables y estilos base
+----------------------------*/
 :root {
-  --primary: #66591a; /* Indigo */
+  --primary: #66591a;
   --primary-dark: #72601d;
-  --secondary: #755402; /* Cyan */
-  --accent: #684814; /* Purple */
+  --secondary: #755402;
+  --accent: #684814;
   --dark-bg: #111827;
-  --darker-bg: #121103;
+  --darker-bg: #ffee00;
   --text-primary: #f3f4f6;
   --text-secondary: #9ca3af;
-  --navbar-bg: rgba(39, 33, 17, 0.7); /* Semi-transparent navbar background */
+  --navbar-bg: rgba(39, 33, 17, 0.7);
   --glass-effect: blur(12px);
   --transition-normal: all 0.3s ease;
   --border-glow: rgba(131, 113, 12, 0.3);
@@ -32,8 +32,8 @@
 }
 
 html {
-  scroll-behavior: smooth; /* Enable smooth scrolling */
-  scroll-padding-top: 80px; /* Account for fixed navbar */
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -58,7 +58,9 @@ a {
   padding: 0 1.5rem;
 }
 
-/* Custom Scrollbar */
+/*-------------------------- 
+# Scrollbar personalizado
+----------------------------*/
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -76,7 +78,9 @@ a {
   background: linear-gradient(to bottom, var(--primary-dark), var(--accent));
 }
 
-/* Navigation Bar Styles */
+/*-------------------------- 
+# Barra de navegación
+----------------------------*/
 #navbar {
   position: fixed;
   top: 0;
@@ -84,7 +88,7 @@ a {
   right: 0;
   background-color: var(--navbar-bg);
   backdrop-filter: var(--glass-effect);
-  -webkit-backdrop-filter: var(--glass-effect); /* For Safari */
+  -webkit-backdrop-filter: var(--glass-effect);
   border-bottom: 1px solid var(--border-glow);
   z-index: 1000;
   transition: var(--transition-normal);
@@ -93,17 +97,21 @@ a {
 
 #navbar.scrolled {
   padding: 0.5rem 0;
-  background-color: rgba(17, 24, 39, 0.9); /* More opaque when scrolled */
+  background-color: rgba(17, 24, 39, 0.9);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Navbar Logo */
+/*-------------------------- 
+# Logo del navbar
+----------------------------*/
 .logo {
   display: flex;
   align-items: center;
 }
 
-/* Navigation Links */
+/*-------------------------- 
+# Enlaces de navegación
+----------------------------*/
 .nav-link {
   position: relative;
   overflow: hidden;
@@ -131,7 +139,9 @@ a {
   text-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
 }
 
-/* Mobile Navigation */
+/*-------------------------- 
+# Navegación móvil
+----------------------------*/
 #mobile-menu {
   max-height: 0;
   overflow: hidden;
@@ -140,7 +150,7 @@ a {
 }
 
 #mobile-menu.open {
-  max-height: 300px; /* Adjust based on your menu height */
+  max-height: 300px;
 }
 
 #mobile-menu-button {
@@ -149,7 +159,6 @@ a {
   cursor: pointer;
 }
 
-/* For the hamburger animation */
 #mobile-menu-button.active #line1 {
   transform: translate(-50%, -50%) rotate(45deg);
   transform-origin: center;
@@ -169,7 +178,9 @@ a {
   transform-origin: center;
 }
 
-/* Section Styles */
+/*-------------------------- 
+# Secciones
+----------------------------*/
 section {
   padding: 6rem 0;
   min-height: 100vh;
@@ -181,7 +192,9 @@ section:first-of-type {
   padding-top: 8rem;
 }
 
-/* Gradient Text */
+/*-------------------------- 
+# Texto con degradado
+----------------------------*/
 .gradient-text {
   background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
   -webkit-background-clip: text;
@@ -189,7 +202,9 @@ section:first-of-type {
   color: transparent;
 }
 
-/* Glow Effects */
+/*-------------------------- 
+# Efectos de brillo
+----------------------------*/
 .glow-effect {
   position: relative;
 }
@@ -210,7 +225,9 @@ section:first-of-type {
   opacity: 1;
 }
 
-/* Button Styles */
+/*-------------------------- 
+# Botones
+----------------------------*/
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -272,7 +289,9 @@ section:first-of-type {
   transform: translateX(100%) translateY(100%) rotate(45deg);
 }
 
-/* Animations */
+/*-------------------------- 
+# Animaciones
+----------------------------*/
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -292,7 +311,9 @@ section:first-of-type {
   animation: pulse 2s infinite;
 }
 
-/* Card Styles */
+/*-------------------------- 
+# Tarjetas / Cards
+----------------------------*/
 .card {
   background-color: rgba(17, 24, 39, 0.7);
   backdrop-filter: var(--glass-effect);
@@ -317,7 +338,9 @@ section:first-of-type {
   box-shadow: var(--glow-cyan);
 }
 
-/* Form Styles */
+/*-------------------------- 
+# Formularios
+----------------------------*/
 .form-group {
   margin-bottom: 1.5rem;
 }
@@ -498,7 +521,9 @@ footer {
   }
 }
 
-/* Header animation */
+/*-------------------------- 
+# Animación de Header
+----------------------------*/
 .text-6xl {
   opacity: 0;
   transform: translateY(20px);
@@ -557,7 +582,9 @@ body {
     }
 }
 
-/* olas decorativas */
+/*-------------------------- 
+# Fondo Animado
+----------------------------*/
 .wave {
     background: rgba(255, 215, 0, 0.05); /* dorado muy sutil */
     border-radius: 1000% 1000% 0 0;
