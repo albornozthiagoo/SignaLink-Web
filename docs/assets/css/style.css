@@ -43,7 +43,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100vh;
-  transition: background-color 0.5s ease;
+  transition: background-color black;
 }
 
 a {
@@ -87,8 +87,8 @@ a {
   left: 0;
   right: 0;
   background-color: var(--navbar-bg);
-  backdrop-filter: var(--glass-effect);
   -webkit-backdrop-filter: var(--glass-effect);
+  backdrop-filter: var(--glass-effect);
   border-bottom: 1px solid var(--border-glow);
   z-index: 1000;
   transition: var(--transition-normal);
@@ -96,9 +96,17 @@ a {
 }
 
 #navbar.scrolled {
-  padding: 0.5rem 0;
-  background-color: rgba(76, 59, 2, 0.9);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--navbar-bg);
+  -webkit-backdrop-filter: var(--glass-effect);
+  backdrop-filter: var(--glass-effect);
+  border-bottom: 1px solid var(--border-glow);
+  z-index: 1000;
+  transition: var(--transition-normal);
+  height: 70px;
 }
 
 /*-------------------------- 
@@ -115,6 +123,7 @@ a {
 .nav-link {
   position: relative;
   overflow: hidden;
+  
 }
 
 .nav-link::after {
@@ -138,6 +147,31 @@ a {
   color: var(--secondary);
   text-shadow: 0 0 8px rgb(178, 127, 10);
 }
+
+.nav-link-galeria {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-link-galeria::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 2px;
+  background-color: rgb(178, 127, 10); /* Color de la barrita */
+  transition: width 0.3s ease;
+  transform: translateX(-50%);
+  transform-origin: center;
+}
+
+.nav-link-galeria:hover::after {
+  width: 70%;
+}
+
 
 /*-------------------------- 
 # Navegación móvil
@@ -196,7 +230,7 @@ section:first-of-type {
 # Texto con degradado
 ----------------------------*/
 .gradient-text {
-  background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
+  background: linear-gradient(to right, rgba(113, 82, 10, 0.5));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -316,6 +350,7 @@ section:first-of-type {
 ----------------------------*/
 .card {
   background-color: rgba(17, 24, 39, 0.7);
+  -webkit-backdrop-filter: var(--glass-effect);
   backdrop-filter: var(--glass-effect);
   border: 1px solid var(--border-glow);
   border-radius: 0.75rem;
@@ -416,6 +451,7 @@ section:first-of-type {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: var(--glass-effect);
   backdrop-filter: blur(5px);
   z-index: 1000;
   display: flex;
@@ -470,6 +506,7 @@ section:first-of-type {
 /* Footer Styles */
 footer {
   background-color: rgba(17, 24, 39, 0.8);
+  -webkit-backdrop-filter: var(--glass-effect);
   backdrop-filter: var(--glass-effect);
   border-top: 1px solid var(--border-glow);
   padding: 3rem 0;
@@ -583,10 +620,44 @@ body {
 }
 
 /*-------------------------- 
-# Fondo Animado
+# Fondo de mano cibernética animada
 ----------------------------*/
+.cybernetic-hand-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -10; /* Cambié de -1 a -10 */
+    overflow: hidden;
+}
+
+.hand-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.central-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(244, 208, 63, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse-glow-bg 3s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Y para las waves, cambia el z-index también */
 .wave {
-    background: rgba(255, 215, 0, 0.05); /* dorado muy sutil */
+    background: rgba(255, 215, 0, 0.05);
     border-radius: 1000% 1000% 0 0;
     position: fixed;
     width: 200%;
@@ -596,220 +667,8 @@ body {
     opacity: 0.1;
     bottom: 0;
     left: 0;
-    z-index: -1;
+    z-index: -5; /* Cambié de -1 a -5 para que esté encima de la mano */
 }
-
-.wave:nth-of-type(2) {
-    bottom: -1.25em;
-    animation: wave 18s linear reverse infinite;
-    opacity: 0.08;
-}
-
-.wave:nth-of-type(3) {
-    bottom: -2.5em;
-    animation: wave 20s -1s reverse infinite;
-    opacity: 0.1;
-}
-
-@keyframes wave {
-    2% {
-        transform: translateX(1);
-    }
-    25% {
-        transform: translateX(-25%);
-    }
-    50% {
-        transform: translateX(-50%);
-    }
-    75% {
-        transform: translateX(-25%);
-    }
-    100% {
-        transform: translateX(1);
-    }
-}
-
-
 /*/ Comienza CSS Footer /*/
 
-
-:root {
-  --m: 4rem;
-}
-
-* {
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
-body {
-  background-color: black;
-  color: white;
- 
-
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  height: 190vh;
-  margin: 0;
-  color: #d5d5d5;
-  font-size: calc(0.3 * var(--m));
-}
-
-h2 {
-  font-weight: 500;
-  text-align: center;
-  font-size: var(--m);
-  margin: 0;
-}
-
-h3 {
-  font-weight: 500;
-  font-size: calc(0.6 * var(--m));
-  margin: 0;
-}
-
-.card {
-  height: calc(8 * var(--m));
-  width: calc(12 * var(--m));
-  background: linear-gradient(120deg, #ff8064, #725bdc);
-  color: black;
-  border-radius: calc(0.5 * var(--m));
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: var(--m);
-
-  position: fixed;
-  margin: calc(2 * var(--m)) calc(5 * var(--m)) calc(5 * var(--m))
-    calc(5 * var(--m));
-}
-
-button {
-  background-color: #000;
-  font-size: calc(0.4 * var(--m));
-  border: none;
-  color: #e5e5e5;
-  font-family: "IBM Plex Sans";
-  font-weight: 400;
-  padding: calc(0.35 * var(--m)) calc(0.8 * var(--m));
-  border-radius: calc(0.3 * var(--m));
-}
-
-footer {
-  margin-top: 80vh;
-  z-index: 500;
-  width: 100%;
-  height: 100vh;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: flex-end;
-  padding: 5rem 2vw;
-  position: relative;
-}
-
-footer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    rgba(0, 0, 0, 0) 5%,
-    rgba(0, 0, 0, 0.3) 20%,
-    rgba(0, 0, 0, 0.6) 30%,
-    rgba(0, 0, 0, 0.8) 40%,
-    rgba(0, 0, 0, 1) 50%,
-    rgb(0, 0, 0)
-  );
-  z-index: -7;
-}
-
-.backdrop {
-  z-index: -5;
-  position: absolute;
-  inset: 0;
-
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-
-  mask-image: linear-gradient(
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.5) 10%,
-    rgba(0, 0, 0, 0.8) 20%,
-    rgba(0, 0, 0, 1) 30%,
-    rgb(0, 0, 0)
-  );
-
-  -webkit-mask-image: linear-gradient(
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.5) 10%,
-    rgba(0, 0, 0, 0.8) 20%,
-    rgba(0, 0, 0, 1) 30%,
-    rgb(0, 0, 0)
-  );
-}
-
-.col {
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: calc(0.3 * var(--m)) calc(0.8 * var(--m));
-  width: 28%;
-}
-
-.col2,
-.col3 {
-  background-color: #121212;
-  border-radius: calc(0.5 * var(--m));
-}
-
-img {
-  height: calc(0.3 * var(--m));
-  object-fit: cover;
-}
-
-.social {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 1rem;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.link {
-  width: calc(0.8 * var(--m));
-  height: calc(0.8 * var(--m));
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: calc(0.1 * var(--m));
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@media screen and (max-width: 1000px) {
-  :root {
-    --m: 3rem;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  footer {
-    flex-direction: column;
-    padding: 5rem 20vw;
-  }
-  .col {
-    width: 100%;
-  }
-}
-
 /*/ Termina CSS Footer /*/
-
