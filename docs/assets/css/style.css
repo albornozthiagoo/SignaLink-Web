@@ -477,7 +477,7 @@ section:first-of-type {
   background-size: 50px 50px;
   background-image: 
     linear-gradient(to right, rgba(6, 182, 212, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+    linear-gradient(to bottom, rgba(193, 138, 2, 0.05) 1px, transparent 1px);
   z-index: -1;
   pointer-events: none;
 }
@@ -570,7 +570,7 @@ footer {
 
 /* Enhance focus styles for accessibility */
 a:focus, button:focus {
-  outline: 2px solid rgba(6, 182, 212, 0.5);
+  outline: 2px solid rgba(0, 0, 0, 0.5);
   outline-offset: 2px;
 }
 
@@ -584,23 +584,23 @@ a:focus, button:focus {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #0891b2, #4f46e5);
+  background: linear-gradient(to bottom, #b28208, #fffdfd);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #06b6d4, #6366f1);
+  background: linear-gradient(to bottom, #d4a706, #fff7f7);
 }
 body {
     margin: auto;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     overflow: auto;
     background: linear-gradient(to bottom,
-      rgb(0, 0, 0) 0%,
+      rgb(113, 105, 16) 0%,
       rgb(15, 10, 5) 30%,
       rgb(50, 40, 20) 60%,
-      rgb(90, 70, 30) 85%,
-      rgb(130, 100, 40) 100%);
+      rgb(140, 119, 13) 85%,
+      rgb(0, 0, 0) 100%);
     background-size: 400% 400%;
     background-attachment: fixed;
     animation: gradient 15s ease infinite;
@@ -654,10 +654,8 @@ body {
     animation: pulse-glow-bg 3s ease-in-out infinite;
     z-index: 1;
 }
-
-/* Y para las waves, cambia el z-index también */
 .wave {
-    background: rgba(255, 215, 0, 0.05);
+    background: rgba(0, 0, 0, 0.05);
     border-radius: 1000% 1000% 0 0;
     position: fixed;
     width: 200%;
