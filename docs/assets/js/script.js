@@ -1,6 +1,3 @@
-/**
- * script.js - FutureNav + Formulario con Resend
- */
 document.addEventListener('DOMContentLoaded', () => {
   // --- Código original ---
   const navbar = document.getElementById('navbar');

@@ -61,21 +61,17 @@ a {
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
-.secondaarybody {
+body {
   background-color: #222;
 }
-
-#circular-preloader {
+#preloader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000; /* Opcional: Fondo negro para el preloader */
-    z-index: 9999; /* Asegura que esté por encima de todo */
 }
-
-#circular-loader {
+#loader {
     display: block;
     position: relative;
     left: 50%;
@@ -85,12 +81,11 @@ a {
     margin: -75px 0 0 -75px;
     border-radius: 50%;
     border: 3px solid transparent;
-    border-top-color: #ffc451; /* Dorado */
+    border-top-color: #ffbb00;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
 }
-
-#circular-loader:before {
+#loader:before {
     content: "";
     position: absolute;
     top: 5px;
@@ -99,12 +94,11 @@ a {
     bottom: 5px;
     border-radius: 50%;
     border: 3px solid transparent;
-    border-top-color: #ffc451; /* Dorado Oscuro */
+    border-top-color: #ffffff;
     -webkit-animation: spin 3s linear infinite;
     animation: spin 3s linear infinite;
 }
-
-#circular-loader:after {
+#loader:after {
     content: "";
     position: absolute;
     top: 15px;
@@ -113,17 +107,10 @@ a {
     bottom: 15px;
     border-radius: 50%;
     border: 3px solid transparent;
-    border-top-color: #ffc451; /* Dorado Medio */
+    border-top-color: #ffbb00;
     -webkit-animation: spin 1.5s linear infinite;
     animation: spin 1.5s linear infinite;
 }
-
-#circular-preloader.exit {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-}
-
 @-webkit-keyframes spin {
     0%   {
         -webkit-transform: rotate(0deg);
