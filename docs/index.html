@@ -26,9 +26,50 @@
     <link href="img/logo/signalinkicon.png" rel="icon" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
+    <style>
+        @keyframes colorGlow {
+            0% {
+                background-color: #f59e0b;
+                /* Amber */
+                box-shadow: 0 0 5px #f59e0b, 0 0 10px #f59e0b;
+            }
+
+            25% {
+                background-color: #facc15;
+                /* Yellow */
+                box-shadow: 0 0 8px #facc15, 0 0 15px #facc15;
+            }
+
+            50% {
+                background-color: #fcd838;
+                /* Orange */
+                box-shadow: 0 0 12px #fcd838, 0 0 20px #fcd838;
+            }
+
+            75% {
+                background-color: #eab308;
+                /* Gold */
+                box-shadow: 0 0 8px #eab308, 0 0 15px #eab308;
+            }
+
+            100% {
+                background-color: #f59e0b;
+                /* Amber otra vez */
+                box-shadow: 0 0 5px #f59e0b, 0 0 10px #f59e0b;
+            }
+        }
+
+        .glow-line {
+            animation: colorGlow 5s infinite alternate;
+        }
+    </style>
 </head>
 
 <body>
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
 
     <div class="bg-black text-white font-['Space_Grotesk'] overflow-x-hidden">
 
@@ -117,14 +158,15 @@
         # Inicio Sección
         ---------------------------->
         <section id="Inicio" class="min-h-screen flex items-center justify-center relative pt-20">
-            
+
             <!------------------ 
             # Mano cibernetica 
             -------------------->
 
             <div class="cybernetic-hand-background">
                 <div class="hand-background-container">
-                    <img src="img/logo/cybernetic-hand.png" alt="Cybernetic Hand Background" class="hand-background-image">
+                    <img src="img/logo/cybernetic-hand.png" alt="Cybernetic Hand Background"
+                        class="hand-background-image">
                 </div>
                 <div class="hand-overlay"></div>
                 <div class="central-glow"></div>
@@ -146,6 +188,30 @@
             </div>
         </section>
 
+
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+
+        <style id="keyframes" type="text/css"></style>
+        <a class="bear-link" href="https://twitter.com/intent/follow?screen_name=jh3yy" aria-label="Follow Us"
+            target="_blank" rel="noreferrer noopener">
+            <svg class="w-9" viewBox="0 0 969 955" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="161.191" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"></circle>
+                <circle cx="806.809" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"></circle>
+                <circle cx="695.019" cy="587.733" r="31.4016" fill="currentColor"></circle>
+                <circle cx="272.981" cy="587.733" r="31.4016" fill="currentColor"></circle>
+                <path
+                    d="M564.388 712.083C564.388 743.994 526.035 779.911 483.372 779.911C440.709 779.911 402.356 743.994 402.356 712.083C402.356 680.173 440.709 664.353 483.372 664.353C526.035 664.353 564.388 680.173 564.388 712.083Z"
+                    fill="currentColor"></path>
+                <rect x="310.42" y="448.31" width="343.468" height="51.4986" fill="#FF1E1E"></rect>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M745.643 288.24C815.368 344.185 854.539 432.623 854.539 511.741H614.938V454.652C614.938 433.113 597.477 415.652 575.938 415.652H388.37C366.831 415.652 349.37 433.113 349.37 454.652V511.741L110.949 511.741C110.949 432.623 150.12 344.185 219.845 288.24C289.57 232.295 384.138 200.865 482.744 200.865C581.35 200.865 675.918 232.295 745.643 288.24Z"
+                    fill="currentColor"></path>
+            </svg>
+        </a>
+
         <!-------------------------- 
         # Objetivo Sección
         ---------------------------->
@@ -158,7 +224,7 @@
                             <div class="ttext-4xl md:text-5xl font-bold text-white">
                                 ¿Qué Proponemos?</div>
                         </div>
-                        <div class="w-20 h-1 bg-gradient-to-r from-amber-500 to-amber-700 mx-auto"></div>
+                        <div class="w-32 h-1 mx-auto rounded glow-line"></div>
                     </div>
                     <div class="grid md:grid-cols-2 gap-8 items-center">
 
@@ -167,7 +233,7 @@
                                 class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-amber-500/20 rounded-xl blur-sm group-hover:bg-[#bfa345]/30 transition-all duration-500">
                             </div>
                             <div
-                                class="relative bg-black/70 backdrop-blur-lg border border-indigo-500/20 p-6 rounded-xl shadow-xl group-hover:border-[#bfa345]/40 transition-all duration-300">
+                                class="relative bg-black/70 backdrop-blur-lg border border-yellow-500/20 p-6 rounded-xl shadow-xl group-hover:border-[#bfa345]/40 transition-all duration-300">
                                 <div class="flex flex-col">
                                     <div class="font-medium text-xl text-white mb-3">Un prototípo innovador</div>
                                     <p class="text-gray-400">Pensamos en desarrollar un traductor de lengua de señas
@@ -182,7 +248,7 @@
                                 class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-amber-500/20 rounded-xl blur-sm group-hover:bg-[#bfa345]/30 transition-all duration-500">
                             </div>
                             <div
-                                class="relative bg-black/70 backdrop-blur-lg border border-indigo-500/20 p-6 rounded-xl shadow-xl group-hover:border-[#bfa345]/40 transition-all duration-300">
+                                class="relative bg-black/70 backdrop-blur-lg border border-yellow-500/20 p-6 rounded-xl shadow-xl group-hover:border-[#bfa345]/40 transition-all duration-300">
                                 <div class="flex flex-col">
                                     <div class="font-medium text-xl text-white mb-3">Impulsar la inclusión</div>
                                     <p class="text-gray-400">La inclusión social es un desafio en la sociedad. SignaLink
@@ -197,7 +263,7 @@
                                 class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-amber-500/20 rounded-xl blur-sm group-hover:bg-[#bfa345]/30 transition-all duration-500">
                             </div>
                             <div
-                                class="relative bg-black/70 backdrop-blur-lg border border-indigo-500/20 p-6 rounded-xl shadow-xl group-hover:border-[#bfa345]/40 transition-all duration-300">
+                                class="relative bg-black/70 backdrop-blur-lg border border-yellow-500/20 p-6 rounded-xl shadow-xl group-hover:border-[#bfa345]/40 transition-all duration-300">
                                 <div class="flex flex-col">
                                     <div class="font-medium text-xl text-white mb-3">Tecnología con futuro</div>
                                     <p class="text-gray-400">Queremos sentar una base para que se continúe desarrollando
@@ -213,7 +279,7 @@
                                 class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-amber-500/20 rounded-xl blur-sm group-hover:bg-[#bfa345]/30 transition-all duration-500">
                             </div>
                             <div
-                                class="relative bg-black/70 backdrop-blur-lg border border-indigo-500/20 p-6 rounded-xl shadow-xl group-hover:border-[#bfa345]/40 transition-all duration-300">
+                                class="relative bg-black/70 backdrop-blur-lg border border-yellow-500/20 p-6 rounded-xl shadow-xl group-hover:border-[#bfa345]/40 transition-all duration-300">
                                 <div class="flex flex-col">
                                     <div class="font-medium text-xl text-white mb-3">Desarrollar nuestras habilidades
                                     </div>
@@ -240,7 +306,7 @@
                             <div class="ttext-4xl md:text-5xl font-bold text-white">
                                 Tecnología</div>
                         </div>
-                        <div class="w-20 h-1 bg-gradient-to-r from-amber-500 to-amber-500 mx-auto"></div>
+                        <div class="w-32 h-1 mx-auto rounded glow-line"></div>
                     </div>
                     <div class="grid md:grid-cols-3 gap-6">
 
@@ -370,7 +436,7 @@
                             <div class="ttext-4xl md:text-5xl font-bold text-white">
                                 Destacado</div>
                         </div>
-                        <div class="w-20 h-1 bg-gradient-to-r from-amber-500 to-amber-500 mx-auto"></div>
+                        <div class="w-32 h-1 mx-auto rounded glow-line"></div>
                     </div>
                     <div class="grid md:grid-cols-2 gap-6 py-3">
 
@@ -459,7 +525,7 @@
                     </div>
                     <div class="text-center">
                         <a href="galeria.html"
-                            class="inline-flex items-center justify-center text-black px-2 py-2 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-lg text-sm font-medium hover:from-yellow-400 hover:to-yellow-500 transition-colors duration-300">
+                            class="inline-flex items-center justify-center text-black  from-yellow-500 to-yellow-600x text-sm font-medium hover:from-yellow-400 hover:to-yellow-500 transition-colors duration-300">
                             Ver más
                             <svg class="w-4 h-4 ml-1 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -481,7 +547,7 @@
                         <div class="text-xs text-gray-400 tracking-widest uppercase mb-1">Nosotros</div>
                         <div class="text-4xl md:text-5xl font-bold text-white">Equipo</div>
                     </div>
-                    <div class="w-20 h-1 bg-gradient-to-r from-amber-500 to-amber-500 mx-auto"></div>
+                    <div class="w-20 h-1 mx-auto rounded glow-line"></div>
                 </div>
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Integrante 1 -->
@@ -622,13 +688,13 @@
                             <div class="ttext-4xl md:text-5xl font-bold text-white">
                                 Contacto</div>
                         </div>
-                        <div class="w-20 h-1 bg-gradient-to-r from-amber-500 to-amber-500 mx-auto"></div>
+                        <div class="w-20 h-1 mx-auto rounded glow-line"></div>
                     </div>
 
                     <div class="grid md:grid-cols-5 gap-8">
                         <div class="md:col-span-2">
                             <div
-                                class="bg-gray-900/70 backdrop-blur-lg border border-indigo-500/20 p-6 rounded-xl shadow-xl">
+                                class="bg-gray-900/70 backdrop-blur-lg border border-yellow-500/20 p-6 rounded-xl shadow-xl">
                                 <div class="text-xl font-medium text-white mb-4">Información de Contacto</div>
                                 <div class="space-y-4">
                                     <div class="flex items-start">
@@ -680,7 +746,7 @@
                                     <div class="flex space-x-3">
                                         <a href="https://www.facebook.com/share/16gHt4AGou/?mibextid=wwXIfr"
                                             aria-label="facebook"
-                                            class="w-8 h-8 rounded-full bg-indigo-900/50 flex items-center justify-center text-white hover:bg-amber-800 transition-colors">
+                                            class="w-8 h-8 rounded-full bg-yellow-900/50 flex items-center justify-center text-white hover:bg-amber-800 transition-colors">
                                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                                 <path
                                                     d="M24 12c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.795 4.001 10.685 9.294 11.75l.006.002v-8.752h-3.155v-3h3.155v-2.316c0-3.152 1.879-4.884 4.757-4.884 1.367 0 2.802.243 2.802.243v3.1h-1.583c-1.564 0-2.057.962-2.057 1.968v2.389h3.518l-.564 3h-2.954v8.751h9.294c5.293-1.065 9.293-5.955 9.293-11.75z" />
@@ -688,7 +754,7 @@
                                         </a>
                                         <a href="https://www.instagram.com/signalink_?igsh=MXJla3NxOGVqOXlqNQ=="
                                             aria-label="instagram"
-                                            class="w-8 h-8 rounded-full bg-indigo-900/50 flex items-center justify-center text-white hover:bg-amber-800 transition-colors">
+                                            class="w-8 h-8 rounded-full bg-yellow-900/50 flex items-center justify-center text-white hover:bg-amber-800 transition-colors">
                                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                                 <path
                                                     d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
@@ -696,7 +762,7 @@
                                             </svg>
                                         </a>
                                         <a href="https://github.com/impatrq/SignaLink" aria-label="github"
-                                            class="w-8 h-8 rounded-full bg-indigo-900/50 flex items-center justify-center text-white hover:bg-amber-800 transition-colors">
+                                            class="w-8 h-8 rounded-full bg-yellow-900/50 flex items-center justify-center text-white hover:bg-amber-800 transition-colors">
                                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                                 <path
                                                     d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.605-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.47-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.435.375.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"">
@@ -710,7 +776,7 @@
 
                     <div class=" md:col-span-3">
                                                     <div
-                                                        class="bg-gray-900/70 backdrop-blur-lg border border-indigo-500/20 p-6 rounded-xl shadow-xl">
+                                                        class="bg-gray-900/70 backdrop-blur-lg border border-yellow-500/20 p-6 rounded-xl shadow-xl">
                                                         <div class="text-xl font-medium text-white mb-4">Enviar Mensaje
                                                         </div>
                                                         <form>
@@ -772,6 +838,7 @@
     <script src="assets/js/script.js"></script>
     <script src='https://cdn.tailwindcss.com'></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/icons.js"></script>
 </body>
 
 </html>

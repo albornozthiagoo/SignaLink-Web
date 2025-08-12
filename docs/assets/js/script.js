@@ -1,3 +1,8 @@
+var preloader = document.getElementById("preloader");
+window.addEventListener("load", function() {
+  loader.style.display = "none";
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   // --- Código original ---
   const navbar = document.getElementById('navbar');
