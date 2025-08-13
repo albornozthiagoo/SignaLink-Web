@@ -8,46 +8,313 @@
     <link rel='stylesheet'
         href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap'>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/cards.css">
+    <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css'>
 
     <!----------------
     # Favicon 
     ------------------>
-    <link href="docs/img/logo/signalinkicon.png" rel="icon" type="image/png">
+    <link href="img/logo/signalinkicon.png" rel="icon" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
 </head>
 
 <body>
 
-    <!------------------ 
-    # Navigation Bar
-    -------------------->
-    <header>
-        <nav id="navbar"
-            class="fixed top-0 left-0 right-0 bg-gray-900/70 backdrop-blur-lg border-b border-cyan-500/30 z-50 transition-all duration-300">
-            <div class="container mx-auto px-6 py-3">
-                <div class="flex items-center justify-between">
-                    <!-- Logo -->
-                    <div class="flex items-center">
-                        <img src="img/logo/signalinkicon.png" alt="Logo SignaLink" class="w-10 h-10 object-contain" />
-                        <div
-                            class="ml-2 text-xl font-medium bg-gradient-to-r from-yellow-500 via-yellow-500 to-yellow-500 bg-clip-text text-transparent">
-                            SignaLink
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <div id="main-content" style="display:none;">
+        <div class="bg-black text-white font-['Space_Grotesk'] overflow-x-hidden">
+            <!------------------ 
+            # Navigation Bar
+            ------------------>
+            <header>
+                <nav id="navbar"
+                    class="fixed top-0 left-0 right-0 bg-gray-900/70 backdrop-blur-lg border-b border-cyan-500/30 z-50 transition-all duration-300">
+                    <div class="container mx-auto px-6 py-3">
+                        <div class="flex items-center justify-between">
+                            <!-- Logo -->
+                            <div class="flex items-center">
+                                <img src="img/logo/signalinkicon.png" alt="Logo SignaLink"
+                                    class="w-10 h-10 object-contain" />
+                                <div
+                                    class="ml-2 text-xl font-medium bg-gradient-to-r from-yellow-500 via-yellow-500 to-yellow-500 bg-clip-text text-transparent">
+                                    SignaLink
+                                </div>
+                            </div>
+                            <!-- Desktop Navigation -->
+                            <div class="hidden md:flex items-center space-x-1">
+                                <a href="index.html"
+                                    class="nav-link text-gray-300 hover:text-orange-400 px-4 py-2 rounded-md transition-colors duration-200">Regresar</a>
+                                </a>
+                                <a href="index.html#Contacto"
+                                    class="nav-link text-gray-300 hover:text-orange-400 px-4 py-2 rounded-md transition-colors duration-200">Contacto</a>
+                            </div>
+                        </div>
+                </nav>
+            </header>
+
+            <!-------------------------- 
+            # Mobile Navigation Button
+            ------------------------>
+            <div class="flex md:hidden">
+                <button id="mobile-menu-button" class="relative w-10 h-10 focus:outline-none group"
+                    aria-label="Toggle menu">
+                    <div class="absolute w-5 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+                        <span class="block h-0.5 w-5 bg-cyan-400 mb-1 transform transition duration-300 ease-in-out"
+                            id="line1"></span>
+                        <span class="block h-0.5 w-5 bg-cyan-400 mb-1 transform transition duration-300 ease-in-out"
+                            id="line2"></span>
+                        <span class="block h-0.5 w-5 bg-cyan-400 transform transition duration-300 ease-in-out"
+                            id="line3"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-------------------------- 
+        # Mobile Menu
+        ---------------------------->
+        <div id="mobile-menu" class="md:hidden h-0 overflow-hidden transition-all duration-300 ease-in-out">
+            <div class="pt-2 pb-4 space-y-1">
+                <a href="index.html"
+                    class="mobile-nav-link block text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 px-4 py-2 rounded-md transition-colors duration-200">Regresar</a>
+                <a href="index.html#Contacto"
+                    class="mobile-nav-link block text-gray-300 hover:text-cyan-400 hover:bg-gray-800/50 px-4 py-2 rounded-md transition-colors duration-200">Contacto</a>
+            </div>
+        </div>
+
+
+        <!-------------------------- 
+        # Modelado 3D Sección
+        ---------------------------->
+        <main>
+            <section id="tecnología" class="min-h-screen flex items-center relative py-10">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-5xl mx-auto">
+                        <div class="text-center mb-12">
+                            <div class="inline-block mb-3">
+                                <div class="text-xs text-gray-400 tracking-widest uppercase mb-1">Nuestro trabajo en
+                                </div>
+                                <div class="text-4xl md:text-5xl font-bold text-white">
+                                    Modelado 3D</div>
+                            </div>
+                            <div class="w-32 h-1 mx-auto rounded glow-line"></div>
                         </div>
                     </div>
-                    <!-- Desktop Navigation -->
-                    <div class="hidden md:flex items-center space-x-1">
-                        <a href="index.html" class="nav-link text-gray-300 hover:text-orange-400 px-4 py-2 rounded-md transition-colors
-                            duration-200">Regresar</a>
-                        </a>
-                        <a href="index.html#Contacto"
-                            class="nav-link text-gray-300 hover:text-orange-400 px-4 py-2 rounded-md transition-colors duration-200">Contacto</a>
+                </div>
+            </section>
+            <!-- partial:index.partial.html -->
+            <div class="magnetic-glow-demo">
+                <div class="controls-container">
+                </div>
+                <div class="card-grid">
+
+                    <!-- Primer carta -->
+                    <div class="glow-card" data-glow-color="#1DD1A1">
+                        <div class="glow-effect"></div>
+                        <div class="card-content">
+                            <div class="card-img">
+                                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                                    alt="Article">
+                            </div>
+                            <div class="card-body">
+                                <div class="card-tag">UI Design</div>
+                                <h2 class="card-title">Card Design Trends for 2025</h2>
+                                <p class="card-text">Exploring the latest innovations in card-based interfaces and
+                                    how they'll shape digital experiences.</p>
+                                <div class="article-meta">
+                                    <div class="meta-author">
+                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Author">
+                                        <span>Alex Parker</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14"></polyline>
+                                        </svg>
+                                        <span>5 min</span>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <a href="https://calculatequick.com" class="card-btn primary">Read Article</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- segunda cara -->
+                    <div class="card-container">
+                        <div class="glow-card large-card" data-glow-color="#FF6B6B">
+                            <div class="glow-effect"></div>
+                            <div class="card-content">
+                                <h2>Carta Principal</h2>
+                                <p>Esta carta es especial y ocupa un espacio más grande que las demás.</p>
+                            </div>
+                        </div>
+
+                        <div class="glow-card" data-glow-color="#48DBFB">
+                            <div class="glow-effect"></div>
+                            <div class="card-content">
+                                <h2>Carta Lateral 1</h2>
+                                <p>Esta es una carta estándar.</p>
+                            </div>
+                        </div>
+
+                        <div class="glow-card" data-glow-color="#48DBFB">
+                            <div class="glow-effect"></div>
+                            <div class="card-content">
+                                <h2>Carta Lateral 2</h2>
+                                <p>Esta es otra carta estándar.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- tercera cara -->
+                    <div class="glow-card" data-glow-color="#48DBFB">
+                        <div class="glow-effect"></div>
+                        <div class="card-content feature-card-content">
+                            <div class="card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 16v-4M12 8h.01"></path>
+                                    <path d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h2 class="card-title">Interactive Experience</h2>
+                            <p class="card-text">Move your cursor across any card to see the magnetic glow effect
+                                follow your movements with smooth transitions.</p>
+                            <div class="feature-points">
+                                <div class="feature-point">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span>Responsive design</span>
+                                </div>
+                                <div class="feature-point">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    <span>Custom colors</span>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <a href="https://calculatequick.com" class="card-btn primary">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <!-------------------------- 
+            # Software Sección
+            ---------------------------->
+            <section id="tecnología" class="min-h-screen flex items-center relative py-10">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-5xl mx-auto">
+                        <div class="text-center mb-12">
+                            <div class="inline-block mb-3">
+                                <div class="text-xs text-gray-400 tracking-widest uppercase mb-1">Nuestro trabajo en
+                                </div>
+                                <div class="ttext-4xl md:text-5xl font-bold text-white">
+                                    Software</div>
+                            </div>
+                            <div class="w-32 h-1 mx-auto rounded glow-line"></div>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-6">
+                        </div>
                     </div>
                 </div>
-        </nav>
-    </header>
+            </section>
+
+            <body>
+                <div class="blog-slider">
+                    <div class="blog-slider__wrp swiper-wrapper">
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+
+                                <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759872/kuldar-kalvik-799168-unsplash.webp"
+                                    alt="">
+                            </div>
+                            <div class="blog-slider__content">
+                                <span class="blog-slider__code">26 December 2019</span>
+                                <div class="blog-slider__title">Lorem Ipsum Dolor</div>
+                                <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur,
+                                    adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?
+                                </div>
+                                <a href="#" class="blog-slider__button">READ MORE</a>
+                            </div>
+                        </div>
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                                <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759871/jason-leung-798979-unsplash.webp"
+                                    alt="">
+                            </div>
+                            <div class="blog-slider__content">
+                                <span class="blog-slider__code">26 December 2019</span>
+                                <div class="blog-slider__title">Lorem Ipsum Dolor2</div>
+                                <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur,
+                                    adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                                <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759871/alessandro-capuzzi-799180-unsplash.webp"
+                                    alt="">
+                            </div>
+                            <div class="blog-slider__content">
+                                <span class="blog-slider__code">26 December 2019</span>
+                                <div class="blog-slider__title">Lorem Ipsum Dolor</div>
+                                <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur,
+                                    adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?
+                                </div>
+                                <a href="#" class="blog-slider__button">READ MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-slider__pagination"></div>
+                </div>
+            </body>
+
+            <!-------------------------- 
+            # Hardware Sección
+            ---------------------------->
+            <section id="tecnología" class="min-h-screen flex items-center relative py-10">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-5xl mx-auto">
+                        <div class="text-center mb-12">
+                            <div class="inline-block mb-3">
+                                <div class="text-xs text-gray-400 tracking-widest uppercase mb-1">Nuestro trabajo en
+                                </div>
+                                <div class="ttext-4xl md:text-5xl font-bold text-white">
+                                    Hardware</div>
+                            </div>
+                            <div class="w-32 h-1 mx-auto rounded glow-line"></div>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-6">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <!-- Scripts -->
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/cards.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js'></script>
     <script src='https://cdn.tailwindcss.com'></script>
+
 </body>

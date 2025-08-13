@@ -1,6 +1,9 @@
 var preloader = document.getElementById("preloader");
 window.addEventListener("load", function() {
-  loader.style.display = "none";
+  setTimeout(function() {
+    document.getElementById("preloader").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+  }, 1000);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
