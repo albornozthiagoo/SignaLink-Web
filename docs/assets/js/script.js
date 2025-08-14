@@ -61,19 +61,23 @@ document.addEventListener('DOMContentLoaded', () => {
     highlightCurrentSection();
   });
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
-      if (targetSection) {
-        const offsetTop = targetSection.offsetTop - 70;
-        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-        targetSection.classList.add('section-highlight');
-        setTimeout(() => targetSection.classList.remove('section-highlight'), 1000);
-      }
-    });
-  });
+   navLinks.forEach(link => {
+     link.addEventListener('click', (e) => {
+       const href = link.getAttribute('href');
+       // Solo previene si es un enlace interno (empieza con #)
+       if (href && href.startsWith('#')) {
+         e.preventDefault();
+         const targetSection = document.querySelector(href);
+         if (targetSection) {
+           const offsetTop = targetSection.offsetTop - 70;
+           window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+           targetSection.classList.add('section-highlight');
+           setTimeout(() => targetSection.classList.remove('section-highlight'), 1000);
+         }
+       }
+       // Si es un link externo o a otra página, deja que navegue normalmente
+     });
+   });
 
   function highlightCurrentSection() {
     let current = '';
