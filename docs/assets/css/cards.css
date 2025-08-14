@@ -495,6 +495,27 @@ a {
 	background: linear-gradient(to right, var(--primary-red), #ff9f43);
 }
 
+.card-container {
+    /* Muestra los elementos en un formato de rejilla */
+    display: grid;
+    /* Define 3 columnas del mismo tamaño */
+    grid-template-columns: repeat(3, 1fr); 
+    /* Espacio entre las cartas */
+    gap: 16px; 
+}
+
+/* Estilo para la carta que quieres que sea más ancha */
+.large-card {
+    /* Hace que la carta ocupe 2 columnas */
+    grid-column: span 2; 
+}
+
+/* Aquí van los demás estilos de las cartas... */
+.glow-card {
+    /* Estilos generales de las cartas */
+    /* ... */
+}
+
 .profile-img {
 	width: 90px;
 	height: 90px;
@@ -593,19 +614,6 @@ a {
 	gap: 0.5rem;
 	font-size: 0.875rem;
 	font-weight: 500;
-}
-.wide-card {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 700px; /* más ancha que las cartas normales */
-    margin: 0 auto;
-}
-
-.wide-card .card-divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.1);
-    margin: 1.5rem 0;
 }
 
 .meta-author img {

@@ -19,12 +19,14 @@
   --glow-indigo: 0 0 15px rgba(113, 82, 10, 0.5);
   --glow-purple: 0 0 15px rgba(199, 162, 12, 0.5);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --m: 4rem;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 html {
@@ -32,6 +34,9 @@ html {
   scroll-padding-top: 80px;
 }
 
+#typing-text {
+  transition: opacity 0.5s ease-in-out;
+}
 body {
   font-family: 'Space Grotesk', sans-serif;
   background-color: var(--darker-bg);
@@ -246,7 +251,6 @@ body {
   width: 70%;
 }
 
-
 /*-------------------------- 
 # Navegación móvil
 ----------------------------*/
@@ -420,6 +424,45 @@ section:first-of-type {
 }
 
 /*-------------------------- 
+# Glow Line
+----------------------------*/
+@keyframes colorGlow {
+            0% {
+                background-color: #f59e0b;
+                /* Amber */
+                box-shadow: 0 0 5px #f59e0b, 0 0 10px #f59e0b;
+            }
+
+            25% {
+                background-color: #facc15;
+                /* Yellow */
+                box-shadow: 0 0 8px #facc15, 0 0 15px #facc15;
+            }
+
+            50% {
+                background-color: #fcd838;
+                /* Orange */
+                box-shadow: 0 0 12px #fcd838, 0 0 20px #fcd838;
+            }
+
+            75% {
+                background-color: #eab308;
+                /* Gold */
+                box-shadow: 0 0 8px #eab308, 0 0 15px #eab308;
+            }
+
+            100% {
+                background-color: #f59e0b;
+                /* Amber otra vez */
+                box-shadow: 0 0 5px #f59e0b, 0 0 10px #f59e0b;
+            }
+        }
+
+        .glow-line {
+            animation: colorGlow 5s infinite alternate;
+        }
+
+/*-------------------------- 
 # Tarjetas / Cards
 ----------------------------*/
 .card {
@@ -448,7 +491,7 @@ section:first-of-type {
 }
 
 /*--------------------------------------------------------------
-# Carrusel Secció
+# Carrusel Sección
 --------------------------------------------------------------*/
 @import url('https://unpkg.com/normalize.css') layer(normalize);
 
@@ -826,12 +869,6 @@ body {
     left: 0;
     z-index: -5; 
 }
-/*/ Comienza CSS Footer /*/
-
-/*/ Termina CSS Footer /*/
-
-
-/* Fondo de mano cibernética animada */
 
 .cybernetic-hand-background {
     position: fixed;
@@ -945,4 +982,154 @@ body {
         width: 300px;
         height: 300px;
     }
+}
+
+
+/*-------------------------- 
+# Footer
+----------------------------*/
+@import url("https://fonts.googleapis.com/css?family=IBM%20Plex%20Sans:500|IBM%20Plex%20Sans:300");
+
+h2 {
+  font-weight: 500;
+  text-align: center;
+  font-size: var(--m);
+  margin: 0;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: calc(0.6 * var(--m));
+  margin: 0;
+}
+
+.card {
+  height: calc(8 * var(--m));
+  width: calc(12 * var(--m));
+  background: linear-gradient(120deg, #ff8064, #725bdc);
+  color: black;
+  border-radius: calc(0.5 * var(--m));
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--m);
+
+  position: fixed;
+  margin: calc(2 * var(--m)) calc(5 * var(--m)) calc(5 * var(--m))
+    calc(5 * var(--m));
+}
+
+button {
+  background-color: #000;
+  font-size: calc(0.4 * var(--m));
+  border: none;
+  color: #e5e5e5;
+  font-family: "IBM Plex Sans";
+  font-weight: 400;
+  padding: calc(0.35 * var(--m)) calc(0.8 * var(--m));
+  border-radius: calc(0.3 * var(--m));
+}
+
+footer {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+  z-index: 500;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  padding: 5rem 2vw;
+  position: relative;
+}
+
+footer.footer-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.backdrop {
+  z-index: -5;
+  position: absolute;
+  inset: 0;
+
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+
+  mask-image: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.5) 10%,
+    rgba(0, 0, 0, 0.8) 20%,
+    rgba(0, 0, 0, 1) 30%,
+    rgb(0, 0, 0)
+  );
+
+  -webkit-mask-image: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.5) 10%,
+    rgba(0, 0, 0, 0.8) 20%,
+    rgba(0, 0, 0, 1) 30%,
+    rgb(0, 0, 0)
+  );
+}
+
+.col {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: calc(0.3 * var(--m)) calc(0.8 * var(--m));
+  width: 28%;
+}
+
+.col2,
+.col3 {
+  background-color: #121212;
+  border-radius: calc(0.5 * var(--m));
+}
+
+img {
+  height: calc(0.3 * var(--m));
+  object-fit: cover;
+}
+
+.social {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.link {
+  width: calc(0.8 * var(--m));
+  height: calc(0.8 * var(--m));
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: calc(0.1 * var(--m));
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1000px) {
+  :root {
+    --m: 3rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  footer {
+    flex-direction: column;
+    padding: 5rem 20vw;
+  }
+  .col {
+    width: 100%;
+  }
 }

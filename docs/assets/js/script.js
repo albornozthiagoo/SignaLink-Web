@@ -3,6 +3,22 @@ window.addEventListener("load", function() {
   setTimeout(function() {
     document.getElementById("preloader").style.display = "none";
     document.getElementById("main-content").style.display = "block";
+    // Inicializa Swiper aquí, después de mostrar el contenido
+    if (typeof Swiper !== "undefined") {
+      if (window.swiperInstance) {
+        window.swiperInstance.destroy(true, true);
+      }
+      window.swiperInstance = new Swiper('.blog-slider', {
+        spaceBetween: 30,
+        effect: 'fade',
+        loop: true,
+        mousewheel: { invert: false },
+        pagination: {
+          el: '.blog-slider__pagination',
+          clickable: true,
+        }
+      });
+    }
   }, 1000);
 });
 
@@ -137,3 +153,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const text = "Tus gestos hablan, SignaLink traduce";
+  const typingElement = document.getElementById("typing-text");
+
+  // Espera 3 segundos antes de empezar
+  setTimeout(() => {
+      typingElement.style.opacity = "1"; // mostrar texto
+      let index = 0;
+
+      const interval = setInterval(() => {
+          typingElement.textContent = text.slice(0, index + 1);
+          index++;
+          if (index >= text.length) clearInterval(interval);
+      }, 100); // velocidad de escritura (100ms por letra)
+  }, 2500);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+            const footer = document.getElementById("footer");
+            function checkFooterVisible() {
+                const rect = footer.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    footer.classList.add("footer-visible");
+                }
+            }
+            window.addEventListener("scroll", checkFooterVisible);
+            window.addEventListener("resize", checkFooterVisible);
+            checkFooterVisible();
+        });

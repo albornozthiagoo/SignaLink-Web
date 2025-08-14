@@ -25,44 +25,6 @@
     ------------------>
     <link href="img/logo/signalinkicon.png" rel="icon" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-
-    <style>
-        @keyframes colorGlow {
-            0% {
-                background-color: #f59e0b;
-                /* Amber */
-                box-shadow: 0 0 5px #f59e0b, 0 0 10px #f59e0b;
-            }
-
-            25% {
-                background-color: #facc15;
-                /* Yellow */
-                box-shadow: 0 0 8px #facc15, 0 0 15px #facc15;
-            }
-
-            50% {
-                background-color: #fcd838;
-                /* Orange */
-                box-shadow: 0 0 12px #fcd838, 0 0 20px #fcd838;
-            }
-
-            75% {
-                background-color: #eab308;
-                /* Gold */
-                box-shadow: 0 0 8px #eab308, 0 0 15px #eab308;
-            }
-
-            100% {
-                background-color: #f59e0b;
-                /* Amber otra vez */
-                box-shadow: 0 0 5px #f59e0b, 0 0 10px #f59e0b;
-            }
-        }
-
-        .glow-line {
-            animation: colorGlow 5s infinite alternate;
-        }
-    </style>
 </head>
 
 <body>
@@ -180,34 +142,10 @@
                                 SignaLink
                             </div>
                         </div>
-                        <p class="text-xl md:text-2xl text-white-400 max-w-3xl mb-8">
-                            Tus gestos hablan, SignaLink traduce
-                        </p>
+                        <p id="typing-text" class="text-xl md:text-2xl text-white-400 max-w-3xl mb-8 opacity-0"></p>
                     </div>
                 </div>
             </section>
-
-            <main>
-                <ul></ul>
-                <ul></ul>
-                <ul></ul>
-                <ul></ul>
-            </main>
-            <style id="keyframes" type="text/css"></style>
-            <svg class="w-9" viewBox="0 0 969 955" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="161.191" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"></circle>
-                <circle cx="806.809" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"></circle>
-                <circle cx="695.019" cy="587.733" r="31.4016" fill="currentColor"></circle>
-                <circle cx="272.981" cy="587.733" r="31.4016" fill="currentColor"></circle>
-                <path
-                    d="M564.388 712.083C564.388 743.994 526.035 779.911 483.372 779.911C440.709 779.911 402.356 743.994 402.356 712.083C402.356 680.173 440.709 664.353 483.372 664.353C526.035 664.353 564.388 680.173 564.388 712.083Z"
-                    fill="currentColor"></path>
-                <rect x="310.42" y="448.31" width="343.468" height="51.4986" fill="#FF1E1E"></rect>
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M745.643 288.24C815.368 344.185 854.539 432.623 854.539 511.741H614.938V454.652C614.938 433.113 597.477 415.652 575.938 415.652H388.37C366.831 415.652 349.37 433.113 349.37 454.652V511.741L110.949 511.741C110.949 432.623 150.12 344.185 219.845 288.24C289.57 232.295 384.138 200.865 482.744 200.865C581.35 200.865 675.918 232.295 745.643 288.24Z"
-                    fill="currentColor"></path>
-            </svg>
-            </a>
 
             <!-------------------------- 
             # Objetivo Sección
@@ -540,15 +478,17 @@
                             </div>
                         </div>
                         <div class="text-center">
+                            <!-- El enlace ahora tiene un fondo degradado dorado, padding, bordes redondeados y sombra. -->
                             <a href="galeria.html"
-                                class="inline-flex items-center justify-center text-black  from-yellow-500 to-yellow-600x text-sm font-medium hover:from-yellow-400 hover:to-yellow-500 transition-colors duration-300">
+                                class="inline-flex items-center justify-center bg-gradient-to-r from-yellow-500 to-yellow-600 text-black hover:from-yellow-400 hover:to-yellow-500 px-6 py-3 rounded-lg shadow-lg text-sm font-medium transition-colors duration-300">
                                 Ver más
-                                <svg class="w-4 h-4 ml-1 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
                                 </svg>
                             </a>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -856,10 +796,37 @@
                             </div>
             </section>
         </main>
+
         <!-------------------------- 
-            # Footer
-            ---------------------------->
+        # Footer
+        ---------------------------->
         <footer id="footer">
+            <div class="col col1">
+                <h3>SignaLink</h3>
+                <p>Made with <span style="color: #BA6573;">❤</span> by Luis Britez</p>
+                <div class="social">
+                    <a href="https://codepen.io/Juxtopposed" rel="noopener" target="_blank" class="link"><img
+                            src="https://assets.codepen.io/9051928/codepen_1.png" alt="" /></a>
+                    <a href="https://twitter.com/juxtopposed" rel="noopener" target="_blank" class="link"><img
+                            src="https://assets.codepen.io/9051928/x.png" alt="" /></a>
+                    <a href="https://youtube.com/@juxtopposed" rel="noopener" target="_blank" class="link"><img
+                            src="https://assets.codepen.io/9051928/youtube_1.png" alt="" /></a>
+                </div>
+                <p style="color: #818181; font-size: smaller">2024 © All Rights Reserved</p>
+            </div>
+            <div class="col col2">
+                <p>About</p>
+                <p>Our mission</p>
+                <p>Privacy Policy</p>
+                <p>Terms of service</p>
+            </div>
+            <div class="col col3">
+                <p>Services</p>
+                <p>Products</p>
+                <p>Join our team</p>
+                <p>Partner with us</p>
+            </div>
+            <div class="backdrop"></div>
         </footer>
     </div>
 
@@ -869,6 +836,7 @@
     <script src="assets/js/script.js"></script>
     <script src='https://cdn.tailwindcss.com'></script>
     <script src="assets/js/icons.js"></script>
+
 </body>
 
 </html>

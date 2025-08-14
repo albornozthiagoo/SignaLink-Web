@@ -7,10 +7,9 @@
     <title>Tecnología - SignaLink</title>
     <link rel='stylesheet'
         href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css'>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/cards.css">
-    <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css'>
 
     <!----------------
     # Favicon 
@@ -48,7 +47,6 @@
                             <div class="hidden md:flex items-center space-x-1">
                                 <a href="index.html"
                                     class="nav-link text-gray-300 hover:text-orange-400 px-4 py-2 rounded-md transition-colors duration-200">Regresar</a>
-                                </a>
                                 <a href="index.html#Contacto"
                                     class="nav-link text-gray-300 hover:text-orange-400 px-4 py-2 rounded-md transition-colors duration-200">Contacto</a>
                             </div>
@@ -91,7 +89,7 @@
         # Modelado 3D Sección
         ---------------------------->
         <main>
-            <section id="tecnología" class="min-h-screen flex items-center relative py-10">
+            <section id="tecnología" class="min-h-[400px]flex items-center relative py-10">
                 <div class="container mx-auto px-6">
                     <div class="max-w-5xl mx-auto">
                         <div class="text-center mb-12">
@@ -117,58 +115,18 @@
                         <div class="glow-effect"></div>
                         <div class="card-content">
                             <div class="card-img">
-                                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
-                                    alt="Article">
+                                <img src="img/avances/modelo3d_hand.jpg" alt="">
                             </div>
                             <div class="card-body">
-                                <div class="card-tag">UI Design</div>
-                                <h2 class="card-title">Card Design Trends for 2025</h2>
-                                <p class="card-text">Exploring the latest innovations in card-based interfaces and
-                                    how they'll shape digital experiences.</p>
+                                <div class="card-tag">Fusion 360</div>
+                                <h2 class="card-title">Modelo conceptual sobre el diseño final del Módulo Muñeca</h2>
+                                <p class="card-text">Representación visual que muestra la estructura y componentes
+                                    de este módulo, utilizada para comunicar la idea de manera clara antes de su
+                                    construcción definitiva.</p>
                                 <div class="article-meta">
-                                    <div class="meta-author">
-                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Author">
-                                        <span>Alex Parker</span>
-                                    </div>
                                     <div class="meta-item">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <polyline points="12 6 12 12 16 14"></polyline>
-                                        </svg>
-                                        <span>5 min</span>
                                     </div>
                                 </div>
-                                <div class="card-actions">
-                                    <a href="https://calculatequick.com" class="card-btn primary">Read Article</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- segunda cara -->
-                    <div class="card-container">
-                        <div class="glow-card large-card" data-glow-color="#FF6B6B">
-                            <div class="glow-effect"></div>
-                            <div class="card-content">
-                                <h2>Carta Principal</h2>
-                                <p>Esta carta es especial y ocupa un espacio más grande que las demás.</p>
-                            </div>
-                        </div>
-
-                        <div class="glow-card" data-glow-color="#48DBFB">
-                            <div class="glow-effect"></div>
-                            <div class="card-content">
-                                <h2>Carta Lateral 1</h2>
-                                <p>Esta es una carta estándar.</p>
-                            </div>
-                        </div>
-
-                        <div class="glow-card" data-glow-color="#48DBFB">
-                            <div class="glow-effect"></div>
-                            <div class="card-content">
-                                <h2>Carta Lateral 2</h2>
-                                <p>Esta es otra carta estándar.</p>
                             </div>
                         </div>
                     </div>
@@ -185,45 +143,72 @@
                                     </path>
                                 </svg>
                             </div>
-                            <h2 class="card-title">Interactive Experience</h2>
-                            <p class="card-text">Move your cursor across any card to see the magnetic glow effect
-                                follow your movements with smooth transitions.</p>
+                            <h2 class="card-title">Como lo hicimos</h2>
+                            <p class="card-text">Reunimos los modelos 3D de todos los sensores y microcontroladores
+                                previstos, los montamos sobre una PCB y diseñamos una carcasa con muñequera y batería
+                                incorporada. Por otra parte, colocamos en cada dedo unos anillos que hacen de soporte
+                                para los sensores flex.</p>
                             <div class="feature-points">
                                 <div class="feature-point">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round">
                                         <polyline points="20 6 9 17 4 12"></polyline>
                                     </svg>
-                                    <span>Responsive design</span>
+                                    <span>Medidas: Aproximadas</span>
                                 </div>
                                 <div class="feature-point">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round">
                                         <polyline points="20 6 9 17 4 12"></polyline>
                                     </svg>
-                                    <span>Custom colors</span>
+                                    <span>Observación: Modelo Ilustrativo</span>
                                 </div>
                             </div>
                             <div class="card-actions">
-                                <a href="https://calculatequick.com" class="card-btn primary">Learn More</a>
+                                <a href="https://www.autodesk.com/latam/products/fusion-360/overview"
+                                    class="card-btn primary">Sitio Oficial -
+                                    Fusion360</a>
                             </div>
                         </div>
                     </div>
+                </div>
 
-
-
+                <!-- Primer carta -->
+                <div class="glow-card" data-glow-color="#1DD1A1">
+                    <div class="glow-effect"></div>
+                    <div class="card-content">
+                        <div class="card-img">
+                            <img src="img/avances/modelo3d_hand.jpg" alt="">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-tag">Fusion 360</div>
+                            <h2 class="card-title">Modelo conceptual sobre el diseño final del Módulo Muñeca</h2>
+                            <p class="card-text">Representación visual que muestra la estructura y componentes
+                                de este módulo, utilizada para comunicar la idea de manera clara antes de su
+                                construcción definitiva.</p>
+                            <div class="article-meta">
+                                <div class="meta-item">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
+
+
+
+
             <!-------------------------- 
-            # Software Sección
-            ---------------------------->
+                # Software Sección
+                ---------------------------->
             <section id="tecnología" class="min-h-screen flex items-center relative py-10">
                 <div class="container mx-auto px-6">
                     <div class="max-w-5xl mx-auto">
                         <div class="text-center mb-12">
                             <div class="inline-block mb-3">
-                                <div class="text-xs text-gray-400 tracking-widest uppercase mb-1">Nuestro trabajo en
+                                <div class="text-xs text-gray-400 tracking-widest uppercase mb-1">Nuestro
+                                    trabajo en
                                 </div>
                                 <div class="ttext-4xl md:text-5xl font-bold text-white">
                                     Software</div>
@@ -236,66 +221,65 @@
                 </div>
             </section>
 
-            <body>
-                <div class="blog-slider">
-                    <div class="blog-slider__wrp swiper-wrapper">
-                        <div class="blog-slider__item swiper-slide">
-                            <div class="blog-slider__img">
+            <div class="blog-slider swiper-container">
+                <div class="blog-slider__wrp swiper-wrapper">
+                    <div class="blog-slider__item swiper-slide">
+                        <div class="blog-slider__img">
 
-                                <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759872/kuldar-kalvik-799168-unsplash.webp"
-                                    alt="">
-                            </div>
-                            <div class="blog-slider__content">
-                                <span class="blog-slider__code">26 December 2019</span>
-                                <div class="blog-slider__title">Lorem Ipsum Dolor</div>
-                                <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur,
-                                    adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?
-                                </div>
-                                <a href="#" class="blog-slider__button">READ MORE</a>
-                            </div>
+                            <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759872/kuldar-kalvik-799168-unsplash.webp"
+                                alt="">
                         </div>
-                        <div class="blog-slider__item swiper-slide">
-                            <div class="blog-slider__img">
-                                <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759871/jason-leung-798979-unsplash.webp"
-                                    alt="">
+                        <div class="blog-slider__content">
+                            <span class="blog-slider__code">26 December 2019</span>
+                            <div class="blog-slider__title">Lorem Ipsum Dolor</div>
+                            <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?
                             </div>
-                            <div class="blog-slider__content">
-                                <span class="blog-slider__code">26 December 2019</span>
-                                <div class="blog-slider__title">Lorem Ipsum Dolor2</div>
-                                <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur,
-                                    adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?
-                                </div>
-                            </div>
+                            <a href="#" class="blog-slider__button">READ MORE</a>
                         </div>
-
-                        <div class="blog-slider__item swiper-slide">
-                            <div class="blog-slider__img">
-                                <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759871/alessandro-capuzzi-799180-unsplash.webp"
-                                    alt="">
-                            </div>
-                            <div class="blog-slider__content">
-                                <span class="blog-slider__code">26 December 2019</span>
-                                <div class="blog-slider__title">Lorem Ipsum Dolor</div>
-                                <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur,
-                                    adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?
-                                </div>
-                                <a href="#" class="blog-slider__button">READ MORE</a>
+                    </div>
+                    <div class="blog-slider__item swiper-slide">
+                        <div class="blog-slider__img">
+                            <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759871/jason-leung-798979-unsplash.webp"
+                                alt="">
+                        </div>
+                        <div class="blog-slider__content">
+                            <span class="blog-slider__code">26 December 2019</span>
+                            <div class="blog-slider__title">Lorem Ipsum Dolor2</div>
+                            <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?
                             </div>
                         </div>
                     </div>
-                    <div class="blog-slider__pagination"></div>
+
+                    <div class="blog-slider__item swiper-slide">
+                        <div class="blog-slider__img">
+                            <img src="https://res.cloudinary.com/muhammederdem/image/upload/q_60/v1535759871/alessandro-capuzzi-799180-unsplash.webp"
+                                alt="">
+                        </div>
+                        <div class="blog-slider__content">
+                            <span class="blog-slider__code">26 December 2019</span>
+                            <div class="blog-slider__title">Lorem Ipsum Dolor</div>
+                            <div class="blog-slider__text">Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit. Recusandae voluptate repellendus magni illo ea animi?
+                            </div>
+                            <a href="#" class="blog-slider__button">READ MORE</a>
+                        </div>
+                    </div>
                 </div>
-            </body>
+                <div class="blog-slider__pagination"></div>
+            </div>
 
             <!-------------------------- 
-            # Hardware Sección
-            ---------------------------->
+                # Hardware Sección
+                ---------------------------->
             <section id="tecnología" class="min-h-screen flex items-center relative py-10">
                 <div class="container mx-auto px-6">
                     <div class="max-w-5xl mx-auto">
                         <div class="text-center mb-12">
                             <div class="inline-block mb-3">
-                                <div class="text-xs text-gray-400 tracking-widest uppercase mb-1">Nuestro trabajo en
+                                <div class="text-xs text-gray-400 tracking-widest uppercase mb-1">Nuestro
+                                    trabajo en
                                 </div>
                                 <div class="ttext-4xl md:text-5xl font-bold text-white">
                                     Hardware</div>
@@ -311,10 +295,12 @@
     </div>
 
     <!-- Scripts -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdn.tailwindcss.com'></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/cards.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js'></script>
-    <script src='https://cdn.tailwindcss.com'></script>
 
 </body>
+
+</html>
