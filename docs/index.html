@@ -36,7 +36,7 @@
     <div id="main-content" style="display:none;">
         <div class="bg-black text-white font-['Space_Grotesk'] overflow-x-hidden">
             <!------------------ 
-        |   # Navigation Bar
+            |   # Navigation Bar
             -------------------->
             <header>
                 <nav id="navbar"
@@ -115,15 +115,11 @@
         # Main 
         ------------------------------------------------->
         <main>
-            <!-------------------------- 
-            # Inicio Sección
-            ---------------------------->
             <section id="Inicio" class="min-h-screen flex items-center justify-center relative pt-20">
 
                 <!------------------ 
                 # Mano cibernetica 
                 -------------------->
-
                 <div class="cybernetic-hand-background">
                     <div class="hand-background-container">
                         <img src="img/logo/cybernetic-hand.png" alt="Cybernetic Hand Background"
@@ -280,7 +276,7 @@
                                             Diseñamos y modelamos objetos ilustrativos y funcionales,
                                             listos para impresión y aplicación en nuestro proyecto.
                                         </p>
-                                        <a href="technology-detail.html?tech=modelado-3d"
+                                        <a href="technology-detail.html?modelado3d"
                                             class="mt-auto text-yellow-400 hover:text-yellow-300 inline-flex items-center">
                                             Saber más
                                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor"
@@ -318,7 +314,8 @@
                                         <p class="text-gray-300 mb-4">Programamos componentes, gestionamos el envío y
                                             recepción de datos, y desarrollamos la lógica que da vida a nuestro sistema.
                                         </p>
-                                        <a href="technology-detail.html?tech=software"
+                                        <!-- CORRECCIÓN: Enlace a la sección de Software -->
+                                        <a href="technology-detail.html#software"
                                             class="mt-auto text-yellow-400 hover:text-yellow-300 inline-flex items-center">
                                             Saber más
                                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor"
@@ -357,7 +354,8 @@
                                         <p class="text-gray-300 mb-4">Diseñamos y ensamblamos el hardware, integrando
                                             sensores, placas electrónicas y estructuras impresas en 3D para lograr un
                                             sistema funcional y ergonómico.</p>
-                                        <a href="technology-detail.html?tech=hardware"
+                                        <!-- CORRECCIÓN: Enlace a la sección de Hardware -->
+                                        <a href="technology-detail.html#hardware"
                                             class="mt-auto text-yellow-400 hover:text-yellow-300 inline-flex items-center">
                                             Saber más
                                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor"
@@ -374,10 +372,7 @@
                 </div>
             </section>
 
-
-            <!-------------------------- 
-            # Galería Sección
-            ---------------------------->
+            <!-- ... (El resto de tus secciones: Galeria, Equipo, etc. se mantienen igual) ... -->
             <section id="galeria" class="min-h-screen flex items-center relative py-10">
                 <div class="container mx-auto px-6">
                     <div class="max-w-5xl mx-auto">
@@ -450,7 +445,7 @@
                                 <div
                                     class="aspect-video bg-gradient-to-br from-gray-700 to-gray-900 rounded-xl flex items-center justify-center">
                                     <div class="text-cyan-400/30 font-medium"><img
-                                            src="img/avances/implementacionble.jpg" alt="Conexión BLE">
+                                            src="img/avances/virtualenvironmentraspb.jpeg" alt="Conexión BLE">
                                     </div>
                                 </div>
                             </div>
@@ -477,12 +472,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center">
-                            <!-- El enlace ahora tiene un fondo degradado dorado, padding, bordes redondeados y sombra. -->
-                            <a href="galeria.html"
-                                class="inline-flex items-center justify-center bg-gradient-to-r from-yellow-500 to-yellow-600 text-black hover:from-yellow-400 hover:to-yellow-500 px-6 py-3 rounded-lg shadow-lg text-sm font-medium transition-colors duration-300">
-                                Ver más
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="text-center pt-4">
+                            <a href="galeria.html" class="inline-flex items-center gap-1 no-underline cursor-pointer">
+                                <span class="glow-text">Ver más</span>
+                                <svg class="w-4 h-4 glow-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
                                 </svg>
@@ -655,7 +648,7 @@
                             <div class="inline-block mb-3">
                                 <div class="text-xs text-gray-400 tracking-widest uppercase mb-1">Hablá con nosotros
                                 </div>
-                                <div class="ttext-4xl md:text-5xl font-bold text-white">
+                                <div class="text-4xl md:text-5xl font-bold text-white">
                                     Contacto</div>
                             </div>
                             <div class="w-20 h-1 mx-auto rounded glow-line"></div>
@@ -798,33 +791,42 @@
         </main>
 
         <!-------------------------- 
-        # Footer
+        # Footer (NUEVO FOOTER)
         ---------------------------->
         <footer id="footer">
             <div class="col col1">
                 <h3>SignaLink</h3>
-                <p>Made with <span style="color: #BA6573;">❤</span> by Luis Britez</p>
+                <p>Proyecto por Alumnos de la E.E.S.T N°7</p>
                 <div class="social">
-                    <a href="https://codepen.io/Juxtopposed" rel="noopener" target="_blank" class="link"><img
-                            src="https://assets.codepen.io/9051928/codepen_1.png" alt="" /></a>
-                    <a href="https://twitter.com/juxtopposed" rel="noopener" target="_blank" class="link"><img
-                            src="https://assets.codepen.io/9051928/x.png" alt="" /></a>
-                    <a href="https://youtube.com/@juxtopposed" rel="noopener" target="_blank" class="link"><img
-                            src="https://assets.codepen.io/9051928/youtube_1.png" alt="" /></a>
+                    <a href="https://www.instagram.com/signalink_?igsh=MXJla3NxOGVqOXlqNQ==" rel="noopener"
+                        target="_blank" class="link">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zm0 1.624c-2.375 0-2.706.01-3.66.056-1.007.046-1.594.208-2.05.39a3.272 3.272 0 00-1.15 1.15c-.183.456-.345 1.043-.39 2.05-.046.954-.057 1.285-.057 3.66s.011 2.706.057 3.66c.045 1.007.207 1.594.39 2.05a3.272 3.272 0 001.15 1.15c.456.182 1.043.344 2.05.39.954.046 1.285.056 3.66.056s2.706-.01 3.66-.056c1.007-.046 1.594-.208 2.05-.39a3.272 3.272 0 001.15-1.15c.182-.456.344-1.043.39-2.05.046-.954.056-1.285.056-3.66s-.01-2.706-.056-3.66c-.046-1.007-.208-1.594-.39-2.05a3.272 3.272 0 00-1.15-1.15c-.456-.182-1.043-.344-2.05-.39A82.52 82.52 0 0015.975 3.624c-.954-.046-1.285-.056-3.66-.056zM12 8.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5zm0 1.624a2.126 2.126 0 110 4.25 2.126 2.126 0 010-4.25zM16.338 7.11a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="https://github.com/impatrq/SignaLink" rel="noopener" target="_blank" class="link">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
                 </div>
-                <p style="color: #818181; font-size: smaller">2024 © All Rights Reserved</p>
+                <p style="color: #818181; font-size: smaller">2025 © Todos los derechos reservados</p>
             </div>
             <div class="col col2">
-                <p>About</p>
-                <p>Our mission</p>
-                <p>Privacy Policy</p>
-                <p>Terms of service</p>
+                <p>Sobre Nosotros</p>
+                <p>Nuestra Misión</p>
+                <p>Política de Privacidad</p>
+                <p>Términos de Servicio</p>
             </div>
             <div class="col col3">
-                <p>Services</p>
-                <p>Products</p>
-                <p>Join our team</p>
-                <p>Partner with us</p>
+                <p>Tecnología</p>
+                <p>Prototipo</p>
+                <p>Unite al Equipo</p>
+                <p>Colaborá</p>
             </div>
             <div class="backdrop"></div>
         </footer>
@@ -835,7 +837,6 @@
     --------------------------->
     <script src="assets/js/script.js"></script>
     <script src='https://cdn.tailwindcss.com'></script>
-    <script src="assets/js/icons.js"></script>
 
 </body>
 

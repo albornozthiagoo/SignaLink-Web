@@ -158,33 +158,46 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = () => {
   const text = "Tus gestos hablan, SignaLink traduce";
   const typingElement = document.getElementById("typing-text");
 
-  // Espera 3 segundos antes de empezar
+  const words = text.split(" ");
+
+  // Espera 3 segundos después de que cargó la página y el preloader ya debería estar oculto
   setTimeout(() => {
-      typingElement.style.opacity = "1"; // mostrar texto
-      let index = 0;
+    typingElement.style.opacity = "1"; 
+    typingElement.innerHTML = ""; 
 
-      const interval = setInterval(() => {
-          typingElement.textContent = text.slice(0, index + 1);
-          index++;
-          if (index >= text.length) clearInterval(interval);
-      }, 100); // velocidad de escritura (100ms por letra)
-  }, 2500);
-});
+    let index = 0;
 
-document.addEventListener("DOMContentLoaded", function () {
-            const footer = document.getElementById("footer");
-            function checkFooterVisible() {
-                const rect = footer.getBoundingClientRect();
-                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-                if (rect.top < windowHeight && rect.bottom > 0) {
-                    footer.classList.add("footer-visible");
-                }
-            }
-            window.addEventListener("scroll", checkFooterVisible);
-            window.addEventListener("resize", checkFooterVisible);
-            checkFooterVisible();
-        });
+    const interval = setInterval(() => {
+      const span = document.createElement("span");
+      span.textContent = words[index] + " ";
+      span.style.opacity = "0";
+      span.style.transition = "opacity 0.8s ease-in-out";
+
+      typingElement.appendChild(span);
+
+      // dispara la animación de opacidad
+      requestAnimationFrame(() => {
+        span.style.opacity = "1";
+      });
+
+      index++;
+      if (index >= words.length) clearInterval(interval);
+    }, 600); 
+  }, 3000);
+};
+
+
+// Animación de parpadeo del cursor
+const style = document.createElement("style");
+style.textContent = `
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+`;
+document.head.appendChild(style);
