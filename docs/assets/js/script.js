@@ -201,3 +201,54 @@ style.textContent = `
 }
 `;
 document.head.appendChild(style);
+
+// <CHANGE> Funcionalidad de galería expandible movida desde HTML inline
+function initGalleryExpandable() {
+  console.log('[v0] Inicializando funcionalidad de galería expandible');
+  
+  const gallerySections = document.querySelectorAll('.gallery-section');
+  console.log('[v0] Secciones encontradas:', gallerySections.length);
+  
+  gallerySections.forEach(section => {
+    const header = section.querySelector('.section-header');
+    
+    if (header) {
+      header.addEventListener('click', function() {
+        console.log('[v0] Click en sección:', section.id);
+        
+        const isExpanded = section.classList.contains('expanded');
+        console.log('[v0] Estado actual expandido:', isExpanded);
+        
+        // Cerrar todas las otras secciones
+        gallerySections.forEach(otherSection => {
+          if (otherSection !== section) {
+            otherSection.classList.remove('expanded');
+          }
+        });
+        
+        // Toggle de la sección actual
+        section.classList.toggle('expanded');
+        
+        // Scroll suave hacia la sección si se está expandiendo
+        if (!isExpanded) {
+          setTimeout(() => {
+            section.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }, 100);
+        }
+      });
+      
+      // Hacer que el cursor sea pointer
+      header.style.cursor = 'pointer';
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ... existing code ...
+  
+  // Inicializar funcionalidad de galería expandible
+  initGalleryExpandable();
+});
