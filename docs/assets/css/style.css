@@ -60,6 +60,11 @@ a {
   padding: 0 1.5rem;
 }
 
+#main-content {
+  display: none;
+}
+
+
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
@@ -765,21 +770,6 @@ footer {
   transform: translateY(0);
 }
 
-.section-highlight {
-  position: relative;
-}
-
-.section-highlight::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(6, 182, 212, 0.1), transparent 70%);
-  opacity: 0;
-  animation: pulse 1s ease;
-  pointer-events: none;
-  z-index: -1;
-}
-
 /* Enhanced accessibility */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -1156,14 +1146,8 @@ footer#footer .social .link svg {
 }
 
 /*-------------------------- 
-# FIN: CÓDIGO DEL NUEVO FOOTER
-----------------------------*/
-
-/*-------------------------- 
 # Secciones Expandibles - Galería Optimizada
 ----------------------------*/
-
-/* Estilos base optimizados con animaciones más suaves */
 .gallery-section {
   background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
   border: 2px solid #ffd700;

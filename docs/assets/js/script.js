@@ -1,9 +1,21 @@
 var preloader = document.getElementById("preloader");
+
 window.addEventListener("load", function() {
   setTimeout(function() {
     document.getElementById("preloader").style.display = "none";
     document.getElementById("main-content").style.display = "block";
-    // Inicializa Swiper aquí, después de mostrar el contenido
+
+    // 👇 Scroll automático después del preloader
+    if (window.location.hash) {
+      const targetSection = document.querySelector(window.location.hash);
+      if (targetSection) {
+        setTimeout(() => {
+          const offsetTop = targetSection.offsetTop - 70; // ajuste por navbar
+          window.scrollTo({ top: offsetTop, behavior: "smooth" });
+        }, 100); 
+      }
+    }
+
     if (typeof Swiper !== "undefined") {
       if (window.swiperInstance) {
         window.swiperInstance.destroy(true, true);
@@ -19,7 +31,19 @@ window.addEventListener("load", function() {
         }
       });
     }
-  }, 1000);
+  }, 1000); // <- coincide con la duración de tu preloader
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.location.hash) {
+    const targetSection = document.querySelector(window.location.hash);
+    if (targetSection) {
+      setTimeout(() => {
+        const offsetTop = targetSection.offsetTop - 70;
+        window.scrollTo({ top: offsetTop, behavior: "smooth" });
+      }, 300); // pequeño delay para que cargue bien la página
+    }
+  }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -52,19 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-    highlightCurrentSection();
-  });
-
    navLinks.forEach(link => {
      link.addEventListener('click', (e) => {
        const href = link.getAttribute('href');
-       // Solo previene si es un enlace interno (empieza con #)
        if (href && href.startsWith('#')) {
          e.preventDefault();
          const targetSection = document.querySelector(href);
@@ -75,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
            setTimeout(() => targetSection.classList.remove('section-highlight'), 1000);
          }
        }
-       // Si es un link externo o a otra página, deja que navegue normalmente
      });
    });
 
@@ -162,9 +175,10 @@ window.onload = () => {
   const text = "Tus gestos hablan, SignaLink traduce";
   const typingElement = document.getElementById("typing-text");
 
+   if (!typingElement) return;
+
   const words = text.split(" ");
 
-  // Espera 3 segundos después de que cargó la página y el preloader ya debería estar oculto
   setTimeout(() => {
     typingElement.style.opacity = "1"; 
     typingElement.innerHTML = ""; 
