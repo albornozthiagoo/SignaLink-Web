@@ -1327,3 +1327,120 @@ footer#footer .social .link svg {
 .gallery-content {
   will-change: max-height;
 }
+
+/* Glowing Edge Card Effect dorado y dinámico */
+.glow-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    transition: box-shadow 0.3s;
+}
+
+.glow-card:hover,
+.glow-card:focus {
+    box-shadow: 0 0 12px 1px rgba(255, 215, 0, 0.25), 0 0 0 1.5px #ffc400e6;
+    border: 1px solid #ffbb00;
+    transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), border 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*-------------------------- 
+# Parte de Sponsors (si no les gusta eliminen solo esto del css)
+----------------------------*/
+.sponsors-marquee-vertical {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 70px;
+    margin-top: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.sponsors-group {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s, transform 0.8s;
+}
+
+.sponsors-group.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s, transform 0.8s;
+}
+
+.sponsor-icon {
+    height: 48px;
+    width: 120px; 
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(255, 215, 0, 0.15));
+    opacity: 0;
+    transform: translateY(0) translateX(0);
+    transition: opacity 0.5s, transform 0.7s;
+}
+
+.sponsor-icon.enter {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+}
+
+.sponsor-icon.exit {
+    opacity: 0;
+    transform: translateY(-40px) translateX(40px);
+}
+
+.sponsor-icon:hover {
+    transform: scale(1.08);
+    opacity: 1;
+}
+
+@keyframes sponsor-exit {
+  to {
+    opacity: 0.3;
+    transform: translateY(-40px) translateX(40px) scale(0.85);
+    filter: blur(2px);
+  }
+}
+@keyframes sponsor-enter {
+  from {
+    opacity: 0;
+    transform: translateY(40px) translateX(-40px) scale(0.85);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+/* Sponsors que desaparecen: van hacia arriba a la derecha y se desvanecen */
+.sponsor-icon.animate-exit {
+    opacity: 0;
+    transform: translateY(-40px) translateX(40px) scale(0.85);
+    filter: blur(2px);
+    transition: opacity 0.7s, transform 0.7s, filter 0.7s;
+}
+
+/* Sponsors que aparecen: vienen de abajo a la izquierda y se desvanecen */
+.sponsor-icon.animate-enter {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+    filter: blur(0);
+    transition: opacity 0.7s, transform 0.7s, filter 0.7s;
+}
+
+/* Estado inicial para la animación de entrada */
+.sponsor-icon {
+    opacity: 0;
+    transform: translateY(40px) translateX(-40px) scale(0.85);
+    filter: blur(2px);
+    transition: opacity 0.7s, transform 0.7s, filter 0.7s;
+}

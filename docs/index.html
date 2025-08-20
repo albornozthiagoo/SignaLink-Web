@@ -156,16 +156,26 @@
                     <div class="flex flex-col items-center text-center">
                         <div class="relative mb-4">
                             <div class="absolute inset-0 bg-yellow-500/20 rounded-full blur-3xl"></div>
-                            <div
-                                class="text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-yellow-500 via-yellow-500 to-yellow-500 bg-clip-text text-transparent pb-2 relative">
-                                SignaLink
+                            <div class="text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-yellow-500 via-yellow-500 to-yellow-500 bg-clip-text text-transparent pb-2 relative"> SignaLink </div>
+                        </div>
+                        <p class="text-xl md:text-2xl text-white-400 max-w-3xl mb-8 tracking-wide"> Tus gestos hablan, SignaLink traduce </p>
+            
+                        <!-- Carrusel de Sponsors (si no les gusta eliminen solo esto del html)-->
+                        <div class="sponsors-marquee-vertical">
+                            <div class="sponsors-group group1"> <!-- Tienen un css personalizados porque las imagenes son mas chiquitas en comparacion a las del grupo 2-->
+                                <img src="img/sponsors/Abogados-removebg-preview.png" alt="Sponsor 1" class="sponsor-icon sponsor-icon-lg" style="width:160px; height:auto;" />
+                                <img src="img/sponsors/cooperadora.jpg" alt="Sponsor 2" class="sponsor-icon sponsor-icon-lg" style="width:160px; height:auto;" />
+                                <img src="img/sponsors/Urban-removebg-preview.png" alt="Sponsor 3" class="sponsor-icon sponsor-icon-lg" style="width:160px; height:auto;" />
+                            </div>
+                            <div class="sponsors-group group2">
+                                <img src="img/sponsors/newton.png" alt="Sponsor 4" class="sponsor-icon" />
+                                <img src="img/sponsors/uade.png" alt="Sponsor 5" class="sponsor-icon">
+                                <img src="img/sponsors/Baires Divan.png" alt="Sponsor 6" class="sponsor-icon" />
                             </div>
                         </div>
-                        <p id="typing-text2" class="text-xl md:text-2xl text-white-400 max-w-3xl mb-8 opacity-0"></p>
-
-                        <p id="typing-text" class="text-xl md:text-2xl text-white-400 max-w-3xl mb-8 opacity-0"></p>
                     </div>
                 </div>
+
             </section>
 
             <!-------------------------- 
@@ -412,7 +422,7 @@
                         <div class="grid md:grid-cols-2 gap-6 py-3">
 
                             <!-- Galería Item 1 -->
-                            <div class="relative group overflow-hidden rounded-xl">
+                            <div class="relative group overflow-hidden rounded-xl glow-card">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                     <div
@@ -426,14 +436,14 @@
                                 <div
                                     class="aspect-video bg-gradient-to-br from-gray-700 to-gray-900 rounded-xl flex items-center justify-center">
                                     <div class="text-cyan-400/30 font-medium"><img
-                                            src="img/avances/prototipo/prototipo_01_flex.jpg"
+                                            src="img/team/nosotros-2.jpeg"
                                             alt="Comienzo de anteproyecto">
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Galería Item 2 -->
-                            <div class="relative group overflow-hidden rounded-xl">
+                            <div class="relative group overflow-hidden rounded-xl glow-card">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                     <div
@@ -455,7 +465,7 @@
                             </div>
 
                             <!-- Galería Item 3 -->
-                            <div class="relative group overflow-hidden rounded-xl">
+                            <div class="relative group overflow-hidden rounded-xl glow-card">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                     <div
@@ -477,7 +487,7 @@
                             </div>
 
                             <!-- Galería Item 4 -->
-                            <div class="relative group overflow-hidden rounded-xl">
+                            <div class="relative group overflow-hidden rounded-xl glow-card">
                                 <div
                                     class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                     <div
@@ -861,18 +871,9 @@
     <!-------------------------- 
     # Scripts
     --------------------------->
-    <script defer>
-        document.addEventListener("DOMContentLoaded", () => {
-            new TypeIt("#typing-text2", {
-                strings: ["Tus gestos hablan, SignaLink traduce"],
-                speed: 80,
-                lifeLike: true,
-                cursor: false,
-            }).go();
-        });
-    </script>
     <script src="assets/js/script.js"></script>
     <script src='https://cdn.tailwindcss.com'></script>
+    <script src="assets/js/sponsors-marquee.js"></script>
 
 </body>
 
