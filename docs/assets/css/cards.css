@@ -748,3 +748,11 @@ a {
 		height: 180px;
 	}
 }
+/* Estilo base y activo de las secciones */
+#hardware .tab-btn { border-color:#444444; background-color:#0b0b0b; }
+#hardware .tab-btn:hover { background-color:#111; }
+#hardware .tab-btn.active {
+border-color:#FFD700;           /* borde dorado */
+background-color:#000;          /* tarjeta negra */
+box-shadow: 0 0 0 2px rgba(255,215,0,.15);
+}
