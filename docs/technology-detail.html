@@ -332,19 +332,16 @@
             <!-------------------------- 
             # Hardware Sección
             ---------------------------->
-            <section id="hardware" class="min-h-screen bg-black">
+            <section id="hardware" class="min-h-screen">
                 <div class="max-w-6xl mx-auto px-6">
                     <div class="text-center pt-16">
                         <div class="text-xs text-gray-400 tracking-widest uppercase mb-2">Nuestro trabajo en</div>
                         <h2 class="text-4xl md:text-5xl font-bold text-white">Hardware</h2>
                     <div class="w-32 h-1 mx-auto rounded bg-yellow-500 mt-4"></div>
                 </div>
-
+                <!--Tarjetas-->
                 <div class="min-h-[65vh] grid place-items-center">
-                <!-- Tarjeta -->
-                <div class="w-full max-w-4xl mx-auto bg-neutral-900 border border-yellow-500 rounded-2xl shadow-2xl p-8 md:p-10">
-
-                    <!-- Secciones -->
+                <div class="shine-effect w-full max-w-4xl mx-auto bg-neutral-900 border border-yellow-500 rounded-2xl shadow-2xl p-8 md:p-10">
                     <div class="flex flex-wrap justify-center gap-4 mb-8">
                     <button class="tab-btn active px-7 py-3 rounded-lg border-2 text-white font-semibold transition"
                             data-tab="componentes">Componentes</button>
@@ -353,107 +350,75 @@
                     <button class="tab-btn px-7 py-3 rounded-lg border-2 text-white font-semibold transition"
                             data-tab="pecho">Módulo Pecho</button>
                     </div>
-
-                <!-- Contenido Componentes -->
-                <div class="tab-content text-gray-300 text-lg leading-relaxed text-center">
-                <div id="componentes" class="tab-pane block">
-                    <p class="mb-8">Estos son los <b>componentes</b> principales del proyecto.</p>
-                    <!-- Mini galería -->
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">  
-                    <!-- Item 1 -->
-                    <div class="relative group rounded-xl overflow-hidden shadow-lg">
-                        <img src="img/componentes/raspipico.png" alt="" class="w-full h-40 object-cover">
-                        <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-semibold text-lg">Raspberry Pi Zero 2W</span>
+                    <div class="tab-content text-gray-300 text-lg leading-relaxed text-center">
+                    <div id="componentes" class="tab-pane block">
+                        <p class="mb-8">Estos son los <b>componentes</b> principales del proyecto.</p>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                        <div class="relative group rounded-xl overflow-hidden shadow-lg">
+                            <img src="img/componentes/raspipico.png" alt="" class="w-full h-40 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg p-4 text-center transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">Raspberry Pi Zero 2W</span>
+                            </div>
+                        </div>
+                        <div class="relative group rounded-xl overflow-hidden shadow-lg">
+                            <img src="img/componentes/esp32.png" alt="" class="w-full h-40 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg p-4 text-center transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">ESP 32 C3 Super Mini</span>
+                            </div>
+                        </div>
+                        <div class="relative group rounded-xl overflow-hidden shadow-lg">
+                            <img src="img/componentes/flex.jpg" alt="" class="w-full h-40 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg p-4 text-center transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">Sensores Flex</span>
+                            </div>
+                        </div>
+                        <div class="relative group rounded-xl overflow-hidden shadow-lg">
+                            <img src="img/componentes/mpu.png" alt="" class="w-full h-40 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg p-4 text-center transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">MPU 6050</span>
+                            </div>
+                        </div>
+                        <div class="relative group rounded-xl overflow-hidden shadow-lg">
+                            <img src="img/componentes/lcd.png" alt="" class="w-full h-40 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg p-4 text-center transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">LCD OLED (SSD1306)</span>
+                            </div>
+                        </div>
+                        <div class="relative group rounded-xl overflow-hidden shadow-lg">
+                            <img src="img/componentes/stup.png" alt="" class="w-full h-40 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg p-4 text-center transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">Step Up 5V</span>
+                            </div>
+                        </div>
+                        <div class="relative group rounded-xl overflow-hidden shadow-lg">
+                            <img src="img/componentes/modch.png" alt="" class="w-full h-40 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg p-4 text-center transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">TP 4056</span>
+                            </div>
+                        </div>
+                        <div class="relative group rounded-xl overflow-hidden shadow-lg">
+                            <img src="img/componentes/mic.png" alt="" class="w-full h-40 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg p-4 text-center transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">Micrófono Corbatero Lavalier Carrello C11</span>
+                            </div>
+                        </div>
+                        <div class="relative group rounded-xl overflow-hidden shadow-lg">
+                            <img src="img/componentes/parlant.png" alt="" class="w-full h-40 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white font-semibold text-lg p-4 text-center transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">Mini Parlante Mylar</span>
+                            </div>
+                        </div>
                         </div>
                     </div>
-                    <!-- Item 2 -->
-                    <div class="relative group rounded-xl overflow-hidden shadow-lg">
-                        <img src="img/componentes/esp32.png" alt="" class="w-full h-40 object-cover">
-                        <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-semibold text-lg">ESP 32 C3 Super Mini</span>
-                        </div>
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="relative group rounded-xl overflow-hidden shadow-lg">
-                        <img src="img/componentes/flex.jpg" alt="" class="w-full h-40 object-cover">
-                        <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-semibold text-lg">Sensores Flex</span>
-                        </div>
-                    </div>
-                    <!-- Item 4 -->
-                    <div class="relative group rounded-xl overflow-hidden shadow-lg">
-                        <img src="img/componentes/mpu.png" alt="" class="w-full h-40 object-cover">
-                        <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-semibold text-lg">MPU 6050</span>
-                        </div>
-                    </div>
-                    <!-- Item 5 -->
-                    <div class="relative group rounded-xl overflow-hidden shadow-lg">
-                        <img src="img/componentes/lcd.png" alt="" class="w-full h-40 object-cover">
-                        <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-semibold text-lg">LCD OLED (SSD1306)</span>
-                        </div>
-                    </div>
-                    <!-- Item 6 -->
-                    <div class="relative group rounded-xl overflow-hidden shadow-lg">
-                        <img src="img/componentes/stup.png" alt="" class="w-full h-40 object-cover">
-                        <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-semibold text-lg">Step Up 5V</span>
-                        </div>
-                    </div>
-                    <!-- Item 7 -->
-                    <div class="relative group rounded-xl overflow-hidden shadow-lg">
-                        <img src="img/componentes/modch.png" alt="" class="w-full h-40 object-cover">
-                        <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-semibold text-lg">TP 4056</span>
-                        </div>
-                    </div>
-                    <!-- Item 8 -->
-                    <div class="relative group rounded-xl overflow-hidden shadow-lg">
-                        <img src="img/componentes/mic.png" alt="" class="w-full h-40 object-cover">
-                        <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-semibold text-lg">Micrófono Corbatero Lavalier Carrello C11</span>
-                        </div>
-                    </div>
-                    <!-- Item 9 -->
-                    <div class="relative group rounded-xl overflow-hidden shadow-lg">
-                        <img src="img/componentes/parlant.png" alt="" class="w-full h-40 object-cover">
-                        <div class="absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                        <span class="text-white font-semibold text-lg">Mini Parlante Mylar</span>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                    <!-- Contenido Muñeca -->
                     <div id="muneca" class="tab-pane hidden">
                         <p>Información del <b>Módulo Muñeca</b></p>
                     </div>
-                    <!-- Contenido Pecho -->
                     <div id="pecho" class="tab-pane hidden">
                         <p>Información del <b>Módulo Pecho</b></p>
                     </div>
                     </div>
-            </div>
-            </section>
-
-            <script>
-            const buttons = document.querySelectorAll('#hardware .tab-btn');
-            const panes = document.querySelectorAll('#hardware .tab-pane');
-
-            buttons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                // reset
-                buttons.forEach(b => b.classList.remove('active', 'border-yellow-500', 'bg-black'));
-                panes.forEach(p => p.classList.add('hidden'));
-                // activate
-                btn.classList.add('active', 'border-yellow-500', 'bg-black');
-                document.getElementById(btn.dataset.tab).classList.remove('hidden');
-                });
-            });
-            </script>
-
-      
+                </div>
+                </div>
             </section>
         </main>
     </div>
@@ -466,5 +431,4 @@
     <script src="assets/js/cards.js"></script>
 
 </body>
-
 </html>

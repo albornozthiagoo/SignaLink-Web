@@ -38,3 +38,18 @@
 		});
 	});
 })
+
+  // Hardware Tarjeta Script
+  const buttons = document.querySelectorAll('.tab-btn');
+  const panes = document.querySelectorAll('.tab-pane');
+
+  buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+          // reset
+          buttons.forEach(b => b.classList.remove('active', 'border-yellow-500', 'bg-black'));
+          panes.forEach(p => p.classList.add('hidden'));
+          // activate
+          btn.classList.add('active', 'border-yellow-500', 'bg-black');
+          document.getElementById(btn.dataset.tab).classList.remove('hidden');
+      });
+  });

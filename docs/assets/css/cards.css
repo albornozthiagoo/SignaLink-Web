@@ -748,6 +748,7 @@ a {
 		height: 180px;
 	}
 }
+
 /* Estilo base y activo de las secciones */
 #hardware .tab-btn { border-color:#444444; background-color:#0b0b0b; }
 #hardware .tab-btn:hover { background-color:#111; }
@@ -756,3 +757,62 @@ border-color:#FFD700;           /* borde dorado */
 background-color:#000;          /* tarjeta negra */
 box-shadow: 0 0 0 2px rgba(255,215,0,.15);
 }
+  .shine-effect {
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+  }
+
+  .shine-effect::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, #f59e0b, #000000, #ffffff);
+    background-size: 200% 200%;
+    filter: blur(20px);
+    opacity: 0.6;
+    z-index: -1;
+    animation: gold-shine 5s ease infinite;
+    border-radius: 2rem; /* Coincide con el redondeado de la tarjeta */
+  }
+
+  @keyframes gold-shine {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* hardw secciones */
+  .tab-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tab-pane {
+    flex-grow: 1;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateY(10px);
+  }
+
+  .tab-pane.hidden {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transform: translateY(0);
+  }
+
+  .tab-pane:not(.hidden) {
+    opacity: 1;
+    height: auto;
+    transform: translateY(0);
+  }
+  
