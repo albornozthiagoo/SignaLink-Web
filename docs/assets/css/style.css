@@ -1249,6 +1249,7 @@ footer#footer .col.col2,
 footer#footer .col.col3 {
   background-color: #121212;
   border-radius: calc(0.5 * var(--m));
+  margin-bottom: 70px;
 }
 
 footer#footer .social {
