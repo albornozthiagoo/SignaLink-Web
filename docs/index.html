@@ -56,14 +56,14 @@
     <div id="main-content">
         <div class="bg-black text-white font-['Space_Grotesk'] overflow-x-hidden">
             <!------------------ 
-            # Navigation Bar
+            # Navigation Bar (Desktop)
             -------------------->
             <header>
                 <nav id="navbar"
                     class="fixed top-0 left-0 right-0 bg-gray-900/70 backdrop-blur-lg border-b border-cyan-500/30 z-50 transition-all duration-300">
                     <div class="container mx-auto px-6 py-3">
                         <div class="flex items-center justify-between">
-                            <!-- Logo -->
+                            <!-- Logo SIEMPRE visible -->
                             <div class="flex items-center">
                                 <img src="img/logo/signalinkicon.png" alt="Logo SignaLink"
                                     class="w-10 h-10 object-contain" />
@@ -72,7 +72,7 @@
                                     SignaLink
                                 </div>
                             </div>
-                            <!-- Desktop Navigation -->
+                            <!-- Desktop Navigation SOLO visible en desktop -->
                             <div class="hidden md:flex items-center space-x-1">
                                 <a href="#Inicio"
                                     class="nav-link text-gray-300 hover:text-orange-400 px-4 py-2 rounded-md transition-colors duration-200">Inicio</a>
@@ -89,6 +89,21 @@
                             </div>
                         </div>
                     </div>
+                </nav>
+            <!------------------ 
+            # Navigation Bar (Mobile)
+            -------------------->
+                <input class="menu-icon mobile-only" type="checkbox" id="menu-icon" name="menu-icon"/>
+                <label for="menu-icon" class="mobile-only"></label>
+                <nav class="nav mobile-only"> 		
+                    <ul>
+                        <li><a href="#Inicio" onclick="document.getElementById('menu-icon').checked=false;">Inicio</a></li>
+                        <li><a href="#objetivo" onclick="document.getElementById('menu-icon').checked=false;">Objetivos</a></li>
+                        <li><a href="#tecnologia" onclick="document.getElementById('menu-icon').checked=false;">Tecnología</a></li>
+                        <li><a href="#galeria" onclick="document.getElementById('menu-icon').checked=false;">Galería</a></li>
+                        <li><a href="#Equipo" onclick="document.getElementById('menu-icon').checked=false;">Equipo</a></li>
+                        <li><a href="#Contacto" onclick="document.getElementById('menu-icon').checked=false;">Contacto</a></li>
+                    </ul>
                 </nav>
             </header>
 

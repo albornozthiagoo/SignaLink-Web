@@ -251,7 +251,7 @@ body {
   left: 50%;
   width: 0%;
   height: 2px;
-  background-color: rgb(178, 127, 10); /* Color de la barrita */
+  background-color: rgb(178, 127, 10); 
   transition: width 0.3s ease;
   transform: translateX(-50%);
   transform-origin: center;
@@ -264,42 +264,143 @@ body {
 /*-------------------------- 
 # Navegación móvil
 ----------------------------*/
-#mobile-menu {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
-  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.mobile-only {
+  display: none;
+}
+@media (max-width: 767px) {
+  .mobile-only {
+    display: block !important;
+  }
+  .md\:flex {
+    display: none !important;
+  }
 }
 
-#mobile-menu.open {
-  max-height: 300px;
+/* Oculta el checkbox */
+.menu-icon {
+  position: absolute;
+  left: -9999px;
 }
 
-#mobile-menu-button {
-  background: transparent;
-  border: none;
+/* Botón hamburguesa SOLO en móvil */
+.menu-icon + label {
+  position: fixed;
+  top: 15px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  z-index: 2001;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+}
+.menu-icon + label:before,
+.menu-icon + label:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 40px;
+  height: 4px;
+  background: linear-gradient(90deg, rgb(178, 127, 10) 60%, #b28208 100%);
+  border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.menu-icon + label:before {
+  top: 12px;
+}
+.menu-icon + label:after {
+  top: 24px;
+}
+.menu-icon:checked + label:before {
+  transform: translateY(12px) rotate(45deg);
+}
+.menu-icon:checked + label:after {
+  transform: translateY(-12px) rotate(-45deg);
 }
 
-#mobile-menu-button.active #line1 {
-  transform: translate(-50%, -50%) rotate(45deg);
-  transform-origin: center;
-}
-
-#mobile-menu-button.active #line2 {
+/* Menú de navegación móvil */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, rgb(178, 127, 10) 0%, #b28208 100%);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.menu-icon:checked ~ .nav {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-#mobile-menu-button.active #line3 {
-  transform: translate(-50%, -50%) rotate(-45deg);
-  transform-origin: center;
+/* Centrado vertical de los links */
+.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  margin-top: 130px;
 }
 
-#line1,
-#line2,
-#line3 {
-  transition: transform 0.3s ease, opacity 0.2s ease, background-color 0.3s ease;
-  transform-origin: center;
+/* Animación de aparición de los links */
+.nav ul li {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s, transform 0.5s;
+  margin: 1.5rem 0;
+}
+.menu-icon:checked ~ .nav ul li {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s 0.2s, transform 0.5s 0.2s;
+}
+
+/* Links blancos y animación de brillo dorado al hacer hover */
+.nav ul li a {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  transition: color 0.3s, text-shadow 0.3s;
+  text-shadow: 0 0 0px #ffd700;
+  padding: 0.5rem 2rem;
+  border-radius: 8px;
+}
+.nav ul li a:hover,
+.nav ul li a:focus {
+  color: #ffd700;
+  text-shadow: 0 0 12px #ffd700, 0 0 24px #b28208;
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+
+/* Oculta el menú hamburguesa en desktop */
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none !important;
+  }
+  .menu-icon + label {
+    display: none !important;
+  }
+  .nav.mobile-only {
+    display: none !important;
+  }
 }
 
 /*-------------------------- 
@@ -944,7 +1045,7 @@ body {
 
 .cybernetic-hand-background {
   position: fixed;
-  top: 70px;
+  top: 25px;
   left: 0;
   width: 100%;
   height: 100vh;
