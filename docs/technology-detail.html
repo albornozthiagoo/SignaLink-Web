@@ -132,7 +132,7 @@
                                         <div class="glow-effect"></div>
                                         <div class="card-content">
                                             <div class="card-img">
-                                                <img src="img/avances/prototipo/modelo3d.jpg" alt="">
+                                                <img src="img/3D/MóduloMuñeca3D.png" alt="">
                                             </div>
                                             <div class="card-body">
                                                 <div class="card-tag">Fusion 360</div>
@@ -175,7 +175,7 @@
                                         <div class="glow-effect"></div>
                                         <div class="card-content">
                                             <div class="card-img">
-                                                <img src="" alt="">
+                                                <img src="img/3D/MóduloPecho3D.png" alt="">
                                             </div>
                                             <div class="card-body">
                                                 <div class="card-tag">Blender</div>
@@ -355,6 +355,7 @@
                                     data-tab="pecho">Módulo Pecho</button>
                             </div>
                             <div class="tab-content text-gray-300 text-lg leading-relaxed text-center">
+                                <!-- Componentess -->
                                 <div id="componentes" class="tab-pane block">
                                     <p class="mb-8">Estos son los <b>componentes</b> principales del proyecto.</p>
                                     <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -450,9 +451,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="muneca" class="tab-pane hidden">
-                                    <p>Información del <b>Módulo Muñeca</b></p>
+                                <!-- Módulo Muñeca -->
+                                <div id="muneca" class="tab-pane hidden text-center">
+                                <p class="mb-6 text-lg text-gray-300">
+                                    Información del <b>Módulo Muñeca</b>
+                                </p>
+                                <div class="flex justify-center mb-6">
+                                    <img src="img/3D/1.png" alt="Módulo Muñeca"
+                                        class="w-64 h-auto">
                                 </div>
+                                <div class="max-w-2xl mx-auto text-gray-400 leading-relaxed">
+                                    <p>
+                                    El <b>Módulo Muñeca</b> está diseñado para captar los movimientos de la mano 
+                                    mediante <b>sensores flex</b> y un <b>acelerómetro-giroscopio</b>. 
+                                    Estos datos se envían de forma inalámbrica a través del 
+                                    <b>ESP32-C3 SuperMini</b> colocado en la muñeca, permitiendo reconocer 
+                                    los gestos realizados por el usuario. Dsp sigo epxlicando display...
+                                    </p>
+                                </div>
+                                </div>
+                                <!-- Módulo Pecho -->
                                 <div id="pecho" class="tab-pane hidden">
                                     <p>Información del <b>Módulo Pecho</b></p>
                                 </div>

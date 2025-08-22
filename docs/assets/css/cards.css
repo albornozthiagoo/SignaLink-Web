@@ -244,7 +244,7 @@ body {
 }
 
 
-/*# HARDWARE CART */
+/*# HARDWARE CARD */
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
@@ -481,24 +481,16 @@ a {
 }
 
 .card-container {
-    /* Muestra los elementos en un formato de rejilla */
     display: grid;
-    /* Define 3 columnas del mismo tamaño */
     grid-template-columns: repeat(3, 1fr); 
-    /* Espacio entre las cartas */
     gap: 16px; 
 }
 
-/* Estilo para la carta que quieres que sea más ancha */
 .large-card {
-    /* Hace que la carta ocupe 2 columnas */
     grid-column: span 2; 
 }
 
-/* Aquí van los demás estilos de las cartas... */
 .glow-card {
-    /* Estilos generales de las cartas */
-    /* ... */
 }
 
 .profile-img {
