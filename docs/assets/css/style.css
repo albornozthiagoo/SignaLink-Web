@@ -296,6 +296,8 @@ body {
   justify-content: center;
   background: none;
 }
+
+/* Rayas doradas por defecto */
 .menu-icon + label:before,
 .menu-icon + label:after {
   content: '';
@@ -303,16 +305,26 @@ body {
   left: 0;
   width: 40px;
   height: 4px;
-  background: linear-gradient(90deg, rgb(178, 127, 10) 60%, #b28208 100%);
+  background: linear-gradient(90deg, rgb(178, 127, 10) 60%, rgb(178, 127, 10) 100%);
   border-radius: 2px;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
+/* Posición de las rayas */
 .menu-icon + label:before {
   top: 12px;
 }
 .menu-icon + label:after {
   top: 24px;
 }
+
+/* Al presionar (checked), rayas blancas */
+.menu-icon:checked + label:before,
+.menu-icon:checked + label:after {
+  background: linear-gradient(90deg, #fff 60%, #fff 100%);
+}
+
+/* Animación de cruz */
 .menu-icon:checked + label:before {
   transform: translateY(12px) rotate(45deg);
 }
@@ -384,8 +396,8 @@ body {
 }
 .nav ul li a:hover,
 .nav ul li a:focus {
-  color: #ffd700;
-  text-shadow: 0 0 12px #ffd700, 0 0 24px #b28208;
+  color: #ffee00;
+  text-shadow: 0 0 12px #ffd700, 0 0 24px #ffd700;
   background: rgba(255, 255, 255, 0.08);
   outline: none;
 }
@@ -394,6 +406,7 @@ body {
 @media (min-width: 768px) {
   .mobile-only {
     display: none !important;
+    color: #ffee00;
   }
   .menu-icon + label {
     display: none !important;
@@ -1072,6 +1085,8 @@ body {
   filter: brightness(1) contrast(1); /* para editar brillo y contraste de la mano */
 }
 
+
+
 .hand-overlay {
   position: absolute;
   top: 0;
@@ -1165,13 +1180,18 @@ body {
   }
 }
 
+.sebita-cuadro{
+
+  box-shadow: 8px 8px #ffbb00;
+}
+
 /*-------------------------- 
 # INICIO: CÓDIGO DEL NUEVO FOOTER
 ----------------------------*/
 @import url("https://fonts.googleapis.com/css?family=IBM%20Plex%20Sans:500|IBM%20Plex%20Sans:300");
 
 footer#footer {
-  margin-top: 20vh; /* Espacio para que se vea el efecto antes de llegar */
+
   z-index: 500;
   width: 100%;
   min-height: 60vh; /* Altura para que el efecto sea notable */
@@ -1737,3 +1757,35 @@ footer#footer .social .link svg {
   font-size: 1rem;
   top: 0;
 }
+
+
+
+.col p {
+  position: relative;
+  display: inline-block; /* para que el subrayado solo ocupe el texto */
+  margin: 8px 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto zoom */
+.col p:hover {
+  transform: scale(1.05);
+}
+
+/* Subrayado animado */
+.col p::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #ffd700; /* Podés cambiar el color */
+  transition: width 0.3s ease;
+}
+
+.col p:hover::after {
+  width: 100%;
+}
+

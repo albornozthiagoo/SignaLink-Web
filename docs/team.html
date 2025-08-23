@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Equipo - SignaLink</title>
+    <link rel='stylesheet'
+        href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap'>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!----------------
+    # Favicon 
+    ------------------>
+    <link href="img/logo/signalinkicon.png" rel="icon" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+    <div id="main-content">
+        <div class="bg-black text-white font-['Space_Grotesk'] overflow-x-hidden">
+            <!------------------ 
+            # Navigation Bar
+            ------------------>
+            <header>
+                <nav id="navbar"
+                    class="fixed top-0 left-0 right-0 bg-gray-900/70 backdrop-blur-lg border-b border-cyan-500/30 z-50 transition-all duration-300">
+                    <div class="container mx-auto px-6 py-3">
+                        <div class="flex items-center justify-between">
+                            <!-- Logo -->
+                            <div class="flex items-center">
+                                <img src="img/logo/signalinkicon.png" alt="Logo SignaLink"
+                                    class="w-10 h-10 object-contain" />
+                                <div
+                                    class="ml-2 text-xl font-[Lexend] bg-gradient-to-r from-yellow-500 via-yellow-500 to-yellow-500 bg-clip-text text-transparent">
+                                    SignaLink
+                                </div>
+                            </div>
+                            <!-- Desktop Navigation -->
+                            <div class="hidden md:flex items-center space-x-1">
+                                <a href="index.html#Equipo"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Regresar</a>
+                                <a href="index.html#Contacto"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Contacto</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            
+            <!------------------ 
+            # Navigation Bar (Mobile)
+            -------------------->
+                <input class="menu-icon mobile-only" type="checkbox" id="menu-icon" name="menu-icon"/>
+                <label for="menu-icon" class="mobile-only"></label>
+                <nav class="nav mobile-only"> 		
+                    <ul>
+                        <li><a href="index.html#galeria" onclick="document.getElementById('menu-icon').checked=false;">Regresar</a></li>
+                        <li><a href="index.html#Contacto" onclick="document.getElementById('menu-icon').checked=false;">Contacto</a></li>
+                    </ul>
+                </nav>
+
+            </header>
+
+            <!-------------------------- 
+            # Mobile Navigation Button
+            ---------------------------->
+            <div class="flex md:hidden">
+                <button id="mobile-menu-button" class="relative w-10 h-10 focus:outline-none group"
+                    aria-label="Toggle menu">
+                    <div class="absolute w-5 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+                        <span class="block h-0.5 w-5 bg-cyan-400 mb-1 transform transition duration-300 ease-in-out"
+                            id="line1"></span>
+                        <span class="block h-0.5 w-5 bg-cyan-400 mb-1 transform transition duration-300 ease-in-out"
+                            id="line2"></span>
+                        <span class="block h-0.5 w-5 bg-cyan-400 transform transition duration-300 ease-in-out"
+                            id="line3"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!------------------------------------------------ 
+        # Main Sections
+        ------------------------------------------------->
+        <main>
+            <!-------------------------- 
+            # History Section
+            ---------------------------->
+            <section id="history" class="min-h-screen flex items-center relative py-10">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-5xl mx-auto">
+                        <div class="text-center mb-12">
+                            <div class="inline-block mb-3">
+                                <div class="text-xs text-gray-400 tracking-widest uppercase mb-1">Conoce nuestra</div>
+                                <div class="ttext-4xl md:text-5xl font-bold text-white">
+                                    Historia</div>
+                            </div>
+                            <div class="w-32 h-1 mx-auto rounded glow-line"></div>
+                        </div>
+
+                        <!-- ==================== HISTORIA ==================== -->
+
+                        <!-- ==================== HISTORIA ==================== -->
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-------------------------- 
+        # Footer Sección
+        ---------------------------->
+        <footer id="footer">
+            <div class="col col1">
+                <h3>Proyecto SignaLink</h3>
+                <p>Proyecto por Alumnos de la Escuela de Educación Secundaria Técnica Nº7 "Taller Regional Quilmes" IMPA
+                </p>
+                <div class="social">
+                    <a href="https://www.instagram.com/signalink_?igsh=MXJla3NxOGVqOXlqNQ==" rel="noopener"
+                        target="_blank" class="link">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zm0 1.624c-2.375 0-2.706.01-3.66.056-1.007.046-1.594.208-2.05.39a3.272 3.272 0 00-1.15 1.15c-.183.456-.345 1.043-.39 2.05-.046.954-.057 1.285-.057 3.66s.011 2.706.057 3.66c.045 1.007.207 1.594.39 2.05a3.272 3.272 0 001.15 1.15c.456.182 1.043.344 2.05.39.954.046 1.285.056 3.66.056s2.706-.01 3.66-.056c1.007-.046 1.594-.208 2.05-.39a3.272 3.272 0 001.15-1.15c.182-.456.344-1.043.39-2.05.046-.954.056-1.285.056-3.66s-.01-2.706-.056-3.66c-.046-1.007-.208-1.594-.39-2.05a3.272 3.272 0 00-1.15-1.15c-.456-.182-1.043-.344-2.05-.39A82.52 82.52 0 0015.975 3.624c-.954-.046-1.285-.056-3.66-.056zM12 8.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5zm0 1.624a2.126 2.126 0 110 4.25 2.126 2.126 0 010-4.25zM16.338 7.11a1.2 1.2 0 100-2.4 1.2 1.2 0 000 2.4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="https://github.com/impatrq/SignaLink" rel="noopener" target="_blank" class="link">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <p style="color: #818181; font-size: smaller">2025 © Todos los derechos reservados</p>
+            </div>
+            <div class="col col2">
+                <p>Sobre Nosotros</p>
+                <p>Nuestra Misión</p>
+                <p>Política de Privacidad</p>
+                <p>Términos de Servicio</p>
+            </div>
+            <div class="col col3">
+                <p>Tecnología</p>
+                <p>Prototipo</p>
+                <p>Unite al Equipo</p>
+                <p>Colaborá</p>
+            </div>
+            <div class="backdrop"></div>
+        </footer>
+    </div>
+
+    <!-------------------------- 
+        # Scripts
+        --------------------------->
+    <script src="assets/js/script.js"></script>
+    <script src='https://cdn.tailwindcss.com'></script>
+
+</body>
+
+</html>
