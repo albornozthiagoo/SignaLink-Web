@@ -1406,7 +1406,7 @@ footer#footer .social .link svg {
 }
 
 .gallery-section.expanded .gallery-content {
-  max-height: 2000px;
+  max-height: 1000px;
 }
 
 /* Grid optimizado para mejor responsive */

@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         const offsetTop = targetSection.offsetTop - 70;
         window.scrollTo({ top: offsetTop, behavior: "smooth" });
-      }, 300); // pequeño delay para que cargue bien la página
+      }, 300);
     }
   }
 });
@@ -233,53 +233,77 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// <CHANGE> Funcionalidad de galería expandible movida desde HTML inline
+// Funcionalidad de galería expandible movida desde HTML inline
 function initGalleryExpandable() {
-  console.log("[v0] Inicializando funcionalidad de galería expandible");
-
   const gallerySections = document.querySelectorAll(".gallery-section");
-  console.log("[v0] Secciones encontradas:", gallerySections.length);
 
   gallerySections.forEach((section) => {
-    const header = section.querySelector(".section-header");
+    const toggleBtn = section.querySelector(".expand-button");
 
-    if (header) {
-      header.addEventListener("click", function () {
-        console.log("[v0] Click en sección:", section.id);
-
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", function (e) {
         const isExpanded = section.classList.contains("expanded");
-        console.log("[v0] Estado actual expandido:", isExpanded);
 
-        // Cerrar todas las otras secciones
+        // Cerrar todas las demás secciones
         gallerySections.forEach((otherSection) => {
           if (otherSection !== section) {
             otherSection.classList.remove("expanded");
           }
         });
 
-        // Toggle de la sección actual
+        // Toggle de la sección clickeada
         section.classList.toggle("expanded");
 
-        // Scroll suave hacia la sección si se está expandiendo
-        if (!isExpanded) {
-          setTimeout(() => {
-            section.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }, 100);
+        // Si se expande, scrollea hasta la sección
+        if (section.classList.contains("expanded")) {
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       });
 
-      // Hacer que el cursor sea pointer
-      header.style.cursor = "pointer";
+      // Que se note clickable
+      toggleBtn.style.cursor = "pointer";
     }
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ... existing code ...
-
   // Inicializar funcionalidad de galería expandible
   initGalleryExpandable();
 });
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function currentSlide(n) {
+  showSlides((slideIndex = n));
+}
+
+function showSlides(n) {
+  let slides = document.getElementsByClassName("carousel-slide");
+  let dots = document.getElementsByClassName("dot");
+
+  if (slides.length === 0 || dots.length === 0) {
+    return;
+  }
+
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].classList.remove("active");
+  }
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+
+  slides[slideIndex - 1].classList.add("active");
+  dots[slideIndex - 1].className += " active";
+}
+
+setInterval(function () {
+  showSlides((slideIndex += 1));
+}, 3000);
