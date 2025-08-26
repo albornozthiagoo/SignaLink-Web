@@ -1406,7 +1406,7 @@ footer#footer .social .link svg {
 }
 
 .gallery-section.expanded .gallery-content {
-  max-height: 1000px;
+  max-height: none;
 }
 
 /* Grid optimizado para mejor responsive */
@@ -1474,10 +1474,6 @@ footer#footer .social .link svg {
 
 /* Media queries optimizadas */
 @media (max-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem;
   }
 
   .gallery-item img {
@@ -1491,7 +1487,6 @@ footer#footer .social .link svg {
   .section-header {
     padding: 1.5rem;
   }
-}
 
 /* Optimización para mejor performance */
 .gallery-section,
