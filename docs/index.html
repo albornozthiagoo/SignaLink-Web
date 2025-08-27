@@ -76,13 +76,11 @@
                             <div class="hidden md:flex items-center space-x-1">
                                 <a href="#Inicio"
                                     class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2  transition-colors duration-200 focus:outline-none focus:ring-0">Inicio</a>
-                                <a href="#objetivo"
-                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Objetivos</a>
-                                <a href="#tecnologia"
+                                <a href="technology-detail.html"
                                     class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Tecnología</a>
-                                <a href="#galeria"
+                                <a href="galeria.html"
                                     class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Galería</a>
-                                <a href="#Equipo"
+                                <a href="team.html"
                                     class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Equipo</a>
                                 <a href="#Contacto"
                                     class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Contacto</a>
@@ -94,24 +92,19 @@
                 <!------------------ 
                 # Navigation Bar (Mobile)
                 -------------------->
-                <label> First Name <input class="menu-icon mobile-only" type="checkbox" id="menu-icon"
+                <label><input class="menu-icon mobile-only" type="checkbox" id="menu-icon"
                         name="menu-icon" />
                     <label for="menu-icon" class="mobile-only"></label>
                     <nav class="nav mobile-only">
                         <ul>
-                            <li><a href="#Inicio"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Inicio</a>
-                            </li>
-                            <li><a href="#objetivo"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Objetivos</a></li>
-                            <li><a href="#tecnologia"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Tecnología</a></li>
-                            <li><a href="#galeria"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Galería</a>
-                            </li>
-                            <li><a href="#Equipo"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Equipo</a>
-                            </li>
+                            <li style="margin-top: 70px;"><a href="#Inicio"
+                                    onclick="document.getElementById('menu-icon').checked=false;">Inicio</a> </li>
+                            <li><a href="technology-detail.html"
+                                    onclick="document.getElementById('menu-icon').checked=false;">Tecnologia</a></li>
+                            <li><a href="galeria.html"
+                                    onclick="document.getElementById('menu-icon').checked=false;">Galería</a></li>
+                            <li><a href="team.html"
+                                    onclick="document.getElementById('menu-icon').checked=false;">Equipo</a></li>
                             <li><a href="#Contacto"
                                     onclick="document.getElementById('menu-icon').checked=false;">Contacto</a></li>
                         </ul>
@@ -159,7 +152,7 @@
                                 class="text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-yellow-500 via-yellow-500 to-yellow-500 bg-clip-text text-transparent pb-2 relative">
                                 SignaLink </div>
                         </div>
-                        <p class="text-xl md:text-1xl text-white-400 max-w-3xl mb-16 font-[Lexend]"> Tus
+                        <p class="text-xl md:text-1xl text-white-400 max-w-3xl mb-10 font-[Lexend]"> Tus
                             gestos hablan,
                             SignaLink traduce </p>
                         <!-- Carrusel de Sponsors-->
@@ -172,11 +165,11 @@
                             </div>
                             <div class="sponsors-group group2">
                                 <img src="img/Sponsors/ciampone&franco.png" alt="Sponsor 1"
-                                    class="sponsor-icon sponsor-icon-lg" style="width:160px; height:auto;" />
+                                    class="sponsor-icon sponsor-icon-lg"  />
                                 <img src="img/sponsors/urbanbelts.png" alt="Sponsor 2"
-                                    class="sponsor-icon sponsor-icon-lg" style="width:130px; height:auto;" />
+                                    class="sponsor-icon sponsor-icon-lg"  />
                                 <img src="img/sponsors/cooperadora.png" alt="Sponsor 3"
-                                    class="sponsor-icon sponsor-icon-lg" style="width:160px; height:auto;" />
+                                    class="sponsor-icon sponsor-icon-lg"  />
                             </div>
                         </div>
                     </div>
@@ -684,7 +677,7 @@
             <!-------------------------- 
             # Contacto Sección
             ---------------------------->
-            <section id="Contacto" class="min-h-screen flex items-center relative py-10">
+            <section id="Contacto" class="min-h-screen flex items-center relative py-10" style="padding-bottom: 150px;">
                 <div class="container mx-auto px-6">
                     <div class="max-w-5xl mx-auto">
                         <div class="text-center mb-12">
@@ -838,8 +831,8 @@
         ---------------------------->
         <footer id="footer">
             <div class="col col1">
-                <h3>Proyecto SignaLink</h3>
-                <span>Proyecto por Alumnos de la Escuela de Educación Secundaria Técnica Nº7 "Taller Regional Quilmes"
+                <h3 class="glow-text focus:outline-none focus:ring-0"z>Proyecto SignaLink</h3>
+                <span  style="font-style: italic;">Proyecto por Alumnos de la Escuela de Educación Secundaria Técnica Nº7 "Taller Regional Quilmes"
                     IMPA
                 </span>
                 <div class="social">
@@ -868,21 +861,23 @@
                         </svg>
                     </a>
                 </div>
-                <p style="color: #818181; font-size: smaller; ">2025 © Todos los derechos reservados</p>
+                <span style="color: #818181; font-size: smaller;" class="derechos">2025 © Todos los derechos reservados</span>
             </div>
             <div class="col col2 sebita-cuadro">
-                <a href="#Equipo">Sobre Nosotros</a>
-                <a href="#objetivo">Nuestra Misión</a>
-                <a href="technology-detail.html#modelado3d">Modelado 3D</a>
-                <a href="technology-detail.html#software">Software</a>
+                <a href="#Inicio">Inicio </a>
+                <a href="#objetivo">Objetivos</a>
+                <a href="#tecnologia">Tecnologia</a>
+                <a href="#galeria">Galeria</a>
             </div>
             <div class="col col3 sebita-cuadro">
-                <a href="#galeria">Galeria</a>
-                <a href="galeria.html">Prototipo</a>
-                <a href="#Contacto">Unete al equipo</a>
+                <a href="#Equipo">Equipo</a>
                 <a href="technology-detail.html#hardware">Hardware</a>
+                <a href="technology-detail.html#software">Software</a>
+                <a href="#Contacto">Unete al equipo</a>
             </div>
             <div class="backdrop"></div>
+
+             <span style="color: #818181; font-size: smaller;" class="derechos2">2025 © Todos los derechos reservados</span>
         </footer>
     </div>
 

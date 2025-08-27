@@ -57,13 +57,20 @@
                 <!------------------ 
             # Navigation Bar (Mobile)
             -------------------->
-                <label> First Name <input class="menu-icon mobile-only" type="checkbox" id="menu-icon"
+              
+                 <label><input class="menu-icon mobile-only" type="checkbox" id="menu-icon"
                         name="menu-icon" />
                     <label for="menu-icon" class="mobile-only"></label>
                     <nav class="nav mobile-only">
                         <ul>
-                            <li><a href="index.html#galeria"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Regresar</a></li>
+                            <li style="margin-top: 70px;"><a href="index.html"
+                                    onclick="document.getElementById('menu-icon').checked=false;">Inicio</a> </li>
+                            <li><a href="technology-detail.html"
+                                    onclick="document.getElementById('menu-icon').checked=false;">Tecnologia</a></li>
+                            <li><a href="galeria.html"
+                                    onclick="document.getElementById('menu-icon').checked=false;">Galería</a></li>
+                            <li><a href="team.html"
+                                    onclick="document.getElementById('menu-icon').checked=false;">Equipo</a></li>
                             <li><a href="index.html#Contacto"
                                     onclick="document.getElementById('menu-icon').checked=false;">Contacto</a></li>
                         </ul>
@@ -96,7 +103,7 @@
                         <div class="text-center mb-12">
                             <div class="inline-block mb-3">
                                 <div class="text-xs text-gray-400 tracking-widest uppercase mb-1">Nuestros Avances</div>
-                                <div class="ttext-4xl md:text-5xl font-bold text-white">
+                                <div class="text-4xl md:text-5xl font-bold text-white">
                                     Galería</div>
                             </div>
                             <div class="w-32 h-1 mx-auto rounded glow-line"></div>
@@ -413,10 +420,10 @@
         <!-------------------------- 
         # Footer Sección
         ---------------------------->
-        <footer id="footer">
+      <footer id="footer">
             <div class="col col1">
-                <h3>Proyecto SignaLink</h3>
-                <span>Proyecto por Alumnos de la Escuela de Educación Secundaria Técnica Nº7 "Taller Regional Quilmes"
+                <h3 class="glow-text focus:outline-none focus:ring-0"z>Proyecto SignaLink</h3>
+                <span  style="font-style: italic;">Proyecto por Alumnos de la Escuela de Educación Secundaria Técnica Nº7 "Taller Regional Quilmes"
                     IMPA
                 </span>
                 <div class="social">
@@ -445,21 +452,23 @@
                         </svg>
                     </a>
                 </div>
-                <p style="color: #818181; font-size: smaller; ">2025 © Todos los derechos reservados</p>
+                <span style="color: #818181; font-size: smaller;" class="derechos">2025 © Todos los derechos reservados</span>
             </div>
             <div class="col col2 sebita-cuadro">
-                <a href="#Equipo">Sobre Nosotros</a>
-                <a href="#objetivo">Nuestra Misión</a>
+                <a href="index.html#Equipo">Sobre Nosotros</a>
+                <a href="index.html#objetivo">Nuestra Misión</a>
                 <a href="technology-detail.html#modelado3d">Modelado 3D</a>
                 <a href="technology-detail.html#software">Software</a>
             </div>
             <div class="col col3 sebita-cuadro">
-                <a href="#galeria">Galeria</a>
+                <a href="index.html#galeria">Galeria</a>
                 <a href="galeria.html">Prototipo</a>
-                <a href="#Contacto">Unete al equipo</a>
+                <a href="index.html#Contacto">Unete al equipo</a>
                 <a href="technology-detail.html#hardware">Hardware</a>
             </div>
             <div class="backdrop"></div>
+
+             <span style="color: #818181; font-size: smaller;" class="derechos2">2025 © Todos los derechos reservados</span>
         </footer>
     </div>
 
