@@ -27,16 +27,43 @@
     dots[slideIndex - 1].classList.add("active");
   }
 
-  // Lógica de Preloader
-  window.addEventListener("load", function () {
-    const preloader = document.getElementById("preloader");
-    if (preloader) {
-      preloader.style.opacity = "0";
-      setTimeout(() => {
-        preloader.style.display = "none";
-      }, 500);
+var preloader = document.getElementById("preloader");
+
+window.addEventListener("load", function () {
+  setTimeout(function () {
+    document.getElementById("preloader").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+
+    window.scrollTo({ top: 0, behavior: "auto" });
+
+    // 👇 Scroll automático después del preloader
+    if (window.location.hash) {
+      const targetSection = document.querySelector(window.location.hash);
+      if (targetSection) {
+        setTimeout(() => {
+          const offsetTop = targetSection.offsetTop - 70; // ajuste por navbar
+          window.scrollTo({ top: offsetTop, behavior: "smooth" });
+        }, 100);
+      }
     }
-  });
+
+    if (typeof Swiper !== "undefined") {
+      if (window.swiperInstance) {
+        window.swiperInstance.destroy(true, true);
+      }
+      window.swiperInstance = new Swiper(".blog-slider", {
+        spaceBetween: 30,
+        effect: "fade",
+        loop: true,
+        mousewheel: { invert: false },
+        pagination: {
+          el: ".blog-slider__pagination",
+          clickable: true,
+        },
+      });
+    }
+  }, 1000);
+});
 
   // Lógica para el menú móvil
   document.addEventListener("DOMContentLoaded", function () {
