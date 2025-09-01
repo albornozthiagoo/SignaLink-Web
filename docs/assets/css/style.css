@@ -1258,12 +1258,7 @@ footer#footer {
   border-top: none;
 }
 
-@media (max-width: 768px) {
-  . {
-    flex-direction: column;  /* se apilan verticalmente */
-    align-items: center;     /* centrados */
-  }
-}
+
 
 /* Este es el elemento CLAVE para el efecto de desvanecimiento */
 footer#footer::before {
