@@ -1,4 +1,4 @@
-	// SOFTWARE
+	// Software Tarjeta Script
     document.addEventListener("DOMContentLoaded", () => {
 	const cards = document.querySelectorAll(".glow-card");
 	const controlBtns = document.querySelectorAll(".control-btn");
