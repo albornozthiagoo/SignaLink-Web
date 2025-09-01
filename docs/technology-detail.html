@@ -25,17 +25,18 @@
     <div id="preloader">
         <div id="loader"></div>
     </div>
+
     <div id="main-content">
         <div class="bg-black text-white font-['Space_Grotesk'] overflow-x-hidden">
             <!------------------ 
-            # Navigation Bar
-            ------------------>
+            # Navigation Bar (Desktop)
+            -------------------->
             <header>
                 <nav id="navbar"
                     class="fixed top-0 left-0 right-0 bg-gray-900/70 backdrop-blur-lg border-b border-cyan-500/30 z-50 transition-all duration-300">
                     <div class="container mx-auto px-6 py-3">
                         <div class="flex items-center justify-between">
-                            <!-- Logo -->
+                            <!-- Logo SIEMPRE visible -->
                             <div class="flex items-center">
                                 <img src="img/logo/signalinkicon.png" alt="Logo SignaLink"
                                     class="w-10 h-10 object-contain" />
@@ -44,45 +45,54 @@
                                     SignaLink
                                 </div>
                             </div>
-                            <!-- Desktop Navigation -->
+                            <!-- Desktop Navigation SOLO visible en desktop -->
                             <div class="hidden md:flex items-center space-x-1">
-                                <a href="index.html#tecnologia"
-                                    class="nav-link hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Regresar</a>
-                                <a href="index.html#Contacto"
-                                    class="nav-link hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Contacto</a>
+                                <a href="index.html#Inicio"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2  transition-colors duration-200 focus:outline-none focus:ring-0">Inicio</a>
+                                <a href="technology-detail.html"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Tecnología</a>
+                                <a href="galeria.html"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Galería</a>
+                                <a href="team.html"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Equipo</a>
+                                <a href="#Contacto"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Contacto</a>
                             </div>
                         </div>
                     </div>
                 </nav>
 
                 <!------------------ 
-            # Navigation Bar (Mobile)
-            -------------------->
-                  <label><input class="menu-icon mobile-only" type="checkbox" id="menu-icon"
-                        name="menu-icon" />
-                    <label for="menu-icon" class="mobile-only"></label>
-                    <nav class="nav mobile-only">
-                        <ul>
-                            <li style="margin-top: 70px;"><a href="index.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Inicio</a> </li>
-                            <li><a href="technology-detail.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Tecnologia</a></li>
-                            <li><a href="galeria.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Galería</a></li>
-                            <li><a href="team.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Equipo</a></li>
-                            <li><a href="index.html#Contacto"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Contacto</a></li>
-                        </ul>
-                    </nav>
+                # Navigation Bar (Mobile)
+                -------------------->
+                <input class="menu-icon mobile-only" type="checkbox" id="menu-icon" name="menu-icon"
+                    title="Abrir menú de navegación móvil" />
+                <label for="menu-icon" class="mobile-only"></label>
+                <nav class="nav mobile-only">
+                    <ul>
+                        <li class="mobile-menu-first-item"><a href="index.html#tecnlogia"
+                                onclick="document.getElementById('menu-icon').checked=false;">Regresar</a> </li>
+                        <li><a href="index.html#Contacto"
+                                onclick="document.getElementById('menu-icon').checked=false;">Contacto</a></li>
+                    </ul>
+                </nav>
             </header>
 
-  
-
+            <!-------------------------- 
+            # Mobile Navigation Button
+            ------------------------>
+            <div class="flex md:hidden">
+                <button id="mobile-menu-button" class="relative w-10 h-10 focus:outline-none group"
+                    aria-label="Toggle menu">
+                    <div class="absolute w-5 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+                    </div>
+                </button>
+            </div>
+        </div>
 
         <!-------------------------- 
-        # Modelado 3D Sección
-        ---------------------------->
+            # Modelado 3D Sección
+            ------------------------>
         <main>
             <section id="modelado3d" class="min-h-[400px]flex items-center relative py-10">
                 <div class="container mx-auto px-6">
@@ -132,7 +142,8 @@
                                                 <div class="card-tag">Fusion 360</div>
                                                 <h2 class="card-title">Modelo conceptual sobre diseño del
                                                     Módulo Muñeca</h2>
-                                                <p class="card-text">Representación visual que muestra la estructura y
+                                                <p class="card-text">Representación visual que muestra la estructura
+                                                    y
                                                     componentes
                                                     de este módulo, utilizada para comunicar la idea de manera clara
                                                     antes de su
@@ -155,8 +166,10 @@
                                                 <div class="card-tag">Fusion 360</div>
                                                 <h2 class="card-title">Modelado sobre diseño de caja para el
                                                     Módulo Pecho</h2>
-                                                <p class="card-text">Representaciôn visual que muestra la estructura y
-                                                    componentes de la caja del módulo de pecho, la cual se encarga de
+                                                <p class="card-text">Representaciôn visual que muestra la estructura
+                                                    y
+                                                    componentes de la caja del módulo de pecho, la cual se encarga
+                                                    de
                                                     recibir y transmitir datos </p>
                                                 <div class="article-meta">
                                                     <div class="meta-item">
@@ -195,8 +208,10 @@
                                                 <div class="card-tag">AutoCAD</div>
                                                 <h2 class="card-title">Modelado de la caja para el circuito PCB del
                                                     módulo muñeca</h2>
-                                                <p class="card-text">Se diseño una caja que contenga el circuito pcb del
-                                                    módulo muñeca, para que la misma este protegida y sea mas estetico
+                                                <p class="card-text">Se diseño una caja que contenga el circuito pcb
+                                                    del
+                                                    módulo muñeca, para que la misma este protegida y sea mas
+                                                    estetico
                                                     el prototipo final </p>
                                                 <div class="article-meta">
                                                     <div class="meta-item">
@@ -213,10 +228,13 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="card-tag">AutoCAD</div>
-                                                <h2 class="card-title">Modelado de la caja para componentes del Módulo
+                                                <h2 class="card-title">Modelado de la caja para componentes del
+                                                    Módulo
                                                     Pecho</h2>
-                                                <p class="card-text">Se diseño una caja que contenga los componentes del
-                                                    módulo pecho, para que la misma este protegida y se pueda agregar a
+                                                <p class="card-text">Se diseño una caja que contenga los componentes
+                                                    del
+                                                    módulo pecho, para que la misma este protegida y se pueda
+                                                    agregar a
                                                     una riñonera </p>
                                                 <div class="article-meta">
                                                     <div class="meta-item">
@@ -274,10 +292,12 @@
                                     </div>
                                     <div class="blog-slider__content">
                                         <span class="blog-slider__code">Junio - Octubre / 2025</span>
-                                        <div class="blog-slider__title">Creación de Entorno Virtual en Raspberry Pi Zero
+                                        <div class="blog-slider__title">Creación de Entorno Virtual en Raspberry Pi
+                                            Zero
                                             2W 💻</div>
                                         <div class="blog-slider__text">
-                                            Se desarrolló un entorno virtual en la Raspberry Pi Zero 2W, permitiendo la
+                                            Se desarrolló un entorno virtual en la Raspberry Pi Zero 2W, permitiendo
+                                            la
                                             ejecución de aplicaciones y servicios de manera eficiente. Este entorno
                                             virtualizado facilita la gestión de recursos y mejora el rendimiento del
                                             dispositivo.
@@ -291,10 +311,13 @@
                                     </div>
                                     <div class="blog-slider__content">
                                         <span class="blog-slider__code">Junio - Octubre / 2025</span>
-                                        <div class="blog-slider__title">Implementación de BLE (Bluetooth Low Energy) 🛜
+                                        <div class="blog-slider__title">Implementación de BLE (Bluetooth Low Energy)
+                                            🛜
                                         </div>
-                                        <div class="blog-slider__text">Para el desarrollo de la funcionalidad BLE, se
-                                            utilizaron dos ESP32 C3 Super Mini. Para trabajar de una manera eficiente se
+                                        <div class="blog-slider__text">Para el desarrollo de la funcionalidad BLE,
+                                            se
+                                            utilizaron dos ESP32 C3 Super Mini. Para trabajar de una manera
+                                            eficiente se
                                             aplico ESP-IDF que cuenta con un sistema de servidor y cliente BLE.
                                         </div>
                                     </div>
@@ -308,10 +331,12 @@
                                         <span class="blog-slider__code">Julio - Agosto / 2025</span>
                                         <div class="blog-slider__title">Desarrollo de Placa en KiCad 🛠️</div>
                                         <div class="blog-slider__text">Se utilizó KiCad para el diseño de la placa
-                                            personalizada, permitiendo la integración de los componentes necesarios para
+                                            personalizada, permitiendo la integración de los componentes necesarios
+                                            para
                                             el funcionamiento del dispositivo. Este proceso incluyó la creación de
                                             esquemas
-                                            y la disposición de los componentes en la placa. Se buscó un diseño lo más
+                                            y la disposición de los componentes en la placa. Se buscó un diseño lo
+                                            más
                                             compacto y pequeño posible para ser comodo en la mano
                                         </div>
                                     </div>
@@ -358,7 +383,8 @@
                                 <div class="tab-content text-gray-300 text-lg leading-relaxed text-center">
                                     <!-- Componentes -->
                                     <div id="componentes" class="tab-pane block">
-                                        <p class="mb-8">Estos son los <b>componentes</b> principales del proyecto.</p>
+                                        <p class="mb-8">Estos son los <b>componentes</b> principales del proyecto.
+                                        </p>
                                         <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
                                             <div class="relative group rounded-xl overflow-hidden shadow-lg">
                                                 <img src="img/componentes/raspipico.png" alt=""
@@ -458,10 +484,14 @@
                                         <div class="max-w-2xl mx-auto text-white leading-relaxed">
                                             <p>
                                                 El <b>Módulo Muñeca</b> se encarga de detectar los movimientos de la
-                                                mano usando sensores flex y un MPU6050 (acelerómetro y giroscopio). Un
-                                                ESP32-C3 convierte estos datos en señales digitales y los transmite por
-                                                BLE al módulo del pecho. En la etapa de respuesta, recibe texto desde la
-                                                Raspberry Pi y lo muestra en una pantalla OLED, permitiendo a personas
+                                                mano usando sensores flex y un MPU6050 (acelerómetro y giroscopio).
+                                                Un
+                                                ESP32-C3 convierte estos datos en señales digitales y los transmite
+                                                por
+                                                BLE al módulo del pecho. En la etapa de respuesta, recibe texto
+                                                desde la
+                                                Raspberry Pi y lo muestra en una pantalla OLED, permitiendo a
+                                                personas
                                                 sordas leer lo que se dijo.
                                             </p>
                                         </div>
@@ -473,8 +503,10 @@
                                         </div>
                                         <div class="max-w-2xl mx-auto text-white leading-relaxed">
                                             <p>
-                                                El <b>Módulo Pecho</b> recibe por BLE los datos de la muñeca y los envía
-                                                a la Raspberry Pi, que reconoce la seña y la convierte en audio usando
+                                                El <b>Módulo Pecho</b> recibe por BLE los datos de la muñeca y los
+                                                envía
+                                                a la Raspberry Pi, que reconoce la seña y la convierte en audio
+                                                usando
                                                 un parlante. También, capta la voz de una persona oyente mediante un
                                                 micrófono, la convierte en texto, y la envía a la muñeca por BLE.
                                             </p>
