@@ -1218,7 +1218,7 @@ body {
 }
 
 .sebita-cuadro a {
-  margin: 0 70px;            /* espacio entre enlaces */
+  margin: 0 50px;            /* espacio entre enlaces */
   color: #b9b4b4;  
   font-weight: 200;         /* letra más fina */
   letter-spacing: 0.8px; 
@@ -1231,7 +1231,6 @@ body {
   transform: scale(1.05);
   text-shadow: 0 0 8px #ffbb00;
 }
-
 
 
 /*-------------------------- 
@@ -1306,7 +1305,7 @@ footer#footer .col {
   align-items: flex-start;
   justify-content: flex-start;
   padding: calc(0.3 * var(--m)) calc(0.8 * var(--m));
-  width: 28%;
+  width: 23%;
 }
 
 @media (max-width: 768px) {
@@ -1328,7 +1327,7 @@ footer#footer .col.col2,
 footer#footer .col.col3 {
   background-color: #121212;
   border-radius: calc(0.5 * var(--m));
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 @media (max-width: 768px) {
@@ -1999,7 +1998,6 @@ footer#footer .social .link svg {
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 1300px;
     margin: 0 auto;
 }
 
