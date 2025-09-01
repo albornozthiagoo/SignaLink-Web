@@ -9,7 +9,6 @@
         href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap'>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/new-style.css">
     <link href="img/logo/signalinkicon.png" rel="icon" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 </head>
@@ -22,11 +21,15 @@
 
     <div id="main-content">
         <div class="bg-black text-white font-['Space_Grotesk'] overflow-x-hidden">
+            <!------------------ 
+            # Navigation Bar (Desktop)
+            -------------------->
             <header>
                 <nav id="navbar"
                     class="fixed top-0 left-0 right-0 bg-gray-900/70 backdrop-blur-lg border-b border-cyan-500/30 z-50 transition-all duration-300">
                     <div class="container mx-auto px-6 py-3">
                         <div class="flex items-center justify-between">
+                            <!-- Logo SIEMPRE visible -->
                             <div class="flex items-center">
                                 <img src="img/logo/signalinkicon.png" alt="Logo SignaLink"
                                     class="w-10 h-10 object-contain" />
@@ -35,34 +38,42 @@
                                     SignaLink
                                 </div>
                             </div>
+                            <!-- Desktop Navigation SOLO visible en desktop -->
                             <div class="hidden md:flex items-center space-x-1">
-                                <a href="index.html#Equipo"
-                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Regresar</a>
-                                <a href="index.html#Contacto"
+                                <a href="index.html#Inicio"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2  transition-colors duration-200 focus:outline-none focus:ring-0">Inicio</a>
+                                <a href="technology-detail.html"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Tecnología</a>
+                                <a href="galeria.html"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Galería</a>
+                                <a href="team.html"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Equipo</a>
+                                <a href="#Contacto"
                                     class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Contacto</a>
                             </div>
                         </div>
                     </div>
                 </nav>
-                            <label><input class="menu-icon mobile-only" type="checkbox" id="menu-icon"
-                        name="menu-icon" />
-                    <label for="menu-icon" class="mobile-only"></label>
-                    <nav class="nav mobile-only">
-                        <ul>
-                            <li style="margin-top: 70px;"><a href="index.html#Inicio"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Inicio</a> </li>
-                            <li><a href="technology-detail.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Tecnologia</a></li>
-                            <li><a href="galeria.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Galería</a></li>
-                            <li><a href="team.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Equipo</a></li>
-                            <li><a href="index.html#Contacto"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Contacto</a></li>
-                        </ul>
-                    </nav>
+
+                <!------------------ 
+                # Navigation Bar (Mobile)
+                -------------------->
+                <input class="menu-icon mobile-only" type="checkbox" id="menu-icon" name="menu-icon"
+                    title="Abrir menú de navegación móvil" />
+                <label for="menu-icon" class="mobile-only"></label>
+                <nav class="nav mobile-only">
+                    <ul>
+                        <li class="mobile-menu-first-item"><a href="index.html#Equipo"
+                                onclick="document.getElementById('menu-icon').checked=false;">Regresar</a> </li>
+                        <li><a href="index.html#Contacto"
+                                onclick="document.getElementById('menu-icon').checked=false;">Contacto</a></li>
+                    </ul>
+                </nav>
             </header>
 
+            <!-------------------------- 
+            # Mobile Navigation Button
+            ------------------------>
             <div class="flex md:hidden">
                 <button id="mobile-menu-button" class="relative w-10 h-10 focus:outline-none group"
                     aria-label="Toggle menu">
@@ -171,16 +182,17 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </section>
         </main>
 
-      <footer id="footer">
+        <footer id="footer">
             <div class="col col1">
                 <h3 class="glow-text focus:outline-none focus:ring-0">Proyecto SignaLink</h3>
-                <span  style="font-style: italic;">Proyecto por Alumnos de la Escuela de Educación Secundaria Técnica Nº7 "Taller Regional Quilmes"
+                <span style="font-style: italic;">Proyecto por Alumnos de la Escuela de Educación Secundaria Técnica Nº7
+                    "Taller Regional Quilmes"
                     IMPA
                 </span>
                 <div class="social">
@@ -209,9 +221,10 @@
                         </svg>
                     </a>
                 </div>
-                <span style="color: #818181; font-size: smaller;" class="derechos">2025 © Todos los derechos reservados</span>
+                <span style="color: #818181; font-size: smaller;" class="derechos">2025 © Todos los derechos
+                    reservados</span>
             </div>
-               <div class="col col2 sebita-cuadro">
+            <div class="col col2 sebita-cuadro">
                 <a href="index.html#Equipo">Sobre Nosotros</a>
                 <a href="index.html#objetivo">Nuestra Misión</a>
                 <a href="technology-detail.html#modelado3d">Modelado 3D</a>
@@ -225,7 +238,8 @@
             </div>
             <div class="backdrop"></div>
 
-             <span style="color: #818181; font-size: smaller;" class="derechos2">2025 © Todos los derechos reservados</span>
+            <span style="color: #818181; font-size: smaller;" class="derechos2">2025 © Todos los derechos
+                reservados</span>
         </footer>
     </div>
 

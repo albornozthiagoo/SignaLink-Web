@@ -27,14 +27,14 @@
     <div id="main-content">
         <div class="bg-black text-white font-['Space_Grotesk'] overflow-x-hidden">
             <!------------------ 
-            # Navigation Bar
-            ------------------>
+            # Navigation Bar (Desktop)
+            -------------------->
             <header>
                 <nav id="navbar"
                     class="fixed top-0 left-0 right-0 bg-gray-900/70 backdrop-blur-lg border-b border-cyan-500/30 z-50 transition-all duration-300">
                     <div class="container mx-auto px-6 py-3">
                         <div class="flex items-center justify-between">
-                            <!-- Logo -->
+                            <!-- Logo SIEMPRE visible -->
                             <div class="flex items-center">
                                 <img src="img/logo/signalinkicon.png" alt="Logo SignaLink"
                                     class="w-10 h-10 object-contain" />
@@ -43,11 +43,17 @@
                                     SignaLink
                                 </div>
                             </div>
-                            <!-- Desktop Navigation -->
+                            <!-- Desktop Navigation SOLO visible en desktop -->
                             <div class="hidden md:flex items-center space-x-1">
-                                <a href="index.html#galeria"
-                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Regresar</a>
-                                <a href="index.html#Contacto"
+                                <a href="index.html#Inicio"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2  transition-colors duration-200 focus:outline-none focus:ring-0">Inicio</a>
+                                <a href="technology-detail.html"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Tecnología</a>
+                                <a href="galeria.html"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Galería</a>
+                                <a href="team.html"
+                                    class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Equipo</a>
+                                <a href="#Contacto"
                                     class="nav-link text-gray-300 hover:text-yellow-400 px-4 py-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-0">Contacto</a>
                             </div>
                         </div>
@@ -55,32 +61,24 @@
                 </nav>
 
                 <!------------------ 
-            # Navigation Bar (Mobile)
-            -------------------->
-
-                <label><input class="menu-icon mobile-only" type="checkbox" id="menu-icon">
-                    name="menu-icon" />
-                    <label for="menu-icon" class="mobile-only"></label>
-                    <nav class="nav mobile-only">
-                        <ul>
-                            <li style="margin-top: 70px;"><a href="index.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Inicio</a> </li>
-                            <li><a href="technology-detail.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Tecnologia</a></li>
-                            <li><a href="galeria.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Galería</a></li>
-                            <li><a href="team.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Equipo</a></li>
-                            <li><a href="index.html#Contacto"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Contacto</a></li>
-                        </ul>
-                    </nav>
-
+                # Navigation Bar (Mobile)
+                -------------------->
+                <input class="menu-icon mobile-only" type="checkbox" id="menu-icon" name="menu-icon"
+                    title="Abrir menú de navegación móvil" />
+                <label for="menu-icon" class="mobile-only"></label>
+                <nav class="nav mobile-only">
+                    <ul>
+                        <li class="mobile-menu-first-item"><a href="index.html#galeria"
+                                onclick="document.getElementById('menu-icon').checked=false;">Regresar</a> </li>
+                        <li><a href="index.html#Contacto"
+                                onclick="document.getElementById('menu-icon').checked=false;">Contacto</a></li>
+                    </ul>
+                </nav>
             </header>
 
             <!-------------------------- 
             # Mobile Navigation Button
-            ---------------------------->
+            ------------------------>
             <div class="flex md:hidden">
                 <button id="mobile-menu-button" class="relative w-10 h-10 focus:outline-none group"
                     aria-label="Toggle menu">
@@ -102,7 +100,8 @@
                     <div class="max-w-5xl mx-auto">
                         <div class="text-center mb-12">
                             <div class="inline-block mb-3">
-                                <div class="text-xs text-gray-400 tracking-widest uppercase mb-1">Nuestros Avances</div>
+                                <div class="text-xs text-gray-400 tracking-widest uppercase mb-1">Nuestros Avances
+                                </div>
                                 <div class="text-4xl md:text-5xl font-bold text-white">
                                     Galería</div>
                             </div>
@@ -113,7 +112,8 @@
                         <div class="gallery-section" id="prototipo-section">
                             <div class="section-header">
                                 <h2 class="section-title">Prototipo</h2>
-                                <p class="section-description">Avances del desarrollo y construcción del producto final
+                                <p class="section-description">Avances del desarrollo y construcción del producto
+                                    final
                                 </p>
                                 <div class="expand-button">
                                     <span>Ver todas las imágenes</span>
@@ -136,7 +136,8 @@
                                                 <div class="text-xl font-medium text-white mb-2">Entorno Virtual en
                                                     Rasperry Pi Zero 2W</div>
                                                 <p class="text-gray-200 mb-4">Desarrollando el entorno virtul de
-                                                    SignaLink para ejecución de servicios y mejora de rendimiento.</p>
+                                                    SignaLink para ejecución de servicios y mejora de rendimiento.
+                                                </p>
                                             </div>
                                         </div>
                                         <img src="img/avances/prototipo/virtualenvironmentraspb.jpeg"
@@ -149,9 +150,11 @@
                                             class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                             <div
                                                 class="text-center p-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
-                                                <div class="text-xl font-medium text-white mb-2">Comunicación Bluetooth
+                                                <div class="text-xl font-medium text-white mb-2">Comunicación
+                                                    Bluetooth
                                                     Low Energy</div>
-                                                <p class="text-gray-200 mb-4">Configurando ambos ESP32 como servidor y
+                                                <p class="text-gray-200 mb-4">Configurando ambos ESP32 como servidor
+                                                    y
                                                     cliente para el envío de datos.</p>
                                             </div>
                                         </div>
@@ -164,7 +167,8 @@
                                             class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                             <div
                                                 class="text-center p-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
-                                                <div class="text-xl font-medium text-white mb-2">Prototipo Version 1.0
+                                                <div class="text-xl font-medium text-white mb-2">Prototipo Version
+                                                    1.0
                                                 </div>
                                                 <p class="text-gray-200 mb-4">Primer version para el sosten de los
                                                     sensores flex</p>
@@ -180,7 +184,8 @@
                                             class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                             <div
                                                 class="text-center p-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
-                                                <div class="text-xl font-medium text-white mb-2">Prototipo Version 1.1
+                                                <div class="text-xl font-medium text-white mb-2">Prototipo Version
+                                                    1.1
                                                 </div>
                                                 <p class="text-gray-200 mb-4">Probando la segunda version mas
                                                     ergoconomica para los sensores flex</p>
@@ -195,8 +200,10 @@
                                             class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                             <div
                                                 class="text-center p-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
-                                                <div class="text-xl font-medium text-white mb-2">PCB Version 1.0</div>
-                                                <p class="text-gray-200 mb-4">Diseñando la placa para el modulo de la
+                                                <div class="text-xl font-medium text-white mb-2">PCB Version 1.0
+                                                </div>
+                                                <p class="text-gray-200 mb-4">Diseñando la placa para el modulo de
+                                                    la
                                                     muñeca</p>
                                             </div>
                                         </div>
@@ -209,8 +216,10 @@
                                             class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                             <div
                                                 class="text-center p-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
-                                                <div class="text-xl font-medium text-white mb-2">PCB Version 1.1</div>
-                                                <p class="text-gray-200 mb-4">Optimización de la placa para el modulo de
+                                                <div class="text-xl font-medium text-white mb-2">PCB Version 1.1
+                                                </div>
+                                                <p class="text-gray-200 mb-4">Optimización de la placa para el
+                                                    modulo de
                                                     la muñeca</p>
                                             </div>
                                         </div>
@@ -223,9 +232,11 @@
                                             class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                             <div
                                                 class="text-center p-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
-                                                <div class="text-xl font-medium text-white mb-2">Placa del modulo de la
+                                                <div class="text-xl font-medium text-white mb-2">Placa del modulo de
+                                                    la
                                                     muñeca</div>
-                                                <p class="text-gray-200 mb-4">Limpiando la placa de cobre con virulana
+                                                <p class="text-gray-200 mb-4">Limpiando la placa de cobre con
+                                                    virulana
                                                     para que este mas brillante</p>
                                             </div>
                                         </div>
@@ -241,7 +252,8 @@
                                                 class="text-center p-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
                                                 <div class="text-xl font-medium text-white mb-2">Instrumental para
                                                     placas</div>
-                                                <p class="text-gray-200 mb-4">Usando las herramientas necesarias para el
+                                                <p class="text-gray-200 mb-4">Usando las herramientas necesarias
+                                                    para el
                                                     armado de la placa de la mano</p>
                                             </div>
                                         </div>
@@ -269,9 +281,11 @@
                                             class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                             <div
                                                 class="text-center p-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
-                                                <div class="text-xl font-medium text-white mb-2">Diseño 3D del modulo
+                                                <div class="text-xl font-medium text-white mb-2">Diseño 3D del
+                                                    modulo
                                                     del pecho</div>
-                                                <p class="text-gray-200 mb-4">Utilizamos Fusion 3D para saber como irán
+                                                <p class="text-gray-200 mb-4">Utilizamos Fusion 3D para saber como
+                                                    irán
                                                     cada componente dentro de la caja del pecho</p>
                                             </div>
                                         </div>
@@ -286,7 +300,8 @@
                                                 class="text-center p-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
                                                 <div class="text-xl font-medium text-white mb-2">Funcionamiento del
                                                     elevaodr de voltaje</div>
-                                                <p class="text-gray-200 mb-4">Comprobando el sistema de alimentación del
+                                                <p class="text-gray-200 mb-4">Comprobando el sistema de alimentación
+                                                    del
                                                     modulo del pecho</p>
                                             </div>
                                         </div>
@@ -316,9 +331,12 @@
                                             class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                             <div
                                                 class="text-center p-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
-                                                <div class="text-xl font-medium text-white mb-2">Agujereando pines</div>
-                                                <p class="text-gray-200 mb-4">Utilizamos un mini torno con una mecha de
-                                                    0.6 mm para agujerear los pines en donde irán los componentes</p>
+                                                <div class="text-xl font-medium text-white mb-2">Agujereando pines
+                                                </div>
+                                                <p class="text-gray-200 mb-4">Utilizamos un mini torno con una mecha
+                                                    de
+                                                    0.6 mm para agujerear los pines en donde irán los componentes
+                                                </p>
                                             </div>
                                         </div>
                                         <img src="img/avances/prototipo/mini_torno.jpg"
@@ -331,9 +349,11 @@
                                             class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                             <div
                                                 class="text-center p-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
-                                                <div class="text-xl font-medium text-white mb-2">Diseño 1.0 de la placa
+                                                <div class="text-xl font-medium text-white mb-2">Diseño 1.0 de la
+                                                    placa
                                                 </div>
-                                                <p class="text-gray-200 mb-4">Primer prototipo pcb hecho en UADE para
+                                                <p class="text-gray-200 mb-4">Primer prototipo pcb hecho en UADE
+                                                    para
                                                     los sensores de la muñeca</p>
                                             </div>
                                         </div>
@@ -384,7 +404,8 @@
                                             class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                             <div
                                                 class="text-center p-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
-                                                <div class="text-xl font-medium text-white mb-2">Visita a la biblioteca
+                                                <div class="text-xl font-medium text-white mb-2">Visita a la
+                                                    biblioteca
                                                 </div>
                                                 <p class="text-gray-200 mb-4">Nuestra bibliotecaria Belen nos enseña
                                                     comunicación en lenguas de señas</p>
@@ -414,9 +435,11 @@
                                             class="absolute inset-0 bg-gradient-to-br from-gray-700/80 to-gray-700/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center">
                                             <div
                                                 class="text-center p-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
-                                                <div class="text-xl font-medium text-white mb-2">Nuestra Presentación en
+                                                <div class="text-xl font-medium text-white mb-2">Nuestra
+                                                    Presentación en
                                                     UADE</div>
-                                                <p class="text-gray-200 mb-4">Participación en BitSquat y Presentación
+                                                <p class="text-gray-200 mb-4">Participación en BitSquat y
+                                                    Presentación
                                                     del proyecto a los alumnos de UADE</p>
                                             </div>
                                         </div>
@@ -437,7 +460,8 @@
         <footer id="footer">
             <div class="col col1">
                 <h3 class="glow-text focus:outline-none focus:ring-0" z>Proyecto SignaLink</h3>
-                <span style="font-style: italic;">Proyecto por Alumnos de la Escuela de Educación Secundaria Técnica Nº7
+                <span style="font-style: italic;">Proyecto por Alumnos de la Escuela de Educación Secundaria Técnica
+                    Nº7
                     "Taller Regional Quilmes"
                     IMPA
                 </span>

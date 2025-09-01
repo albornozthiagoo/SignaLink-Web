@@ -29,7 +29,6 @@
     ------------------>
     <link href="img/logo/signalinkicon.png" rel="icon" type="image/png">
 
-    <!-- Tu inicialización -->
     <script>
         (function () {
             // Detectar si la navegación fue por reload (F5)
@@ -45,6 +44,7 @@
             }
         })();
     </script>
+
 </head>
 
 <body>
@@ -92,22 +92,23 @@
                 <!------------------ 
                 # Navigation Bar (Mobile)
                 -------------------->
-                <label><input class="menu-icon mobile-only" type="checkbox" id="menu-icon" name="menu-icon" />
-                    <label for="menu-icon" class="mobile-only"></label>
-                    <nav class="nav mobile-only">
-                        <ul>
-                            <li style="margin-top: 70px;"><a href="#Inicio"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Inicio</a> </li>
-                            <li><a href="technology-detail.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Tecnologia</a></li>
-                            <li><a href="galeria.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Galería</a></li>
-                            <li><a href="team.html"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Equipo</a></li>
-                            <li><a href="#Contacto"
-                                    onclick="document.getElementById('menu-icon').checked=false;">Contacto</a></li>
-                        </ul>
-                    </nav>
+                <input class="menu-icon mobile-only" type="checkbox" id="menu-icon" name="menu-icon"
+                    title="Abrir menú de navegación móvil" />
+                <label for="menu-icon" class="mobile-only"></label>
+                <nav class="nav mobile-only">
+                    <ul>
+                        <li class="mobile-menu-first-item"><a href="#Inicio"
+                                onclick="document.getElementById('menu-icon').checked=false;">Inicio</a> </li>
+                        <li><a href="technology-detail.html"
+                                onclick="document.getElementById('menu-icon').checked=false;">Tecnologia</a></li>
+                        <li><a href="galeria.html"
+                                onclick="document.getElementById('menu-icon').checked=false;">Galería</a></li>
+                        <li><a href="team.html" onclick="document.getElementById('menu-icon').checked=false;">Equipo</a>
+                        </li>
+                        <li><a href="#Contacto"
+                                onclick="document.getElementById('menu-icon').checked=false;">Contacto</a></li>
+                    </ul>
+                </nav>
             </header>
 
             <!-------------------------- 
@@ -829,9 +830,9 @@
         # Footer Sección
         ---------------------------->
         <footer id="footer">
-            <div class="col col1">
+            <div class="w-full col col1">
                 <h3 class="glow-text focus:outline-none focus:ring-0" z>Proyecto SignaLink</h3>
-                <span style="font-style: italic;">Proyecto por Alumnos de la Escuela de Educación Secundaria Técnica Nº7
+                <span class="italic-text">Proyecto por Alumnos de la Escuela de Educación Secundaria Técnica Nº7
                     "Taller Regional Quilmes"
                     IMPA
                 </span>
@@ -861,7 +862,7 @@
                         </svg>
                     </a>
                 </div>
-                <span style="color: #818181; font-size: smaller;" class="derechos">2025 © Todos los derechos
+                <span class="derechos">2025 © Todos los derechos
                     reservados</span>
             </div>
             <div class="col col2 sebita-cuadro">
@@ -878,7 +879,7 @@
             </div>
             <div class="backdrop"></div>
 
-            <span style="color: #818181; font-size: smaller;" class="derechos2">2025 © Todos los derechos
+            <span class="derechos2">2025 © Todos los derechos
                 reservados</span>
         </footer>
     </div>

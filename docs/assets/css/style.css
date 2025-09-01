@@ -1214,7 +1214,6 @@ body {
   align-items: center;      /* centra horizontalmente */
   height: 100%;             /* el contenedor debe tener altura */
   text-align: center;       /* por si acaso */
-
 }
 
 .sebita-cuadro a {
@@ -1226,13 +1225,13 @@ body {
 }
 
 .sebita-cuadro a:hover {
-  
   color: #ffbb00;
   transform: scale(1.05);
   text-shadow: 0 0 8px #ffbb00;
 }
 
-
+.derechos, .derechos2 { color: #ffffff; font-size: smaller; }
+.mobile-menu-first-item { margin-top: 70px; }
 
 /*-------------------------- 
 # INICIO: CÓDIGO DEL NUEVO FOOTER
@@ -1240,7 +1239,6 @@ body {
 @import url("https://fonts.googleapis.com/css?family=IBM%20Plex%20Sans:500|IBM%20Plex%20Sans:300");
 
 footer#footer {
-
   z-index: 500;
   width: 100%;
   min-height: 60vh; /* Altura para que el efecto sea notable */
@@ -1259,10 +1257,7 @@ footer#footer {
 }
 
 @media (max-width: 768px) {
-  . {
-    flex-direction: column;  /* se apilan verticalmente */
-    align-items: center;     /* centrados */
-  }
+  /* Removed invalid selector. If you intended to target a class, replace '. {' with the correct class name. */
 }
 
 /* Este es el elemento CLAVE para el efecto de desvanecimiento */
@@ -1287,16 +1282,16 @@ footer#footer .backdrop {
   z-index: -5;
   position: absolute;
   inset: 0;
-  backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
-  mask-image: linear-gradient(
+  backdrop-filter: blur(40px);
+  -webkit-mask-image: linear-gradient(
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0.5) 10%,
     rgba(0, 0, 0, 0.8) 20%,
     rgba(0, 0, 0, 1) 30%,
     rgb(0, 0, 0)
   );
-  -webkit-mask-image: linear-gradient(
+  mask-image: linear-gradient(
     rgba(0, 0, 0, 0),
     rgba(0, 0, 0, 0.5) 10%,
     rgba(0, 0, 0, 0.8) 20%,
@@ -2004,7 +1999,7 @@ footer#footer .social .link svg {
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 1300px;
+    max-width: none;
     margin: 0 auto;
 }
 
