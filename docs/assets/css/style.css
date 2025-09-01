@@ -1894,6 +1894,7 @@ footer#footer .social .link svg {
     border-radius: 15px;
     overflow: hidden;
     margin-right: 30px;
+    height: auto;
 }
 
 .carousel-slide {
@@ -1901,6 +1902,7 @@ footer#footer .social .link svg {
     top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
     opacity: 0;
     transition: opacity 0.6s ease-in-out;
 }
@@ -1912,6 +1914,7 @@ footer#footer .social .link svg {
 .carousel-slide img {
     width: 100%;
     height: auto;
+    object-fit: contain;
     display: block;
     border-radius: 15px;
 }
@@ -1923,21 +1926,6 @@ footer#footer .social .link svg {
     transform: translateX(-50%);
     text-align: center;
     z-index: 10;
-}
-
-.dot {
-    height: 10px;
-    width: 10px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 0 5px;
-    cursor: pointer;
-    transition: background-color 0.6s ease;
-}
-
-.dot.active {
-    background-color: #717171;
 }
 
 .history-content {
@@ -1962,9 +1950,10 @@ footer#footer .social .link svg {
 }
 
 .stats-container {
-    display: grid;
+    display: grid; /* Mantenemos el grid para la vista de escritorio */
     grid-template-columns: repeat(2, 1fr);
     gap: 20px 30px;
+    margin-left: 70px;
 }
 
 .stats-item {
@@ -1977,6 +1966,9 @@ footer#footer .social .link svg {
     font-size: 2.5rem;
     color: #b27f0a;
     margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .stats-item h1 {
@@ -1990,6 +1982,7 @@ footer#footer .social .link svg {
     color: #a9a9a9;
     margin-bottom: 0;
 }
+
 
 /* Estilos de FOOTER corregidos */
 #footer {
@@ -2073,26 +2066,37 @@ footer#footer .social .link svg {
     .carousel-container {
         width: 100%;
         margin-right: 0;
-        /* IMPORTANTE: Ajuste para móviles */
         position: relative;
-        height: auto; /* Permite que el contenedor se ajuste a la imagen */
+        height: 400px;
     }
 
     .carousel-slide {
-        /* IMPORTANTE: Ajuste para móviles */
-        position: relative;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         opacity: 0;
         transition: opacity 0.6s ease-in-out;
     }
-
+    
     .carousel-slide.active {
         opacity: 1;
+    }
+
+    .carousel-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 15px;
     }
 
     .history-content {
         width: 100%;
         margin-right: 0;
         margin-bottom: 2rem;
+        margin-top: 30px;
     }
 
     .history-content h3 {
@@ -2104,19 +2108,28 @@ footer#footer .social .link svg {
     }
 
     .stats-container {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 15px;
+        align-items: center;
     }
 
     .stats-item {
-        justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: left;
         white-space: normal;
-        text-align: center;
+        width: 100%;
+        max-width: 300px; /* ¡CAMBIO CLAVE! Esto limita el ancho para que el bloque se centre */
     }
     
     .stats-item i {
         font-size: 2rem;
         margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .stats-item h1 {
@@ -2159,23 +2172,23 @@ footer#footer .social .link svg {
 }
 
 /* Media query específica para Mobile L (320px - 425px aprox) */
-@media (min-width: 320px) and (max-width: 425px) {
-    .history-card {
-        padding: 15px;
+    @media (min-width: 320px) and (max-width: 425px) {
+        .history-card {
+            padding: 15px;
+        }
+        .history-content h3 {
+            font-size: 1.3rem;
+        }
+        .history-content p {
+            font-size: 0.95rem;
+        }
+        .stats-item i {
+            font-size: 1.8rem;
+        }
+        .stats-item h1 {
+            font-size: 1.3rem;
+        }
+        .stats-item p {
+            font-size: 0.75rem;
+        }
     }
-    .history-content h3 {
-        font-size: 1.3rem;
-    }
-    .history-content p {
-        font-size: 0.95rem;
-    }
-    .stats-item i {
-        font-size: 1.8rem;
-    }
-    .stats-item h1 {
-        font-size: 1.3rem;
-    }
-    .stats-item p {
-        font-size: 0.75rem;
-    }
-}
