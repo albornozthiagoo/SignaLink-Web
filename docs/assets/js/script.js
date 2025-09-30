@@ -14,7 +14,7 @@ window.addEventListener("load", function () {
         setTimeout(() => {
           const offsetTop = targetSection.offsetTop - 70; // ajuste por navbar
           window.scrollTo({ top: offsetTop, behavior: "smooth" });
-        }, 100);
+        }, 50);
       }
     }
 
