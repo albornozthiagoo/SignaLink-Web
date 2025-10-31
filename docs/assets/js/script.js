@@ -152,6 +152,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Envío del formulario a Resend ---
   const form = document.querySelector("form");
   if (form) {
+    // API base: usar http en entorno local (localhost), y HTTPS en producción.
+    // IMPORTANTE: Reemplazar 'https://your-production-api.example' por la URL de tu servidor
+    // que esté disponible vía HTTPS (por ejemplo, una URL de ngrok o la URL del servidor desplegado).
+    const API_BASE = (function () {
+      if (
+        location.hostname === "localhost" ||
+        location.hostname === "127.0.0.1"
+      ) {
+        return "http://localhost:3000";
+      }
+      // Para producción/página alojada en HTTPS, usar HTTPS en el backend.
+      // Si no tienes un backend público aún, puedes crear un túnel HTTPS (ngrok) y poner esa URL aquí.
+      return "https://signalink2025.com";
+    })();
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
@@ -161,22 +176,31 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = document.querySelector("#message").value;
 
       try {
-        const res = await fetch("http://localhost:3000/send", {
+        const res = await fetch(`${API_BASE}/send`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email, subject, message }),
         });
 
-        const data = await res.json();
+        if (!res.ok) {
+          // Mostrar información más detallada en consola para depuración
+          const text = await res.text().catch(() => null);
+          console.error("Error response from API", res.status, text);
+          alert("❌ Error al enviar el mensaje (respuesta del servidor)");
+          return;
+        }
+
+        const data = await res.json().catch(() => ({}));
         if (data.success) {
           alert("✅ Mensaje enviado correctamente");
           form.reset();
         } else {
           alert("❌ Error al enviar el mensaje");
+          console.warn("API returned success=false", data);
         }
       } catch (err) {
         alert("❌ Error de conexión con el servidor");
-        console.error(err);
+        console.error("Fetch error:", err);
       }
     });
   }

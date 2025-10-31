@@ -1594,7 +1594,8 @@ footer#footer .social .link svg {
   flex-direction: column;
   align-items: center;
   min-height: 200px;
-  margin-top: 15.5rem;
+  /* Reducido para quitar el exceso de espacio entre el título y los sponsors */
+  margin-top: 3rem;
   position: relative;
   overflow: hidden;
 }
