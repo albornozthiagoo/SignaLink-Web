@@ -1,35 +1,41 @@
 // server.js
-import express from 'express'
-import cors from 'cors'
-import dotenv from 'dotenv'
-import { Resend } from 'resend'
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import { Resend } from "resend";
 
-dotenv.config({ path: '.env.local' })
+dotenv.config({ path: ".env.local" });
 
-const app = express()
-const port = process.env.PORT || 3000
-const resend = new Resend(process.env.RESEND_API_KEY)
+const app = express();
+const port = process.env.PORT || 3000;
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-app.use(cors())
-app.use(express.json())
+app.use(
+  cors({
+    origin: ["http://localhost:5500", "http://127.0.0.1:5500"],
+    methods: ["POST"],
+    allowedHeaders: ["Content-Type", "Accept"],
+  })
+);
+app.use(express.json());
 
-app.post('/send', async (req, res) => {
-  const { name, email, subject, message } = req.body
+app.post("/send", async (req, res) => {
+  const { name, email, subject, message } = req.body;
 
   try {
     const data = await resend.emails.send({
-      from: 'Contacto Web <onboarding@resend.dev>',
-      to: 'signalink2025@gmail.com',
+      from: "Contacto Web <onboarding@resend.dev>",
+      to: "signalink2025@gmail.com",
       subject: `Mensaje de ${name}: ${subject}`,
-      html: `<p><strong>Nombre:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Mensaje:</strong><br>${message}</p>`
-    })
+      html: `<p><strong>Nombre:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Mensaje:</strong><br>${message}</p>`,
+    });
 
-    res.status(200).json({ success: true, id: data.id })
+    res.status(200).json({ success: true, id: data.id });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message })
+    res.status(500).json({ success: false, error: error.message });
   }
-})
+});
 
 app.listen(port, () => {
-  console.log(`Servidor corriendo en http://localhost:${port}`)
-})
+  console.log(`Servidor corriendo en http://localhost:${port}`);
+});

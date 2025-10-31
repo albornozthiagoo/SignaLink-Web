@@ -149,58 +149,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
   highlightCurrentSection();
 
-  // --- Envío del formulario a Resend ---
-  const form = document.querySelector("form");
-  if (form) {
-    // API base: usar http en entorno local (localhost), y HTTPS en producción.
-    // IMPORTANTE: Reemplazar 'https://your-production-api.example' por la URL de tu servidor
-    // que esté disponible vía HTTPS (por ejemplo, una URL de ngrok o la URL del servidor desplegado).
-    const API_BASE = (function () {
-      if (
-        location.hostname === "localhost" ||
-        location.hostname === "127.0.0.1"
-      ) {
-        return "http://localhost:3000";
-      }
-      // Para producción/página alojada en HTTPS, usar HTTPS en el backend.
-      // Si no tienes un backend público aún, puedes crear un túnel HTTPS (ngrok) y poner esa URL aquí.
-      return "https://signalink2025.com";
-    })();
-
-    form.addEventListener("submit", async (e) => {
+  // Form submission handler
+  const contactForm = document.querySelector("#Contacto form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const name = document.querySelector("#name").value;
-      const email = document.querySelector("#email").value;
-      const subject = document.querySelector("#subject").value;
-      const message = document.querySelector("#message").value;
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const subject = document.getElementById("subject").value;
+      const message = document.getElementById("message").value;
+
+      if (!name || !email || !subject || !message) {
+        alert("Por favor complete todos los campos");
+        return;
+      }
 
       try {
-        const res = await fetch(`${API_BASE}/send`, {
+        const response = await fetch("https://api.signalink2025.com/send", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, subject, message }),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            subject,
+            message,
+          }),
         });
 
-        if (!res.ok) {
-          // Mostrar información más detallada en consola para depuración
-          const text = await res.text().catch(() => null);
-          console.error("Error response from API", res.status, text);
-          alert("❌ Error al enviar el mensaje (respuesta del servidor)");
-          return;
-        }
+        const data = await response.json();
 
-        const data = await res.json().catch(() => ({}));
         if (data.success) {
           alert("✅ Mensaje enviado correctamente");
-          form.reset();
+          contactForm.reset();
         } else {
           alert("❌ Error al enviar el mensaje");
-          console.warn("API returned success=false", data);
+          console.warn("Error:", data.error);
         }
-      } catch (err) {
-        alert("❌ Error de conexión con el servidor");
-        console.error("Fetch error:", err);
+      } catch (error) {
+        alert("❌ Error al enviar el mensaje");
+        console.error("Error:", error);
       }
     });
   }
