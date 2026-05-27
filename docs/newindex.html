@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SignaLink — Tus gestos hablan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  --black:   #08090c;
+  --black2:  #0e0f14;
+  --white:   #f5f3ee;
+  --white2:  #d8d4c8;
+  --gold:    #c9a84c;
+  --gold-lt: #e8cc80;
+  --gold-dk: #8a6820;
+  --gold-glow: rgba(201,168,76,0.18);
+  --gold-rim:  rgba(201,168,76,0.28);
+  --glass-bg:  rgba(255,255,255,0.035);
+  --glass-rim: rgba(255,255,255,0.09);
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Outfit', sans-serif;
+  --ease: cubic-bezier(.25,.46,.45,.94);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ─────────────────────────────────────────
+   CURSOR
+───────────────────────────────────────── */
+#cursor {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed; top:0; left:0;
+  pointer-events: none; z-index:9999;
+  transform: translate(-50%,-50%);
+  transition: width .2s, height .2s;
+  mix-blend-mode: screen;
+}
+#cursor-ring {
+  width: 32px; height: 32px;
+  border: 1px solid var(--gold-rim);
+  border-radius: 50%;
+  position: fixed; top:0; left:0;
+  pointer-events: none; z-index:9998;
+  transform: translate(-50%,-50%);
+}
+body:has(a:hover,button:hover) #cursor { width:20px; height:20px; }
+body:has(a:hover,button:hover) #cursor-ring { width:52px; height:52px; border-color:var(--gold); }
+
+/* ─────────────────────────────────────────
+   CANVAS BACKGROUND
+───────────────────────────────────────── */
+#bg-canvas {
+  position: fixed; inset:0;
+  width:100%; height:100%;
+  z-index:0; pointer-events:none;
+}
+
+/* ─────────────────────────────────────────
+   GRAIN
+───────────────────────────────────────── */
+body::after {
+  content:''; position:fixed; inset:0; z-index:1; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.5;
+}
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding: 28px 56px;
+  display:flex; align-items:center; justify-content:space-between;
+  transition: padding .4s, background .4s, border-color .4s;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  padding: 18px 56px;
+  background: rgba(8,9,12,.75);
+  backdrop-filter: blur(18px) saturate(1.2);
+  border-color: var(--glass-rim);
+}
+
+.nav-logo {
+  display:flex; align-items:center; gap:14px;
+  text-decoration:none;
+}
+.nav-logo img {
+  width:34px; height:34px;
+  filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(5deg) brightness(0.9);
+  opacity:.9;
+}
+.nav-logo-text {
+  font-family: var(--font-serif);
+  font-weight:600; font-size:1.3rem;
+  letter-spacing:.06em; color:var(--white);
+}
+
+.nav-links {
+  display:flex; gap:40px; list-style:none;
+}
+.nav-links a {
+  font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+  color: var(--white2); text-decoration:none;
+  transition: color .25s;
+  font-weight:400;
+}
+.nav-links a:hover { color: var(--gold-lt); }
+
+.nav-cta {
+  font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+  color: var(--gold) !important;
+  border: 1px solid var(--gold-rim);
+  padding: 9px 22px; border-radius: 1px;
+  transition: background .3s, color .3s !important;
+}
+.nav-cta:hover {
+  background: var(--gold); color: var(--black) !important;
+}
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+#hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 120px 72px 80px;
+  position: relative; z-index:1; overflow:hidden;
+  gap: 40px;
+}
+
+/* ambient glow behind glove */
+.hero-ambient {
+  position:absolute; right:-5%; top:50%;
+  transform:translateY(-50%);
+  width: 60vw; height: 80vh;
+  border-radius:50%;
+  background: radial-gradient(ellipse at center,
+    rgba(201,168,76,.13) 0%,
+    rgba(201,168,76,.05) 35%,
+    transparent 70%);
+  pointer-events:none;
+  animation: ambientPulse 7s ease-in-out infinite;
+}
+.hero-ambient-inner {
+  position:absolute; right:8%; top:50%;
+  transform:translateY(-50%);
+  width:38vw; height:55vh;
+  border-radius:50%;
+  background: radial-gradient(ellipse at center,
+    rgba(255,220,120,.08) 0%, transparent 65%);
+  pointer-events:none;
+  animation: ambientPulse 5s 1s ease-in-out infinite;
+}
+@keyframes ambientPulse {
+  0%,100%{opacity:.7;} 50%{opacity:1;}
+}
+
+/* — LEFT: text — */
+.hero-left {
+  display:flex; flex-direction:column; align-items:flex-start;
+  justify-content:center;
+  position:relative; z-index:2;
+}
+
+.hero-eyebrow {
+  font-size:.65rem; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:28px;
+  opacity:0; animation: fadeUp .9s .2s var(--ease) forwards;
+  display:flex; align-items:center; gap:12px;
+}
+.hero-eyebrow::before {
+  content:''; display:block; width:28px; height:1px; background:var(--gold);
+}
+
+.hero-title {
+  font-family:var(--font-serif);
+  font-weight:300;
+  font-size:clamp(3rem,6.5vw,8rem);
+  line-height:.92; letter-spacing:-.015em;
+  margin-bottom:32px;
+  opacity:0; animation: fadeUp 1.1s .4s var(--ease) forwards;
+  text-align:left;
+}
+.hero-title em {
+  font-style:italic;
+  background:linear-gradient(135deg, var(--gold-lt), var(--gold), var(--gold-dk));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-title .outline {
+  -webkit-text-stroke:1px rgba(245,243,238,.2);
+  -webkit-text-fill-color:transparent; color:transparent;
+}
+
+.hero-sub {
+  max-width:400px; font-size:.97rem; line-height:1.82;
+  color:var(--white2); font-weight:300; margin-bottom:44px;
+  opacity:0; animation:fadeUp .9s .65s var(--ease) forwards;
+  text-align:left;
+}
+
+.hero-ctas {
+  display:flex; gap:14px; align-items:center;
+  opacity:0; animation:fadeUp .9s .85s var(--ease) forwards;
+}
+
+/* — RIGHT: 3D glove — */
+.hero-right {
+  position:relative; z-index:2;
+  display:flex; align-items:center; justify-content:center;
+  height:100%;
+  perspective: 1000px;
+}
+
+/* layered 3D scene container */
+.glove-scene {
+  position:relative;
+  width: min(550px, 46vw);
+  aspect-ratio: 1.3/1;
+  transform-style: preserve-3d;
+  /* will be driven by JS mouse */
+  transition: transform .08s linear;
+}
+
+/* ring lines behind */
+.glove-ring {
+  position:absolute; inset:-8%;
+  border-radius:50%;
+  border:1px solid var(--gold-rim);
+  opacity:0;
+  animation: ringReveal 1.2s 1.1s var(--ease) forwards;
+  transform-origin:center;
+}
+.glove-ring:nth-child(2) {
+  inset:-18%; border-color:rgba(201,168,76,.12);
+  animation-delay:1.3s;
+}
+@keyframes ringReveal {
+  from{opacity:0;transform:scale(.88);}
+  to{opacity:1;transform:scale(1);}
+}
+
+/* scan line sweep */
+.glove-scan {
+  position:absolute; left:0; right:0;
+  height:2px;
+  background:linear-gradient(to right, transparent, var(--gold-lt), transparent);
+  opacity:0;
+  animation: scanReveal 3s 1.4s ease-in-out infinite;
+  z-index:4; pointer-events:none;
+}
+@keyframes scanReveal {
+  0%  {top:0%; opacity:0;}
+  10% {opacity:.7;}
+  90% {opacity:.4;}
+  100%{top:100%;opacity:0;}
+}
+
+/* corner brackets */
+.glove-frame {
+  position:absolute; inset:0; z-index:3; pointer-events:none;
+  opacity:0; animation:fadeIn .8s 1s forwards;
+}
+.glove-frame::before, .glove-frame::after,
+.glove-frame span::before, .glove-frame span::after {
+  content:''; position:absolute; width:22px; height:22px;
+}
+.glove-frame::before {
+  top:0;left:0;
+  border-top:1px solid var(--gold);border-left:1px solid var(--gold);
+}
+.glove-frame::after {
+  top:0;right:0;
+  border-top:1px solid var(--gold);border-right:1px solid var(--gold);
+}
+.glove-frame span::before {
+  bottom:0;left:0;
+  border-bottom:1px solid var(--gold);border-left:1px solid var(--gold);
+}
+.glove-frame span::after {
+  bottom:0;right:0;
+  border-bottom:1px solid var(--gold);border-right:1px solid var(--gold);
+}
+
+/* HUD tag */
+.glove-hud {
+  position:absolute; bottom:-28px; right:0;
+  font-size:.6rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--gold); opacity:.7;
+  display:flex; align-items:center; gap:8px;
+}
+.glove-hud::before {
+  content:''; width:8px; height:8px; border-radius:50%;
+  background:var(--gold);
+  animation:blink 1.8s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+
+/* The actual glove image — layer 0 (base) */
+.glove-img-wrap {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  z-index:2;
+}
+.glove-img {
+  width:100%; height:100%;
+  object-fit:contain;
+  opacity:0;
+  animation:gloveReveal 1.4s .7s var(--ease) forwards;
+  /* subtle drop shadow for depth */
+  filter:
+    drop-shadow(0 24px 48px rgba(0,0,0,.9))
+    drop-shadow(0 0 60px rgba(201,168,76,.22))
+    drop-shadow(0 0 120px rgba(201,168,76,.1));
+  transform-origin: center bottom;
+  /* parallax layer, moved by JS at different depth */
+  will-change:transform;
+}
+@keyframes gloveReveal {
+  from{opacity:0; transform:translateY(32px) scale(.97);}
+  to  {opacity:1; transform:translateY(0) scale(1);}
+}
+
+/* reflection / floor shadow */
+.glove-reflection {
+  position:absolute; bottom:-18px; left:50%;
+  transform:translateX(-50%);
+  width:70%; height:40px;
+  background:radial-gradient(ellipse, rgba(201,168,76,.18) 0%, transparent 70%);
+  filter:blur(10px);
+  z-index:1; pointer-events:none;
+}
+
+/* data label overlays */
+.glove-label {
+  position:absolute; z-index:5;
+  display:flex; align-items:center; gap:8px;
+  font-size:.6rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gold); opacity:0;
+  pointer-events:none;
+}
+.glove-label::before {
+  content:''; width:20px; height:1px; background:var(--gold); flex-shrink:0;
+}
+.glove-label.lbl-1 { top:22%; left:-60px; animation:lblReveal .8s 1.5s var(--ease) forwards; }
+.glove-label.lbl-2 { top:52%; left:-70px; animation:lblReveal .8s 1.7s var(--ease) forwards; flex-direction:row-reverse; }
+.glove-label.lbl-2::before { transform:scaleX(-1); }
+.glove-label.lbl-3 { bottom:20%; right:-60px; animation:lblReveal .8s 1.9s var(--ease) forwards; }
+@keyframes lblReveal{from{opacity:0;transform:translateX(-8px);}to{opacity:.8;transform:none;}}
+.glove-label.lbl-3{flex-direction:row-reverse;}
+.glove-label.lbl-3::before{transform:scaleX(-1);}
+
+.btn-gold {
+  background:linear-gradient(135deg, var(--gold-lt), var(--gold));
+  color:var(--black);
+  font-family:var(--font-sans);
+  font-weight:500; font-size:.72rem;
+  letter-spacing:.18em; text-transform:uppercase;
+  padding:16px 40px; border:none; border-radius:1px;
+  text-decoration:none; cursor:none;
+  position:relative; overflow:hidden;
+  transition:transform .2s, box-shadow .3s;
+  box-shadow:0 0 0 0 var(--gold-glow);
+}
+.btn-gold:hover {
+  transform:translateY(-2px);
+  box-shadow:0 8px 40px var(--gold-glow);
+}
+
+.btn-outline {
+  color:var(--white2);
+  font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+  text-decoration:none; padding:16px 32px;
+  border:1px solid var(--glass-rim); border-radius:1px;
+  transition:border-color .3s, color .3s; font-weight:400;
+}
+.btn-outline:hover { border-color:var(--gold-rim); color:var(--gold-lt); }
+
+.hero-scroll {
+  position:absolute; bottom:36px; left:72px;
+  display:flex; flex-direction:column; align-items:flex-start; gap:10px;
+  opacity:0; animation:fadeIn 1s 1.8s forwards;
+}
+.hero-scroll span { font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); }
+.hero-scroll-line {
+  width:1px; height:48px;
+  background:linear-gradient(to bottom, var(--gold), transparent);
+  animation:scrollLine 2.2s ease-in-out infinite;
+}
+@keyframes scrollLine{0%,100%{opacity:.3;height:32px}50%{opacity:1;height:52px}}
+
+/* RESPONSIVE: stack on mobile */
+@media(max-width:900px){
+  #hero {
+    grid-template-columns:1fr;
+    text-align:center; padding:120px 28px 80px;
+  }
+  .hero-left { align-items:center; }
+  .hero-title, .hero-sub { text-align:center; }
+  .hero-right { height:56vw; min-height:260px; }
+  .glove-scene { width:min(380px, 80vw); }
+  .glove-label { display:none; }
+  .hero-scroll { left:50%; transform:translateX(-50%); align-items:center; }
+}
+
+/* ─────────────────────────────────────────
+   SPONSORS
+───────────────────────────────────────── */
+#sponsors {
+  position:relative; z-index:1;
+  padding: 56px 0;
+  border-top: 1px solid var(--glass-rim);
+  border-bottom: 1px solid var(--glass-rim);
+  overflow:hidden;
+}
+.sponsors-label {
+  text-align:center; font-size:.62rem; letter-spacing:.22em;
+  text-transform:uppercase; color: var(--gold); margin-bottom:32px;
+  opacity:.7;
+}
+.sponsors-wrap { overflow:hidden; }
+.sponsors-track {
+  display:flex; gap:72px; align-items:center;
+  width:max-content;
+  animation: marquee 24s linear infinite;
+}
+.sponsors-track img {
+  height:34px; width:auto; flex-shrink:0;
+  filter: brightness(0) invert(1) opacity(.35);
+  transition:filter .3s;
+}
+.sponsors-track img:hover { filter:brightness(0) invert(1) opacity(.75); }
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ─────────────────────────────────────────
+   SHARED SECTION STRUCTURE
+───────────────────────────────────────── */
+section { position:relative; z-index:1; }
+
+.section-head {
+  max-width:1160px; margin:0 auto;
+  padding: 0 52px 64px;
+}
+.section-tag {
+  font-size:.62rem; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:18px;
+  display:flex; align-items:center; gap:12px;
+}
+.section-tag::before {
+  content:''; width:24px; height:1px; background:var(--gold);
+}
+.section-title {
+  font-family: var(--font-serif);
+  font-weight:300; font-size:clamp(2.6rem, 5.5vw, 5.2rem);
+  line-height:.95; letter-spacing:-.01em;
+}
+.section-title em {
+  font-style:italic;
+  background:linear-gradient(135deg, var(--gold-lt), var(--gold));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+
+/* ─────────────────────────────────────────
+   GLASS CARD BASE
+───────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-rim);
+  backdrop-filter: blur(20px) saturate(1.1);
+  -webkit-backdrop-filter: blur(20px) saturate(1.1);
+  border-radius:3px;
+  transition: border-color .35s, background .35s, transform .35s var(--ease);
+}
+.glass:hover {
+  border-color: var(--gold-rim);
+  background: rgba(255,255,255,.055);
+  transform:translateY(-3px);
+}
+
+/* ─────────────────────────────────────────
+   PROPÓSITOS
+───────────────────────────────────────── */
+#propositos { padding:120px 0 80px; }
+
+.prop-grid {
+  max-width:1160px; margin:0 auto; padding:0 52px;
+  display:grid; grid-template-columns:repeat(2,1fr); gap:16px;
+}
+
+.prop-card {
+  padding: 48px 44px;
+  position:relative; overflow:hidden;
+}
+.prop-card::before {
+  content:''; position:absolute; top:0; left:0;
+  width:1px; height:0;
+  background:linear-gradient(to bottom, var(--gold), transparent);
+  transition: height .5s var(--ease);
+}
+.prop-card:hover::before { height:100%; }
+
+.prop-num {
+  font-family:var(--font-serif); font-size:4.5rem; font-weight:300;
+  color: rgba(201,168,76,.07);
+  line-height:1; margin-bottom:24px;
+  letter-spacing:-.02em;
+  transition: color .4s;
+}
+.prop-card:hover .prop-num { color:rgba(201,168,76,.14); }
+.prop-name {
+  font-family:var(--font-serif); font-size:1.35rem; font-weight:400;
+  margin-bottom:14px; color:var(--white);
+}
+.prop-text { font-size:.9rem; line-height:1.8; color:var(--white2); font-weight:300; }
+
+/* ─────────────────────────────────────────
+   TECNOLOGÍA
+───────────────────────────────────────── */
+#tecnologia { padding:120px 0; }
+
+.tech-grid {
+  max-width:1160px; margin:0 auto; padding:0 52px;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+}
+
+.tech-card {
+  padding:44px 36px;
+  position:relative; overflow:hidden;
+}
+.tech-glow {
+  position:absolute; top:-60px; left:-60px;
+  width:180px; height:180px; border-radius:50%;
+  background:radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+  opacity:0; transition:opacity .4s;
+  pointer-events:none;
+}
+.tech-card:hover .tech-glow { opacity:1; }
+
+.tech-icon {
+  width:48px; height:48px; margin-bottom:28px;
+  border:1px solid var(--gold-rim); border-radius:2px;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(201,168,76,.06);
+}
+.tech-icon svg { width:20px; height:20px; stroke:var(--gold); fill:none; stroke-width:1.5; }
+.tech-name {
+  font-family:var(--font-serif); font-weight:400; font-size:1.3rem;
+  margin-bottom:14px; color:var(--white);
+}
+.tech-text { font-size:.88rem; line-height:1.82; color:var(--white2); margin-bottom:28px; font-weight:300; }
+.tech-link {
+  font-size:.65rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold); text-decoration:none;
+  display:inline-flex; align-items:center; gap:8px;
+  transition:gap .25s;
+}
+.tech-link:hover { gap:14px; }
+.tech-link::after { content:'→'; }
+
+/* ─────────────────────────────────────────
+   GALERÍA
+───────────────────────────────────────── */
+#galeria { padding:120px 0; }
+
+.gallery-grid {
+  max-width:1160px; margin:0 auto; padding:0 52px;
+  display:grid;
+  grid-template-columns: 1.55fr 1fr 1fr;
+  grid-template-rows: 260px 260px;
+  gap:10px;
+}
+.gal-item {
+  overflow:hidden; border-radius:2px;
+  position:relative;
+  border:1px solid var(--glass-rim);
+}
+.gal-item:first-child { grid-row:span 2; }
+.gal-item img {
+  width:100%; height:100%; object-fit:cover;
+  filter:brightness(.65) grayscale(.4) sepia(.12);
+  transition:transform .8s var(--ease), filter .5s;
+}
+.gal-item:hover img {
+  transform:scale(1.07);
+  filter:brightness(.8) grayscale(0) sepia(.08);
+}
+.gal-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(8,9,12,.88) 0%, transparent 55%);
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:24px; opacity:0; transition:opacity .35s;
+}
+.gal-item:hover .gal-overlay { opacity:1; }
+.gal-overlay-tag {
+  font-size:.6rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:4px;
+}
+.gal-overlay-title {
+  font-family:var(--font-serif); font-size:1rem; font-weight:400;
+}
+
+.gallery-more { text-align:center; margin-top:44px; }
+
+/* ─────────────────────────────────────────
+   EQUIPO
+───────────────────────────────────────── */
+#equipo { padding:120px 0; }
+
+.team-grid {
+  max-width:1160px; margin:0 auto; padding:0 52px;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+}
+.team-card { overflow:hidden; }
+.team-photo {
+  aspect-ratio:3/4; overflow:hidden;
+  position:relative;
+}
+.team-photo img {
+  width:100%; height:100%; object-fit:cover;
+  filter:brightness(.7) grayscale(.5) sepia(.1);
+  transition:transform .7s var(--ease), filter .5s;
+}
+.team-card:hover .team-photo img {
+  transform:scale(1.05);
+  filter:brightness(.85) grayscale(0) sepia(.05);
+}
+.team-photo-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(8,9,12,1) 0%, transparent 50%);
+}
+.team-info {
+  padding:20px 24px 24px;
+  background:var(--glass-bg);
+  border-top: 1px solid var(--glass-rim);
+}
+.team-name { font-family:var(--font-serif); font-size:1.1rem; font-weight:400; margin-bottom:10px; }
+.team-links { display:flex; gap:12px; }
+.team-links a {
+  font-size:.62rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--white2); text-decoration:none; transition:color .2s;
+  padding:4px 0; border-bottom:1px solid transparent;
+  transition:color .2s, border-color .2s;
+}
+.team-links a:hover { color:var(--gold); border-color:var(--gold-rim); }
+
+/* ─────────────────────────────────────────
+   CONTACTO
+───────────────────────────────────────── */
+#contacto { padding:120px 0; }
+
+.contact-wrap {
+  max-width:1160px; margin:0 auto; padding:0 52px;
+  display:grid; grid-template-columns:1fr 1fr; gap:80px;
+  align-items:start;
+}
+
+.contact-details {}
+.contact-row {
+  padding:28px 0;
+  border-bottom:1px solid var(--glass-rim);
+}
+.contact-row:first-child { padding-top:0; }
+.contact-row:last-of-type { border-bottom:none; }
+.contact-row-label {
+  font-size:.6rem; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:7px; opacity:.85;
+}
+.contact-row-val { font-size:.98rem; color:var(--white2); font-weight:300; line-height:1.6; }
+.contact-row-val a { color:var(--white); text-decoration:none; transition:color .2s; }
+.contact-row-val a:hover { color:var(--gold-lt); }
+
+.social-row { display:flex; gap:12px; margin-top:32px; }
+.social-btn {
+  font-size:.62rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--white2); text-decoration:none;
+  border:1px solid var(--glass-rim); padding:8px 16px; border-radius:1px;
+  transition:border-color .25s, color .25s;
+}
+.social-btn:hover { border-color:var(--gold-rim); color:var(--gold); }
+
+.contact-form {}
+.f-group { margin-bottom:18px; }
+.f-label {
+  display:block; font-size:.62rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--white2); margin-bottom:8px; opacity:.7;
+}
+.f-input, .f-select, .f-textarea {
+  width:100%;
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--glass-rim); border-radius:1px;
+  padding:14px 18px; color:var(--white);
+  font-family:var(--font-sans); font-size:.9rem; font-weight:300;
+  outline:none; transition:border-color .3s, background .3s;
+}
+.f-input:focus, .f-select:focus, .f-textarea:focus {
+  border-color:var(--gold-rim);
+  background:rgba(201,168,76,.04);
+}
+.f-input::placeholder, .f-textarea::placeholder { color:rgba(255,255,255,.2); }
+.f-textarea { resize:vertical; min-height:110px; }
+.f-select { appearance:none; cursor:none; }
+option { background:var(--black2); }
+
+.btn-send {
+  width:100%; margin-top:8px;
+  background:transparent;
+  border:1px solid var(--gold-rim); border-radius:1px;
+  color:var(--gold);
+  font-family:var(--font-sans); font-weight:400;
+  font-size:.72rem; letter-spacing:.2em; text-transform:uppercase;
+  padding:16px; cursor:none;
+  position:relative; overflow:hidden; transition:color .4s;
+}
+.btn-send::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, var(--gold-lt), var(--gold));
+  transform:translateY(101%);
+  transition:transform .4s var(--ease);
+}
+.btn-send:hover { color:var(--black); }
+.btn-send:hover::before { transform:none; }
+.btn-send span { position:relative; z-index:1; }
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer {
+  border-top:1px solid var(--glass-rim);
+  padding:44px 52px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:20px;
+  position:relative; z-index:1;
+}
+.footer-logo { display:flex; align-items:center; gap:12px; }
+.footer-logo img {
+  width:26px; opacity:.6;
+  filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(.85);
+}
+.footer-logo-name {
+  font-family:var(--font-serif); font-weight:400;
+  font-size:1rem; opacity:.6; letter-spacing:.06em;
+}
+.footer-copy { font-size:.68rem; letter-spacing:.1em; color:var(--white2); opacity:.4; }
+.footer-school {
+  font-size:.68rem; color:var(--white2); opacity:.4;
+  max-width:320px; line-height:1.5; text-align:right;
+}
+
+/* ─────────────────────────────────────────
+   REVEAL
+───────────────────────────────────────── */
+.reveal {
+  opacity:0; transform:translateY(28px);
+  transition:opacity .9s var(--ease), transform .9s var(--ease);
+}
+.reveal.in { opacity:1; transform:none; }
+.d1 { transition-delay:.08s; }
+.d2 { transition-delay:.16s; }
+.d3 { transition-delay:.24s; }
+.d4 { transition-delay:.32s; }
+.d5 { transition-delay:.40s; }
+
+/* ─────────────────────────────────────────
+   KEYFRAMES
+───────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(22px); }
+  to   { opacity:1; transform:none; }
+}
+@keyframes fadeIn { from{opacity:0}to{opacity:1} }
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media(max-width:960px) {
+  nav { padding:20px 28px; }
+  nav.scrolled { padding:16px 28px; }
+  .nav-links { display:none; }
+  .prop-grid   { grid-template-columns:1fr; padding:0 28px; }
+  .tech-grid   { grid-template-columns:1fr; padding:0 28px; }
+  .gallery-grid{ grid-template-columns:1fr; grid-template-rows:auto; padding:0 28px; }
+  .gal-item:first-child { grid-row:auto; }
+  .team-grid   { grid-template-columns:repeat(2,1fr); padding:0 28px; }
+  .contact-wrap{ grid-template-columns:1fr; gap:48px; padding:0 28px; }
+  footer       { padding:32px 28px; }
+  .footer-school { text-align:left; }
+  .section-head { padding:0 28px 48px; }
+  body { cursor:auto; }
+  #cursor, #cursor-ring { display:none; }
+}
+@media(max-width:600px) {
+  .team-grid  { grid-template-columns:1fr; }
+  .hero-ctas  { flex-direction:column; width:100%; }
+  .btn-gold, .btn-outline { width:100%; text-align:center; }
+  .gal-item   { min-height:200px; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">
+    <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/logo/signalinkicon.png" alt="SignaLink">
+    <span class="nav-logo-text">SignaLink</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#propositos">Objetivos</a></li>
+    <li><a href="#tecnologia">Tecnología</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-ambient"></div>
+  <div class="hero-ambient-inner"></div>
+
+  <!-- LEFT: copy -->
+  <div class="hero-left">
+    <p class="hero-eyebrow">Lengua de Señas · Argentina · 2025</p>
+    <h1 class="hero-title">
+      <span class="outline">Tus gestos</span><br>
+      <em>hablan,</em><br>
+      Signa<em>Link</em><br>
+      <span class="outline">traduce.</span>
+    </h1>
+    <p class="hero-sub">Un guante inteligente que convierte la lengua de señas en texto y voz en tiempo real — rompiendo barreras, conectando mundos.</p>
+    <div class="hero-ctas">
+      <a href="#tecnologia" class="btn-gold">Explorar tecnología</a>
+      <a href="#contacto" class="btn-outline">Contactar equipo</a>
+    </div>
+  </div>
+
+  <!-- RIGHT: 3D glove -->
+  <div class="hero-right">
+    <div class="glove-scene" id="glove-scene">
+
+      <!-- decorative rings -->
+      <div class="glove-ring"></div>
+      <div class="glove-ring"></div>
+
+      <!-- corner frame -->
+      <div class="glove-frame"><span></span></div>
+
+      <!-- scan line -->
+      <div class="glove-scan"></div>
+
+      <!-- glove image -->
+      <div class="glove-img-wrap">
+        <img
+          class="glove-img"
+          id="glove-img"
+          src="https://albornozthiagoo.github.io/SignaLink-Web/img/logo/cybernetic-hand.png"
+          alt="SignaLink Glove"
+          onerror="this.src='./img/logo/cybernetic-hand.png'"
+        >
+      </div>
+
+      <!-- floor glow -->
+      <div class="glove-reflection"></div>
+
+      <!-- HUD label -->
+      <div class="glove-hud">Prototipo v2 · Activo</div>
+
+      <!-- data labels -->
+      <div class="glove-label lbl-1">Sensor Flex</div>
+      <div class="glove-label lbl-2">ESP32 BLE</div>
+      <div class="glove-label lbl-3">PCB Custom</div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- SPONSORS -->
+<section id="sponsors">
+  <p class="sponsors-label">Apoyado por</p>
+  <div class="sponsors-wrap">
+    <div class="sponsors-track">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/sponsors/uade.png" alt="UADE">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/sponsors/newton.png" alt="Newton">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/Sponsors/bairesdivan.png" alt="Baires Divan">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/Sponsors/elemon.png" alt="Elemon">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/Sponsors/ciampone&franco.png" alt="Ciampone & Franco">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/Sponsors/urbanbelts.png" alt="Urban Belts">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/Sponsors/cooperadora.png" alt="Cooperadora">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/Sponsors/microautomacion.png" alt="Microautomación">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/sponsors/uade.png" alt="UADE">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/sponsors/newton.png" alt="Newton">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/Sponsors/bairesdivan.png" alt="Baires Divan">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/Sponsors/elemon.png" alt="Elemon">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/Sponsors/ciampone&franco.png" alt="Ciampone & Franco">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/Sponsors/urbanbelts.png" alt="Urban Belts">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/Sponsors/cooperadora.png" alt="Cooperadora">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/Sponsors/microautomacion.png" alt="Microautomación">
+    </div>
+  </div>
+</section>
+
+<!-- PROPÓSITOS -->
+<section id="propositos">
+  <div class="section-head reveal">
+    <p class="section-tag">Nuestros propósitos</p>
+    <h2 class="section-title">Objetivos que<br><em>nos mueven</em></h2>
+  </div>
+  <div class="prop-grid">
+    <div class="prop-card glass reveal d1">
+      <div class="prop-num">01</div>
+      <h3 class="prop-name">Un prototipo innovador</h3>
+      <p class="prop-text">Desarrollamos un traductor de lengua de señas portátil para que personas sordo-mudas puedan comunicarse fluidamente con quienes no conocen dicha lengua.</p>
+    </div>
+    <div class="prop-card glass reveal d2">
+      <div class="prop-num">02</div>
+      <h3 class="prop-name">Impulsar la inclusión</h3>
+      <p class="prop-text">La inclusión social es un desafío permanente. SignaLink busca reducir los obstáculos comunicativos y acercar a las personas a través de la tecnología.</p>
+    </div>
+    <div class="prop-card glass reveal d3">
+      <div class="prop-num">03</div>
+      <h3 class="prop-name">Tecnología con futuro</h3>
+      <p class="prop-text">Sentamos una base sólida para que empresas y centros de investigación continúen desarrollando el sistema con el mismo compromiso social.</p>
+    </div>
+    <div class="prop-card glass reveal d4">
+      <div class="prop-num">04</div>
+      <h3 class="prop-name">Desarrollar habilidades</h3>
+      <p class="prop-text">Potenciamos nuestras capacidades técnicas y de trabajo en equipo, enfrentando desafíos reales clave en nuestra formación como futuros técnicos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TECNOLOGÍA -->
+<section id="tecnologia">
+  <div class="section-head reveal">
+    <p class="section-tag">Nuestros usos</p>
+    <h2 class="section-title">Tecnología que<br><em>conecta</em></h2>
+  </div>
+  <div class="tech-grid">
+    <div class="tech-card glass reveal d1">
+      <div class="tech-glow"></div>
+      <div class="tech-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 3L2 7l10 4 10-4-10-4zM2 17l10 4 10-4M2 12l10 4 10-4"/></svg>
+      </div>
+      <h3 class="tech-name">Modelado 3D</h3>
+      <p class="tech-text">Diseñamos y modelamos objetos ilustrativos y funcionales, listos para impresión 3D y aplicación directa en nuestro prototipo.</p>
+      <a href="technology-detail.html#modelado3d" class="tech-link">Saber más</a>
+    </div>
+    <div class="tech-card glass reveal d3">
+      <div class="tech-glow"></div>
+      <div class="tech-icon">
+        <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      <h3 class="tech-name">Software</h3>
+      <p class="tech-text">Programamos componentes, gestionamos el envío y recepción de datos, y desarrollamos la lógica central del sistema en tiempo real.</p>
+      <a href="technology-detail.html#software" class="tech-link">Saber más</a>
+    </div>
+    <div class="tech-card glass reveal d5">
+      <div class="tech-glow"></div>
+      <div class="tech-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <h3 class="tech-name">Hardware</h3>
+      <p class="tech-text">Ensamblamos sensores, placas electrónicas y estructuras impresas en 3D para un sistema funcional, preciso y ergonómico.</p>
+      <a href="technology-detail.html#hardware" class="tech-link">Saber más</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="section-head reveal">
+    <p class="section-tag">Nuestros avances</p>
+    <h2 class="section-title">El proyecto<br><em>en imágenes</em></h2>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gal-item">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/team/nosotros-2.jpeg" alt="Equipo">
+      <div class="gal-overlay">
+        <p class="gal-overlay-tag">Equipo</p>
+        <p>Nuestro equipo en Instagram</p>
+      </div>
+    </div>
+    <div class="gal-item">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/avances/prototipo/prototipo_flex.jpg" alt="Prototipo">
+      <div class="gal-overlay">
+        <p class="gal-overlay-tag">Prototipo</p>
+        <p>Módulo flex de la mano</p>
+      </div>
+    </div>
+    <div class="gal-item">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/avances/investigaciones/esp32_uade.jpg" alt="Hardware">
+      <div class="gal-overlay">
+        <p class="gal-overlay-tag">Hardware</p>
+        <p>Armado de la placa</p>
+      </div>
+    </div>
+    <div class="gal-item">
+      <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/avances/investigaciones/visitauade.jpeg" alt="UADE">
+      <div class="gal-overlay">
+        <p class="gal-overlay-tag">Presentación</p>
+        <p>BitSquat en UADE</p>
+      </div>
+    </div>
+  </div>
+  <div class="gallery-more reveal">
+    <a href="galeria.html" class="btn-outline">Ver galería completa</a>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section id="equipo">
+  <div class="section-head reveal">
+    <p class="section-tag">Nosotros</p>
+    <h2 class="section-title">El equipo<br><em>SignaLink</em></h2>
+  </div>
+  <div class="team-grid">
+    <div class="team-card glass reveal d1">
+      <div class="team-photo"><img src="https://albornozthiagoo.github.io/SignaLink-Web/img/team/thiagoalbornoz.jpg" alt="Albornoz Thiago"><div class="team-photo-overlay"></div></div>
+      <div class="team-info">
+        <p class="team-name">Albornoz Thiago</p>
+        <div class="team-links">
+          <a href="https://github.com/albornozthiagoo" target="_blank">GitHub</a>
+          <a href="https://www.instagram.com/thia.albornoz/" target="_blank">Instagram</a>
+          <a href="https://www.linkedin.com/in/thiago-agustin-albornoz-6956b135b" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card glass reveal d2">
+      <div class="team-photo"><img src="https://albornozthiagoo.github.io/SignaLink-Web/img/team/sebastianerbino.jpg" alt="Erbino Sebastian"><div class="team-photo-overlay"></div></div>
+      <div class="team-info">
+        <p class="team-name">Erbino Sebastian</p>
+        <div class="team-links">
+          <a href="https://github.com/SebaErbino" target="_blank">GitHub</a>
+          <a href="https://www.instagram.com/erbino_seba/" target="_blank">Instagram</a>
+          <a href="https://www.linkedin.com/in/sebastián-erbino-25b9792ab" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card glass reveal d3">
+      <div class="team-photo"><img src="https://albornozthiagoo.github.io/SignaLink-Web/img/team/valentinfranco.png" alt="Franco Valentin"><div class="team-photo-overlay"></div></div>
+      <div class="team-info">
+        <p class="team-name">Franco Valentin</p>
+        <div class="team-links">
+          <a href="https://github.com/valentinfranco2506" target="_blank">GitHub</a>
+          <a href="https://www.instagram.com/valentin.francoo/" target="_blank">Instagram</a>
+          <a href="https://www.linkedin.com/in/valentin-franco-174587357" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card glass reveal d2">
+      <div class="team-photo"><img src="https://albornozthiagoo.github.io/SignaLink-Web/img/team/francolesme.jpg" alt="Lesme Franco"><div class="team-photo-overlay"></div></div>
+      <div class="team-info">
+        <p class="team-name">Lesme Franco</p>
+        <div class="team-links">
+          <a href="https://github.com/LesmeFranco" target="_blank">GitHub</a>
+          <a href="https://www.instagram.com/francoo.lesme/" target="_blank">Instagram</a>
+          <a href="https://www.linkedin.com/in/franco-lesme-25bb4b259/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card glass reveal d3">
+      <div class="team-photo"><img src="https://albornozthiagoo.github.io/SignaLink-Web/img/team/lorenzopoggi.jpg" alt="Poggi Lorenzo"><div class="team-photo-overlay"></div></div>
+      <div class="team-info">
+        <p class="team-name">Poggi Lorenzo</p>
+        <div class="team-links">
+          <a href="https://github.com/LorenzoPoggi" target="_blank">GitHub</a>
+          <a href="https://www.instagram.com/lorenzoo.poggi/" target="_blank">Instagram</a>
+          <a href="https://www.linkedin.com/in/lorenzo-poggi-6b9b5a357" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="team-card glass reveal d4">
+      <div class="team-photo"><img src="https://albornozthiagoo.github.io/SignaLink-Web/img/team/valentinosarniguette.png" alt="Sarniguette Valentino"><div class="team-photo-overlay"></div></div>
+      <div class="team-info">
+        <p class="team-name">Sarniguette Valentino</p>
+        <div class="team-links">
+          <a href="https://github.com/valensarrr" target="_blank">GitHub</a>
+          <a href="https://www.instagram.com/valensarrr/" target="_blank">Instagram</a>
+          <a href="https://www.linkedin.com/in/valentino-sarniguette-156175354/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-head reveal">
+    <p class="section-tag">Hablá con nosotros</p>
+    <h2 class="section-title">Contacto</h2>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-details reveal">
+      <div class="contact-row">
+        <p class="contact-row-label">Dirección</p>
+        <p class="contact-row-val">Juan B. Justo 550<br>Buenos Aires, Argentina</p>
+      </div>
+      <div class="contact-row">
+        <p class="contact-row-label">Email</p>
+        <p class="contact-row-val"><a href="mailto:signalink2025@gmail.com">signalink2025@gmail.com</a></p>
+      </div>
+      <div class="contact-row">
+        <p class="contact-row-label">Teléfono</p>
+        <p class="contact-row-val"><a href="tel:+5491140305159">+54 9 11 4030-5159</a></p>
+      </div>
+      <div class="social-row">
+        <a href="https://www.instagram.com/signalink_" target="_blank" class="social-btn">Instagram</a>
+        <a href="https://github.com/impatrq/SignaLink" target="_blank" class="social-btn">GitHub</a>
+        <a href="https://www.facebook.com/share/16gHt4AGou/" target="_blank" class="social-btn">Facebook</a>
+      </div>
+    </div>
+    <div class="contact-form reveal d3">
+      <div class="f-group">
+        <label class="f-label">Nombre</label>
+        <input type="text" class="f-input" placeholder="Tu nombre completo">
+      </div>
+      <div class="f-group">
+        <label class="f-label">Email</label>
+        <input type="email" class="f-input" placeholder="tu@email.com">
+      </div>
+      <div class="f-group">
+        <label class="f-label">Propósito</label>
+        <select class="f-select">
+          <option value="">Seleccioná una opción</option>
+          <option>Colaboración</option>
+          <option>Inversión / Sponsorship</option>
+          <option>Consulta técnica</option>
+          <option>Medios / Prensa</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="f-group">
+        <label class="f-label">Mensaje</label>
+        <textarea class="f-textarea" placeholder="Contanos en qué podemos ayudarte…"></textarea>
+      </div>
+      <button class="btn-send" id="send-btn"><span>Enviar mensaje</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="https://albornozthiagoo.github.io/SignaLink-Web/img/logo/signalinkicon.png" alt="SignaLink">
+    <span class="footer-logo-name">SignaLink</span>
+  </div>
+  <p class="footer-copy">2025 © Todos los derechos reservados</p>
+  <p class="footer-school">Proyecto por alumnos de la E.E.S.T. N°7<br>"Taller Regional Quilmes" — IMPA</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+/* CURSOR */
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function tick(){
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+  rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(tick);
+})();
+
+/* ── GLOVE 3D PARALLAX ── */
+(()=>{
+  const scene = document.getElementById('glove-scene');
+  const gloveImg = document.getElementById('glove-img');
+  if(!scene) return;
+
+  /* replace with actual uploaded glove image */
+  gloveImg.src = 'img/glove.png'; // local fallback
+  /* primary: try to use the real photo from the upload */
+  const realSrc = 'https://albornozthiagoo.github.io/SignaLink-Web/img/logo/cybernetic-hand.png';
+
+  let targetRX=0,targetRY=0,currentRX=0,currentRY=0;
+  let imgTargetX=0,imgTargetY=0,imgCurX=0,imgCurY=0;
+  let heroRect = scene.closest('#hero').getBoundingClientRect();
+
+  window.addEventListener('resize',()=>{
+    heroRect = scene.closest('#hero').getBoundingClientRect();
+  },{passive:true});
+
+  document.addEventListener('mousemove', e=>{
+    const cx = heroRect.left + heroRect.width/2;
+    const cy = heroRect.top  + heroRect.height/2;
+    const dx = (e.clientX - cx) / (heroRect.width/2);
+    const dy = (e.clientY - cy) / (heroRect.height/2);
+
+    /* scene tilts opposite to mouse (looks toward it) */
+    targetRY =  dx * 14;
+    targetRX = -dy * 10;
+
+    /* image slides slightly — deeper parallax layer */
+    imgTargetX = dx * 18;
+    imgTargetY = dy * 12;
+  },{passive:true});
+
+  /* on mobile: animate gently on its own */
+  let autoT=0;
+  function autoAnimate(t){
+    autoT=t*.0008;
+    targetRY  = Math.sin(autoT)   * 8;
+    targetRX  = Math.cos(autoT*.7)* 5;
+    imgTargetX= Math.sin(autoT)   * 10;
+    imgTargetY= Math.cos(autoT*.7)* 6;
+  }
+
+  const isMobile = window.innerWidth < 900;
+
+  (function raf(t){
+    if(isMobile) autoAnimate(t);
+
+    /* lerp scene rotation */
+    currentRX += (targetRX - currentRX) * .06;
+    currentRY += (targetRY - currentRY) * .06;
+
+    /* lerp image offset */
+    imgCurX += (imgTargetX - imgCurX) * .055;
+    imgCurY += (imgTargetY - imgCurY) * .055;
+
+    scene.style.transform =
+      `rotateX(${currentRX}deg) rotateY(${currentRY}deg)`;
+
+    if(gloveImg){
+      gloveImg.style.transform =
+        `translate(${imgCurX}px, ${imgCurY}px) scale(1.04)`;
+    }
+
+    requestAnimationFrame(raf);
+  })(0);
+})();
+
+/* NAV SCROLL */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>50);},{passive:true});
+
+/* REVEAL */
+const els=document.querySelectorAll('.reveal');
+new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');}});
+},{threshold:.1}).observe&&els.forEach(el=>{
+  new IntersectionObserver(([e])=>{if(e.isIntersecting){el.classList.add('in');}},{threshold:.1}).observe(el);
+});
+
+/* WEBGL — soft golden dust */
+(()=>{
+  const c=document.getElementById('bg-canvas');
+  const gl=c.getContext('webgl')||c.getContext('experimental-webgl');
+  if(!gl)return;
+
+  const resize=()=>{
+    c.width=innerWidth*devicePixelRatio; c.height=innerHeight*devicePixelRatio;
+    c.style.width=innerWidth+'px'; c.style.height=innerHeight+'px';
+    gl.viewport(0,0,c.width,c.height);
+  };
+  resize(); window.addEventListener('resize',resize,{passive:true});
+
+  const N=600;
+  const pos=new Float32Array(N*2);
+  const vel=new Float32Array(N*2);
+  const sz=new Float32Array(N);
+  const ph=new Float32Array(N);
+  for(let i=0;i<N;i++){
+    pos[i*2]=(Math.random()*2-1); pos[i*2+1]=(Math.random()*2-1);
+    vel[i*2]=(Math.random()-.5)*.00025; vel[i*2+1]=(Math.random()-.5)*.00018;
+    sz[i]=Math.random(); ph[i]=Math.random()*Math.PI*2;
+  }
+
+  const vs=`
+    attribute vec2 a_p; attribute float a_sz; attribute float a_ph;
+    uniform float u_t; uniform vec2 u_m;
+    void main(){
+      vec2 p=a_p;
+      float t=u_t*.3+a_ph;
+      p.x+=sin(t+a_ph)*0.009; p.y+=cos(t*.8+a_ph)*0.006;
+      vec2 d=p-u_m; float dist=length(d);
+      if(dist<.22) p+=normalize(d)*(.22-dist)*.15;
+      gl_Position=vec4(p,0.,1.);
+      float s=(sin(u_t*.8+a_ph)+1.)*.5;
+      gl_PointSize=mix(1.,3.5,a_sz)*mix(.4,1.,s);
+    }`;
+  const fs=`
+    precision mediump float;
+    void main(){
+      vec2 uv=gl_PointCoord-.5;
+      float a=1.-smoothstep(.3,.5,length(uv));
+      /* gold: r=.78 g=.66 b=.3 */
+      gl_FragColor=vec4(.78,.66,.30,a*.45);
+    }`;
+
+  function mkShader(type,src){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);return s;}
+  const prog=gl.createProgram();
+  gl.attachShader(prog,mkShader(gl.VERTEX_SHADER,vs));
+  gl.attachShader(prog,mkShader(gl.FRAGMENT_SHADER,fs));
+  gl.linkProgram(prog); gl.useProgram(prog);
+
+  const pbuf=gl.createBuffer(),sbuf=gl.createBuffer(),phbuf=gl.createBuffer();
+  const mainbuf=gl.createBuffer();
+
+  const aP=gl.getAttribLocation(prog,'a_p');
+  const aSz=gl.getAttribLocation(prog,'a_sz');
+  const aPh=gl.getAttribLocation(prog,'a_ph');
+  const uT=gl.getUniformLocation(prog,'u_t');
+  const uM=gl.getUniformLocation(prog,'u_m');
+
+  gl.bindBuffer(gl.ARRAY_BUFFER,sbuf);
+  gl.bufferData(gl.ARRAY_BUFFER,sz,gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(aSz);
+  gl.vertexAttribPointer(aSz,1,gl.FLOAT,false,0,0);
+
+  gl.bindBuffer(gl.ARRAY_BUFFER,phbuf);
+  gl.bufferData(gl.ARRAY_BUFFER,ph,gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(aPh);
+  gl.vertexAttribPointer(aPh,1,gl.FLOAT,false,0,0);
+
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA,gl.ONE);
+
+  let mouse=[0,0];
+  window.addEventListener('mousemove',e=>{
+    mouse[0]=(e.clientX/innerWidth)*2-1;
+    mouse[1]=-((e.clientY/innerHeight)*2-1);
+  },{passive:true});
+
+  const t0=performance.now();
+  function frame(now){
+    const t=(now-t0)*.001;
+    for(let i=0;i<N;i++){
+      pos[i*2]+=vel[i*2]; pos[i*2+1]+=vel[i*2+1];
+      if(pos[i*2]>1.05) pos[i*2]=-1.05;
+      if(pos[i*2]<-1.05) pos[i*2]=1.05;
+      if(pos[i*2+1]>1.05) pos[i*2+1]=-1.05;
+      if(pos[i*2+1]<-1.05) pos[i*2+1]=1.05;
+    }
+    gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.bindBuffer(gl.ARRAY_BUFFER,mainbuf);
+    gl.bufferData(gl.ARRAY_BUFFER,pos,gl.DYNAMIC_DRAW);
+    gl.enableVertexAttribArray(aP);
+    gl.vertexAttribPointer(aP,2,gl.FLOAT,false,0,0);
+
+    /* re-bind static attrs each frame after dynamic bind */
+    gl.bindBuffer(gl.ARRAY_BUFFER,sbuf);
+    gl.vertexAttribPointer(aSz,1,gl.FLOAT,false,0,0);
+    gl.bindBuffer(gl.ARRAY_BUFFER,phbuf);
+    gl.vertexAttribPointer(aPh,1,gl.FLOAT,false,0,0);
+
+    gl.uniform1f(uT,t);
+    gl.uniform2fv(uM,mouse);
+    gl.drawArrays(gl.POINTS,0,N);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* SEND BUTTON */
+document.getElementById('send-btn').addEventListener('click',function(){
+  const s=this.querySelector('span');
+  s.textContent='¡Mensaje enviado!';
+  setTimeout(()=>s.textContent='Enviar mensaje',3000);
+});
+</script>
+</body>
+</html>
