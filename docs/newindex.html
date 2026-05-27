@@ -12,8 +12,8 @@
    TOKENS
 ───────────────────────────────────────── */
 :root {
-  --black:   #08090c;
-  --black2:  #0e0f14;
+  --black:   #080c14;
+  --black2:  #0c1120;
   --white:   #f5f3ee;
   --white2:  #d8d4c8;
   --gold:    #c9a84c;
@@ -32,7 +32,8 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--black);
+  background: linear-gradient(160deg, #060b18 0%, #080c14 30%, #000000 60%, #06090f 100%);
+  background-attachment: fixed;
   color: var(--white);
   font-family: var(--font-sans);
   font-weight: 300;
@@ -76,10 +77,17 @@ body:has(a:hover,button:hover) #cursor-ring { width:52px; height:52px; border-co
 /* ─────────────────────────────────────────
    GRAIN
 ───────────────────────────────────────── */
+body::before {
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(81, 85, 8, 0.13) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(10,20,60,.18) 0%, transparent 65%);
+}
+
 body::after {
   content:''; position:fixed; inset:0; z-index:1; pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  opacity:.5;
+  opacity:.4;
 }
 
 /* ─────────────────────────────────────────
@@ -105,8 +113,8 @@ nav.scrolled {
 }
 .nav-logo img {
   width:34px; height:34px;
-  filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(5deg) brightness(0.9);
-  opacity:.9;
+  filter: brightness(0) saturate(100%) invert(72%) sepia(42%) saturate(600%) hue-rotate(5deg) brightness(1.05);
+  opacity:.95;
 }
 .nav-logo-text {
   font-family: var(--font-serif);
@@ -447,10 +455,10 @@ nav.scrolled {
 }
 .sponsors-track img {
   height:34px; width:auto; flex-shrink:0;
-  filter: brightness(0) invert(1) opacity(.35);
+  filter: brightness(0) saturate(100%) invert(72%) sepia(42%) saturate(600%) hue-rotate(5deg) brightness(0.75) opacity(0.45);
   transition:filter .3s;
 }
-.sponsors-track img:hover { filter:brightness(0) invert(1) opacity(.75); }
+.sponsors-track img:hover { filter: brightness(0) saturate(100%) invert(72%) sepia(42%) saturate(600%) hue-rotate(5deg) brightness(1.05) opacity(0.9); }
 @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
 /* ─────────────────────────────────────────
@@ -754,8 +762,8 @@ footer {
 }
 .footer-logo { display:flex; align-items:center; gap:12px; }
 .footer-logo img {
-  width:26px; opacity:.6;
-  filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(.85);
+  width:26px; opacity:.75;
+  filter: brightness(0) saturate(100%) invert(72%) sepia(42%) saturate(600%) hue-rotate(5deg) brightness(1.0);
 }
 .footer-logo-name {
   font-family:var(--font-serif); font-weight:400;
@@ -878,9 +886,9 @@ footer {
         <img
           class="glove-img"
           id="glove-img"
-          src="https://albornozthiagoo.github.io/SignaLink-Web/img/logo/cybernetic-hand.png"
+          src="./img/componentes/signalinkmodel.png"
           alt="SignaLink Glove"
-          onerror="this.src='./img/logo/cybernetic-hand.png'"
+          onerror="this.src='./img/componentes/signalinkmodel.png';"
         >
       </div>
 
@@ -1314,8 +1322,8 @@ new IntersectionObserver(entries=>{
     void main(){
       vec2 uv=gl_PointCoord-.5;
       float a=1.-smoothstep(.3,.5,length(uv));
-      /* gold: r=.78 g=.66 b=.3 */
-      gl_FragColor=vec4(.78,.66,.30,a*.45);
+      /* gold with faint blue shimmer: r=.78 g=.66 b=.35 */
+      gl_FragColor=vec4(.78,.66,.35,a*.42);
     }`;
 
   function mkShader(type,src){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);return s;}
